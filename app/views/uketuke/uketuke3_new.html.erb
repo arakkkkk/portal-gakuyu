@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/header' %>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/uketuke1"><strong>備品の貸出</strong><span>Rental equipment</span></a></li>
+			<li><a href="/uketuke2_new"><strong>音楽練習室</strong><span>Borrowed</span></a></li>
+			<li class="active"><a href="/uketuke3_new"><strong>会議室・和室・厨房</strong><span>cReservation</span></a></li>
+			<li><a href="/uketuke4_new"><strong>その他施設</strong><span>History</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+<div id="wrapper">
+  <section id="main">
+      <div class="red_text">
+        ・試験運用
+      </div>
+  </section>
+</div>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会 備品の貸出</h3>
+     	<article>
+
+     		<%= form_with(model: @facility,:url => {:action => :uketuke3_back}, local: true) do |form| %>
+     			<p>
+		            <%= form.label :g_name, "団体名：" %><br>
+		            <%= form.text_field :g_name, id: "g_name" %>
+		        </p>
+		        <p>
+<!-- 		            <%= form.label :katudo_naiyo, "活動内容：" %><br> -->
+		            <%= form.hidden_field :katudo_naiyo, id: "katudo_naiyo", value: "none" %>
+		        </p>
+		        <p>
+		            <%= form.label :katudo_num, "活動人数：" %><br>
+		            <%= form.text_field :katudo_num, id: "katudo_num" %>
+		        </p>
+		        <div id="log_hide">
+			        <p>
+			            <%= form.label :r_name, "申請者名" %><br>
+			            <%= form.text_field :r_name, id: "r_name" %>
+			        </p>
+			        <p>
+			            <%= form.label :tell, "電話番号：" %><br>
+			            <%= form.text_field :tell, id: "tell" %>
+			        </p>
+			        <p>
+			            <%= form.label :email, "e-mail：" %><br>
+			            <%= form.text_field :email, id: "email" %>
+			        </p>
+		    	</div>
+
+     			<p>使用する日</p>
+				<select id="year" onchange="monthset()">
+			    </select>
+			    <label>年</label>
+			    <select id="month" onchange="dayset()">
+			    </select>
+			    <label>月</label>
+			    <select id="day" onchange="setv()">
+		        </select>
+		        <label>日</label><br><p></p>
+
+
+	     		<div class="kategori">
+	     		<p>会議室１</p>
+				<a>09:00 ~ 09:30</a><p1 class="a1"><input type="checkbox" value="a1" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>09:30 ~ 10:00</a><p1 class="a2"><input type="checkbox" value="a2" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>10:00 ~ 10:30</a><p1 class="a3"><input type="checkbox" value="a3" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>10:30 ~ 11:00</a><p1 class="a4"><input type="checkbox" value="a4" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>11:00 ~ 11:30</a><p1 class="a5"><input type="checkbox" value="a5" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>11:30 ~ 12:00</a><p1 class="a6"><input type="checkbox" value="a6" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>12:00 ~ 12:30</a><p1 class="a7"><input type="checkbox" value="a7" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>12:30 ~ 13:00</a><p1 class="a8"><input type="checkbox" value="a8" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>13:00 ~ 13:30</a><p1 class="a9"><input type="checkbox" value="a9" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>13:30 ~ 14:00</a><p1 class="a10"><input type="checkbox" value="a10" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>14:00 ~ 14:30</a><p1 class="a11"><input type="checkbox" value="a11" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>14:30 ~ 15:00</a><p1 class="a12"><input type="checkbox" value="a12" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>15:00 ~ 15:30</a><p1 class="a13"><input type="checkbox" value="a13" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>15:30 ~ 16:00</a><p1 class="a14"><input type="checkbox" value="a14" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>16:00 ~ 16:30</a><p1 class="a15"><input type="checkbox" value="a15" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>16:30 ~ 17:00</a><p1 class="a16"><input type="checkbox" value="a16" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>17:00 ~ 17:30</a><p1 class="a17"><input type="checkbox" value="a17" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>17:30 ~ 18:00</a><p1 class="a18"><input type="checkbox" value="a18" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>18:00 ~ 18:30</a><p1 class="a19"><input type="checkbox" value="a19" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>18:30 ~ 19:00</a><p1 class="a20"><input type="checkbox" value="a20" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>19:00 ~ 19:30</a><p1 class="a21"><input type="checkbox" value="a21" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>19:30 ~ 20:00</a><p1 class="a22"><input type="checkbox" value="a22" name="a" id="a" onchange="seta(this)"></p1><br>
+	     		<a>20:00 ~ 20:30</a><p1 class="a23"><input type="checkbox" value="a23" name="a" id="a" onchange="seta(this)"></p1><br>
+		        <br>
+	    		</div>
+
+	    		<div class="kategori">
+	     		<p>会議室２</p>
+	     		<a>09:00 ~ 09:30</a><p1 class="b1"><input type="checkbox" value="b1" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>09:30 ~ 10:00</a><p1 class="b2"><input type="checkbox" value="b2" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>10:00 ~ 10:30</a><p1 class="b3"><input type="checkbox" value="b3" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>10:30 ~ 11:00</a><p1 class="b4"><input type="checkbox" value="b4" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>11:00 ~ 11:30</a><p1 class="b5"><input type="checkbox" value="b5" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>11:30 ~ 12:00</a><p1 class="b6"><input type="checkbox" value="b6" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>12:00 ~ 12:30</a><p1 class="b7"><input type="checkbox" value="b7" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>12:30 ~ 13:00</a><p1 class="b8"><input type="checkbox" value="b8" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>13:00 ~ 13:30</a><p1 class="b9"><input type="checkbox" value="b9" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>13:30 ~ 14:00</a><p1 class="b10"><input type="checkbox" value="b10" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>14:00 ~ 14:30</a><p1 class="b11"><input type="checkbox" value="b11" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>14:30 ~ 15:00</a><p1 class="b12"><input type="checkbox" value="b12" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>15:00 ~ 15:30</a><p1 class="b13"><input type="checkbox" value="b13" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>15:30 ~ 16:00</a><p1 class="b14"><input type="checkbox" value="b14" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>16:00 ~ 16:30</a><p1 class="b15"><input type="checkbox" value="b15" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>16:30 ~ 17:00</a><p1 class="b16"><input type="checkbox" value="b16" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>17:00 ~ 17:30</a><p1 class="b17"><input type="checkbox" value="b17" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>17:30 ~ 18:00</a><p1 class="b18"><input type="checkbox" value="b18" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>18:00 ~ 18:30</a><p1 class="b19"><input type="checkbox" value="b19" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>18:30 ~ 19:00</a><p1 class="b20"><input type="checkbox" value="b20" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>19:00 ~ 19:30</a><p1 class="b21"><input type="checkbox" value="b21" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>19:30 ~ 20:00</a><p1 class="b22"><input type="checkbox" value="b22" name="b" id="b" onchange="seta(this)"></p1><br>
+	     		<a>20:00 ~ 20:30</a><p1 class="b23"><input type="checkbox" value="b23" name="b" id="b" onchange="seta(this)"></p1><br>
+		        <br>
+	    		</div>
+
+	    		<div class="kategori">
+	     		<p>会議室３</p>
+	     		<a>09:00 ~ 09:30</a><p1 class="c1"><input type="checkbox" value="c1" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>09:30 ~ 10:00</a><p1 class="c2"><input type="checkbox" value="c2" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>10:00 ~ 10:30</a><p1 class="c3"><input type="checkbox" value="c3" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>10:30 ~ 11:00</a><p1 class="c4"><input type="checkbox" value="c4" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>11:00 ~ 11:30</a><p1 class="c5"><input type="checkbox" value="c5" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>11:30 ~ 12:00</a><p1 class="c6"><input type="checkbox" value="c6" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>12:00 ~ 12:30</a><p1 class="c7"><input type="checkbox" value="c7" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>12:30 ~ 13:00</a><p1 class="c8"><input type="checkbox" value="c8" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>13:00 ~ 13:30</a><p1 class="c9"><input type="checkbox" value="c9" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>13:30 ~ 14:00</a><p1 class="c10"><input type="checkbox" value="c10" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>14:00 ~ 14:30</a><p1 class="c11"><input type="checkbox" value="c11" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>14:30 ~ 15:00</a><p1 class="c12"><input type="checkbox" value="c12" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>15:00 ~ 15:30</a><p1 class="c13"><input type="checkbox" value="c13" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>15:30 ~ 16:00</a><p1 class="c14"><input type="checkbox" value="c14" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>16:00 ~ 16:30</a><p1 class="c15"><input type="checkbox" value="c15" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>16:30 ~ 17:00</a><p1 class="c16"><input type="checkbox" value="c16" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>17:00 ~ 17:30</a><p1 class="c17"><input type="checkbox" value="c17" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>17:30 ~ 18:00</a><p1 class="c18"><input type="checkbox" value="c18" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>18:00 ~ 18:30</a><p1 class="c19"><input type="checkbox" value="c19" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>18:30 ~ 19:00</a><p1 class="c20"><input type="checkbox" value="c20" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>19:00 ~ 19:30</a><p1 class="c21"><input type="checkbox" value="c21" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>19:30 ~ 20:00</a><p1 class="c22"><input type="checkbox" value="c22" name="c" id="c" onchange="seta(this)"></p1><br>
+	     		<a>20:00 ~ 20:30</a><p1 class="c23"><input type="checkbox" value="c23" name="c" id="c" onchange="seta(this)"></p1><br>
+		        <br>
+	    		</div>
+
+	    		<div class="kategori">
+	     		<p>和室</p>
+	     		<a>09:00 ~ 09:30</a><p1 class="d1"><input type="checkbox" value="d1" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>09:30 ~ 10:00</a><p1 class="d2"><input type="checkbox" value="d2" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>10:00 ~ 10:30</a><p1 class="d3"><input type="checkbox" value="d3" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>10:30 ~ 11:00</a><p1 class="d4"><input type="checkbox" value="d4" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>11:00 ~ 11:30</a><p1 class="d5"><input type="checkbox" value="d5" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>11:30 ~ 12:00</a><p1 class="d6"><input type="checkbox" value="d6" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>12:00 ~ 12:30</a><p1 class="d7"><input type="checkbox" value="d7" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>12:30 ~ 13:00</a><p1 class="d8"><input type="checkbox" value="d8" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>13:00 ~ 13:30</a><p1 class="d9"><input type="checkbox" value="d9" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>13:30 ~ 14:00</a><p1 class="d10"><input type="checkbox" value="d10" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>14:00 ~ 14:30</a><p1 class="d11"><input type="checkbox" value="d11" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>14:30 ~ 15:00</a><p1 class="d12"><input type="checkbox" value="d12" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>15:00 ~ 15:30</a><p1 class="d13"><input type="checkbox" value="d13" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>15:30 ~ 16:00</a><p1 class="d14"><input type="checkbox" value="d14" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>16:00 ~ 16:30</a><p1 class="d15"><input type="checkbox" value="d15" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>16:30 ~ 17:00</a><p1 class="d16"><input type="checkbox" value="d16" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>17:00 ~ 17:30</a><p1 class="d17"><input type="checkbox" value="d17" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>17:30 ~ 18:00</a><p1 class="d18"><input type="checkbox" value="d18" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>18:00 ~ 18:30</a><p1 class="d19"><input type="checkbox" value="d19" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>18:30 ~ 19:00</a><p1 class="d20"><input type="checkbox" value="d20" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>19:00 ~ 19:30</a><p1 class="d21"><input type="checkbox" value="d21" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>19:30 ~ 20:00</a><p1 class="d22"><input type="checkbox" value="d22" name="d" id="d" onchange="seta(this)"></p1><br>
+	     		<a>20:00 ~ 20:30</a><p1 class="d23"><input type="checkbox" value="d23" name="d" id="d" onchange="seta(this)"></p1><br>
+		        <br>
+	    		</div>
+
+	    		<div class="kategori">
+	     		<p>厨房</p>
+	     		<a>09:00 ~ 09:30</a><p1 class="e1"><input type="checkbox" value="e1" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>09:30 ~ 10:00</a><p1 class="e2"><input type="checkbox" value="e2" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>10:00 ~ 10:30</a><p1 class="e3"><input type="checkbox" value="e3" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>10:30 ~ 11:00</a><p1 class="e4"><input type="checkbox" value="e4" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>11:00 ~ 11:30</a><p1 class="e5"><input type="checkbox" value="e5" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>11:30 ~ 12:00</a><p1 class="e6"><input type="checkbox" value="e6" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>12:00 ~ 12:30</a><p1 class="e7"><input type="checkbox" value="e7" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>12:30 ~ 13:00</a><p1 class="e8"><input type="checkbox" value="e8" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>13:00 ~ 13:30</a><p1 class="e9"><input type="checkbox" value="e9" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>13:30 ~ 14:00</a><p1 class="e10"><input type="checkbox" value="e10" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>14:00 ~ 14:30</a><p1 class="e11"><input type="checkbox" value="e11" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>14:30 ~ 15:00</a><p1 class="e12"><input type="checkbox" value="e12" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>15:00 ~ 15:30</a><p1 class="e13"><input type="checkbox" value="e13" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>15:30 ~ 16:00</a><p1 class="e14"><input type="checkbox" value="e14" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>16:00 ~ 16:30</a><p1 class="e15"><input type="checkbox" value="e15" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>16:30 ~ 17:00</a><p1 class="e16"><input type="checkbox" value="e16" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>17:00 ~ 17:30</a><p1 class="e17"><input type="checkbox" value="e17" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>17:30 ~ 18:00</a><p1 class="e18"><input type="checkbox" value="e18" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>18:00 ~ 18:30</a><p1 class="e19"><input type="checkbox" value="e19" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>18:30 ~ 19:00</a><p1 class="e20"><input type="checkbox" value="e20" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>19:00 ~ 19:30</a><p1 class="e21"><input type="checkbox" value="e21" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>19:30 ~ 20:00</a><p1 class="e22"><input type="checkbox" value="e22" name="e" id="e" onchange="seta(this)"></p1><br>
+	     		<a>20:00 ~ 20:30</a><p1 class="e23"><input type="checkbox" value="e23" name="e" id="e" onchange="seta(this)"></p1><br>
+		        <br>
+	    		</div>
+
+	    		
+
+
+
+
+	    		<br>
+	    		<button type="button" onclick="meetingroom()">部屋を借りる</button>
+		    <% end %>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+<!-------------------- javascript ------------------->
+		        <script language="javascript" type="text/javascript">
+		        	// 月の取得
+		        	var days = document.getElementById('day');
+		        	var month = document.getElementById('month');
+		        	var year = document.getElementById('year');
+			        var dt = new Date();
+			        var y = dt.getFullYear();
+			        var m = dt.getMonth()+1;
+			        var d = dt.getDate();
+			        var h = dt.getHours();
+			        var min = dt.getMinutes();
+			        var s = dt.getSeconds();
+			        var mm = 0;
+			        var yy = 0;
+
+			        for(i = 1; i <= 13; i++) {
+						dt.setDate(dt.getDate()+1);
+						if(dt.getDate()==1){mm=1;}
+					}
+					if(m==12 && mm==1){
+						yy=1;
+					}
+
+
+					// 年の設定
+					while(year.firstChild){
+					    year.removeChild(year.firstChild);
+					  }
+					var option = document.createElement('option');
+					option.textContent = y;
+					year.appendChild(option);
+					if(yy==1){
+						var option = document.createElement('option');
+						option.textContent = y+1;
+						year.appendChild(option);
+					}
+
+					// 月の設定
+					while(month.firstChild){
+					    month.removeChild(month.firstChild);
+					  }
+					var option = document.createElement('option');
+					option.textContent = m;
+					month.appendChild(option);
+					if(mm==1){
+						if(m==12){
+							var option = document.createElement('option');
+							option.textContent = 1;
+							month.appendChild(option);	
+						}else{
+							var option = document.createElement('option');
+							option.textContent = m+1;
+							month.appendChild(option);
+						}
+					}
+					function monthset(){
+						while(month.firstChild){
+						    month.removeChild(month.firstChild);
+						  }
+						  while(days.firstChild){
+						    days.removeChild(days.firstChild);
+						 }
+						var dt = new Date();
+						if(document.getElementById('year').value==y){
+							var option = document.createElement('option');
+							option.textContent = m;
+							month.appendChild(option);
+							var option = document.createElement('option');
+							option.textContent = dt.getDate();
+							days.appendChild(option);
+								for(i = 1; i <= 14; i++) {
+									var option = document.createElement('option');
+									dt.setDate(dt.getDate()+1);
+									if(dt.getDate()==1){break;}
+									option.textContent = dt.getDate();
+									days.appendChild(option);
+								}
+						}
+						if(document.getElementById('year').value==y+1){
+							var option = document.createElement('option');
+							option.textContent = 1;
+							month.appendChild(option);
+							dt.setDate(dt.getDate()+14);
+							for(i = 1; i <= dt.getDate(); i++) {
+								var option = document.createElement('option');
+								option.textContent = i
+								days.appendChild(option);
+							}
+						}
+					}
+
+					// 日にちの設定
+					// 日にちのoption要素を削除（方法はいろいろありますが）
+					while(days.firstChild){
+					    days.removeChild(days.firstChild);
+					  }
+					// 日にちのoption要素を生成
+					var dt = new Date();
+					if(document.getElementById('month').value==m){
+					var option = document.createElement('option');
+					option.textContent = dt.getDate();
+					days.appendChild(option);
+						for(i = 1; i <= 14; i++) {
+							var option = document.createElement('option');
+							dt.setDate(dt.getDate()+1);
+							if(dt.getDate()==1){break;}
+							option.textContent = dt.getDate();
+							days.appendChild(option);
+						}
+					}
+
+					function dayset(){
+						while(days.firstChild){
+						    days.removeChild(days.firstChild);
+						 }
+						var dt = new Date();
+						if(document.getElementById('month').value==m){
+						var option = document.createElement('option');
+						option.textContent = dt.getDate();
+						days.appendChild(option);
+							for(i = 1; i <= 14; i++) {
+								var option = document.createElement('option');
+								dt.setDate(dt.getDate()+1);
+								if(dt.getDate()==1){break;}
+								option.textContent = dt.getDate();
+								days.appendChild(option);
+							}
+						}
+						if(document.getElementById('month').value==m+1){
+							dt.setDate(dt.getDate()+14);
+							for(i = 1; i <= dt.getDate(); i++) {
+								var option = document.createElement('option');
+								option.textContent = i
+								days.appendChild(option);
+							}
+						}
+					}
+
+
+					// 他の部屋を取れなくする
+					var validation = function() {
+					var count = gon.count-1;
+					for(nn=0;nn<=count;nn++){
+					if(gon.facility[nn].return_at==null){
+						continue;
+					}
+						var room = 0;
+			    	    var rental_d = parseInt(gon.facility[nn].rental_at.slice(8,10));
+			    	    var rental_h = parseInt(gon.facility[nn].rental_at.slice(11,13));
+			    	    var rental_M = parseInt(gon.facility[nn].rental_at.slice(14,16));
+			    	    var return_d = parseInt(gon.facility[nn].return_at.slice(8,10));
+			    	    var return_h = parseInt(gon.facility[nn].return_at.slice(11,13));
+			    	    var return_M = parseInt(gon.facility[nn].return_at.slice(14,16));
+
+			    	    if(gon.facility[nn].room=='会議室１'){room = '.a';}
+				    	if(gon.facility[nn].room=='会議室２'){room = '.b';}
+				    	if(gon.facility[nn].room=='会議室３'){room = '.c';}
+				    	if(gon.facility[nn].room=='和室'){room = '.d';}
+				    	if(gon.facility[nn].room=='厨房'){room = '.e';}
+
+				    	if(rental_h==9){var rental_hide = 1;}
+				    	if(rental_h==10){var rental_hide = 3;}
+				    	if(rental_h==11){var rental_hide = 5;}
+				    	if(rental_h==12){var rental_hide = 7;}
+				    	if(rental_h==13){var rental_hide = 9;}
+				    	if(rental_h==14){var rental_hide = 11;}
+				    	if(rental_h==15){var rental_hide = 13;}
+				    	if(rental_h==16){var rental_hide = 15;}
+				    	if(rental_h==17){var rental_hide = 17;}
+				    	if(rental_h==18){var rental_hide = 19;}
+				    	if(rental_h==19){var rental_hide = 21;}
+				    	if(rental_h==20){var rental_hide = 23;}
+				    	if(rental_M==30){rental_hide=rental_hide+1}
+
+				    	if(return_h==9){var return_hide = 1;}
+				    	if(return_h==10){var return_hide = 3;}
+				    	if(return_h==11){var return_hide = 5;}
+				    	if(return_h==12){var return_hide = 7;}
+				    	if(return_h==13){var return_hide = 9;}
+				    	if(return_h==14){var return_hide = 11;}
+				    	if(return_h==15){var return_hide = 13;}
+				    	if(return_h==16){var return_hide = 15;}
+				    	if(return_h==17){var return_hide = 17;}
+				    	if(return_h==18){var return_hide = 19;}
+				    	if(return_h==19){var return_hide = 21;}
+				    	if(return_h==20){var return_hide = 23;}
+				    	if(return_M==0){return_hide=return_hide-1}
+
+				    	if(rental_d==document.getElementById('day').value){
+				    	for(hide=rental_hide;hide<=return_hide;hide++){$(room+hide).hide();}
+				    	}
+			    	}
+			    }
+
+
+
+					// var a = str.slice( 0, 2 ) ;
+					var a=0;
+					var set=0;
+					var i=0;
+					function seta(obj){
+						var checked=jQuery(obj).val();
+						var head=checked.slice(0,1);
+						var t_num=checked.slice(1);
+						var num=parseInt(t_num);
+						if(obj.checked){
+							if(set==0){
+								for(i=1;i<=23;i++){
+										$('.a'+i).hide();
+										$('.b'+i).hide();
+										$('.c'+i).hide();
+										$('.d'+i).hide();
+										$('.e'+i).hide();
+										$('.f'+i).hide();
+										$('.g'+i).hide();
+								}
+							}
+							if(set==0){
+								$('.'+head+num).show();
+								$('.'+head+(num+1)).show();
+								$('.'+head+(num+2)).show();
+								$('.'+head+(num+3)).show();
+								$('.'+head+(num+4)).show();
+								$('.'+head+(num+5)).show();
+								$('.'+head+(num+6)).show();
+								$('.'+head+(num+7)).show();
+							}
+							set=1;
+							a=a+1;
+							validation();
+						}else{
+							a=a-1;
+						}
+						if(a==0){
+							for(i=1;i<=23;i++){
+								$('.a'+i).show();
+								$('.b'+i).show();
+								$('.c'+i).show();
+								$('.d'+i).show();
+								$('.e'+i).show();
+								$('.f'+i).show();
+								$('.g'+i).show();
+								set=0;
+							}
+							validation();
+						}
+					}
+
+					function setv(){
+					var i=0;
+					for(i=1;i<=23;i++){
+						$('.a'+i).show();
+						$('.b'+i).show();
+						$('.c'+i).show();
+						$('.d'+i).show();
+						$('.e'+i).show();
+						$('.f'+i).show();
+						$('.g'+i).show();
+					}
+					validation();
+				}
+
+
+						
+
+				
+			    validation();
+
+			    function or_login(){
+	 				if(gon.signstatus=="on"){
+	 					if(gon.user_info.logtype=="member"){
+	 						log_hide.innerHTML = "";
+			 				log_hide.insertAdjacentHTML('afterbegin',
+											'<p>申請者名：　　<span id="r_name">'
+											+gon.user_info.macname
+											+'</span></p><p>電話番号：　　<span id="tell">'
+											+gon.user_info.tell
+											+'</span></p><p>e-mail：　　　<span id="email">'
+											+gon.user_info.name
+											+'</span></p>'
+											);
+			 			}
+		 			}
+		 		}
+
+		 		or_login()
+			    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

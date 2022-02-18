@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  year: MyString
+  month: MyString
+  file_name: MyString
+  file: 
+
+two:
+  name: MyString
+  year: MyString
+  month: MyString
+  file_name: MyString
+  file: 

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<title>学友会　備品貸出システム</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+</head>
+
+
+
+
+
+
+
+
+<body>
+<header id="header">
+	<h1>学友会　備品貸出システム</h1>
+  <!-- ロゴ -->
+	<div class="logo">
+		<a href="/home">学友会<br /><span>Soka University</span></a>
+	</div>
+	<!-- / ロゴ -->
+	<!-- 電話番号+受付時間 -->
+	
+  <div class="info">
+<!-- 		<p class="tel"><span>電話:</span> 012-3456-7890</p>
+		<p class="open">受付時間: 平日 AM 10:00 〜 PM 5:00</p> -->
+	</div>
+	<!-- / 電話番号+受付時間 -->
+</header>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li class="active"><a><strong>備品の貸出</strong><span>Rental equipment</span></a></li>
+			<li><a href="/uketuke2_new"><strong>音楽練習室</strong><span>Music room</span></a></li>
+			<li><a href="/uketuke3_new"><strong>会議室・和室・厨房</strong><span>Meeting room</span></a></li>
+			<li><a href="/uketuke4_new"><strong>その他施設</strong><span>Others</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会 備品の貸出</h3>
+     	<article>
+
+	    <div class="bihin1"><div class="rental" id="rental">
+     		<a>備品： <select id="cate1" onchange="catef1()"></select><select id="equip1" onchange="num_set()"></select></a>
+     		借りる数<select id="r_num1"></select>
+	        <br>備品の説明：
+	        <div class="bt2"><br><button type="button" onclick="addequip2()">備品を追加</button></div>
+	    </div></div>
+	    <div class="bihin2"><div class="rental" id="rental">
+     		<a>備品： <select id="cate2" onchange="catef2()"></select><select id="equip2" onchange="num_set()"></select></a>
+     		借りる数<select id="r_num2"></select>
+	        <br>備品の説明：
+	        <div class="bt3"><br><button type="button" onclick="addequip3()">備品を追加</button></div>
+	    </div></div>
+	    <div class="bihin3"><div class="rental" id="rental">
+     		<a>備品： <select id="cate3" onchange="catef3()"></select><select id="equip3" onchange="num_set()"></select></a>
+     		借りる数<select id="r_num3"></select>
+	        <br>備品の説明：
+	        <div class="bt4"><br><button type="button" onclick="addequip4()">備品を追加</button></div>
+	    </div></div>
+	    <div class="bihin4"><div class="rental" id="rental">
+     		<a>備品： <select id="cate4" onchange="catef4()"></select><select id="equip4" onchange="num_set()"></select></a>
+     		借りる数<select id="r_num4"></select>
+	        <br>備品の説明：
+	        <div class="bt5"><br><button type="button" onclick="addequip5()">備品を追加</button></div>
+	    </div></div>
+	    <div class="bihin5"><div class="rental" id="rental">
+     		<a>備品： <select id="cate5" onchange="catef5()"></select><select id="equip5" onchange="num_set()"></select></a>
+     		借りる数<select id="r_num5"></select>
+	        <br>備品の説明：
+	        <br>※一度の申請で借りられる備品は６種類までです。
+	    </div></div>
+
+
+				<a>借りる時間：</a><br>
+				<select id="rental_year" onchange="monthset()">
+			    </select>
+			    <label>年</label>
+			    <select id="rental_month" onchange="dayset()">
+			    	<option value='10'>10</option>
+			    </select>
+			    <label>月</label>
+			    <select id="rental_day" onchange="num_set()">
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+		        </select>
+		        <label>日</label>
+		        <select id="rental_h" onchange="num_set()">
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+			    	<option value='12'>12</option>
+			    	<option value='13'>13</option>
+			    	<option value='14'>14</option>
+			    	<option value='15'>15</option>
+			    	<option value='16'>16</option>
+			    	<option value='17'>17</option>
+			    	<option value='18'>18</option>
+			    	<option value='19'>19</option>
+			    	<option value='20'>20</option>
+		        </select>
+		        <label>時</label>
+		        <select id="rental_m" onchange="num_set()">
+		        	<option value='0'>0</option>
+		        	<option value='1'>1</option>
+			    	<option value='2'>2</option>
+			    	<option value='3'>3</option>
+			    	<option value='4'>4</option>
+			    	<option value='5'>5</option>
+			    	<option value='6'>6</option>
+			    	<option value='7'>7</option>
+			    	<option value='8'>8</option>
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+			    	<option value='12'>12</option>
+			    	<option value='13'>13</option>
+			    	<option value='14'>14</option>
+			    	<option value='15'>15</option>
+			    	<option value='16'>16</option>
+			    	<option value='17'>17</option>
+			    	<option value='18'>18</option>
+			    	<option value='19'>19</option>
+			    	<option value='20'>20</option>
+			    	<option value='21'>21</option>
+			    	<option value='22'>22</option>
+			    	<option value='23'>23</option>
+			    	<option value='24'>24</option>
+			    	<option value='25'>25</option>
+			    	<option value='26'>26</option>
+			    	<option value='27'>27</option>
+			    	<option value='28'>28</option>
+			    	<option value='29'>29</option>
+			    	<option value='30'>30</option>
+			    	<option value='31'>41</option>
+			    	<option value='32'>42</option>
+			    	<option value='33'>43</option>
+			    	<option value='34'>44</option>
+			    	<option value='35'>45</option>
+			    	<option value='36'>46</option>
+			    	<option value='37'>47</option>
+			    	<option value='38'>48</option>
+			    	<option value='39'>49</option>
+			    	<option value='50'>50</option>
+			    	<option value='51'>51</option>
+			    	<option value='52'>52</option>
+			    	<option value='53'>53</option>
+			    	<option value='54'>54</option>
+			    	<option value='55'>55</option>
+			    	<option value='56'>56</option>
+			    	<option value='57'>57</option>
+			    	<option value='58'>58</option>
+			    	<option value='59'>59</option>
+			    </select>
+		        <label>分</label><br>
+
+		        <!-- 返す時間 -->
+		        <a>返却の時間：</a><br>
+		        <select id="return_year" onchange="monthset()">
+			    </select>
+			    <label>年</label>
+			    <select id="return_month" onchange="dayset()">
+			    	<option value='10'>10</option>
+			    </select>
+			    <label>月</label>
+			    <select id="return_day" onchange="num_set()">
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+		        </select>
+		        <label>日</label>
+		        <select id="return_h" onchange="num_set()">
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+			    	<option value='12'>12</option>
+			    	<option value='13'>13</option>
+			    	<option value='14'>14</option>
+			    	<option value='15'>15</option>
+			    	<option value='16'>16</option>
+			    	<option value='17'>17</option>
+			    	<option value='18'>18</option>
+			    	<option value='19'>19</option>
+			    	<option value='20'>20</option>
+		        </select>
+		        <label>時</label>
+		        <select id="return_m" onchange="num_set()">
+		        	<option value='0'>0</option>
+		        	<option value='1'>1</option>
+			    	<option value='2'>2</option>
+			    	<option value='3'>3</option>
+			    	<option value='4'>4</option>
+			    	<option value='5'>5</option>
+			    	<option value='6'>6</option>
+			    	<option value='7'>7</option>
+			    	<option value='8'>8</option>
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+			    	<option value='12'>12</option>
+			    	<option value='13'>13</option>
+			    	<option value='14'>14</option>
+			    	<option value='15'>15</option>
+			    	<option value='16'>16</option>
+			    	<option value='17'>17</option>
+			    	<option value='18'>18</option>
+			    	<option value='19'>19</option>
+			    	<option value='20'>20</option>
+			    	<option value='21'>21</option>
+			    	<option value='22'>22</option>
+			    	<option value='23'>23</option>
+			    	<option value='24'>24</option>
+			    	<option value='25'>25</option>
+			    	<option value='26'>26</option>
+			    	<option value='27'>27</option>
+			    	<option value='28'>28</option>
+			    	<option value='29'>29</option>
+			    	<option value='30'>30</option>
+			    	<option value='31'>41</option>
+			    	<option value='32'>42</option>
+			    	<option value='33'>43</option>
+			    	<option value='34'>44</option>
+			    	<option value='35'>45</option>
+			    	<option value='36'>46</option>
+			    	<option value='37'>47</option>
+			    	<option value='38'>48</option>
+			    	<option value='39'>49</option>
+			    	<option value='50'>50</option>
+			    	<option value='51'>51</option>
+			    	<option value='52'>52</option>
+			    	<option value='53'>53</option>
+			    	<option value='54'>54</option>
+			    	<option value='55'>55</option>
+			    	<option value='56'>56</option>
+			    	<option value='57'>57</option>
+			    	<option value='58'>58</option>
+			    	<option value='59'>59</option>
+		        </select>
+		        <label>分</label>
+		        <a>まで</a><br>
+		        
+				<p>
+		            <%= form.label :no_text, "No.：" %><br>
+		            <%= form.text_field :no_text, id: "no_text"%>
+		        </p>
+		        <p>
+		            <%= form.label :g_name, "団体名：" %><br>
+		            <%= form.text_field :g_name, id: "g_name" %>
+		        </p>
+		        <p>
+		            <%= form.label :r_name, "申請者名" %><br>
+		            <%= form.text_field :r_name, id: "r_name" %>
+		        </p>
+		        <p>
+		            <%= form.label :tell, "電話番号：" %><br>
+		            <%= form.text_field :tell, id: "tell" %>
+		        </p>
+		        <p>
+		            <%= form.label :kyoka, "許可者名：" %><br>
+		            <%= form.text_field :kyoka, id: "kyoka" %>
+		        </p>
+
+		        <button type="button" onclick="CheckValidation()">送信</button>
+    	</article>
+    </section>
+</div>
+
+
+
+
+
+		        <!-------------------- javascript ------------------->
+		        <script language="javascript" type="text/javascript">
+		        	// 月の取得
+		        	
+
+
+		        var newtext = document.createElement('p');
+				newtext.textContent = '当日の貸出状況';
+				list.appendChild(newtext);
+
+		        var selected_reny = document.getElementById('year');
+				var selected_renm = document.getElementById('month');
+				var selected_rend = document.getElementById('day');
+			   	var selected_renh = document.getElementById('rental_h');
+			   	var selected_renM = document.getElementById('rental_m');
+			   	var selected_rety = document.getElementById('year');
+			    var selected_retm = document.getElementById('month');
+				var selected_retd = document.getElementById('day');
+		    	var selected_reth = document.getElementById('return_h');
+		    	var selected_retM = document.getElementById('return_m');
+
+		    	var reny = 0;
+				var renm = 0;
+				var rend = 0;
+			   	var renh = 0;
+			   	var renM = 0;
+			   	var rety = 0;
+			    var retm = 0;
+				var retd = 0;
+		    	var reth = 0;
+		    	var retM = 0;
+
+		    	var delelement = function(){
+					if(list.hasChildNodes()){
+						for (i=list.childNodes.length-1; i>=0; i--) {
+							list.removeChild(list.childNodes[i]);
+						}
+					}
+				}
+				var deloption = function(){
+					if(r_num.hasChildNodes()){
+						for (i=r_num.childNodes.length-1; i>=0; i--) {
+							r_num.removeChild(r_num.childNodes[i]);
+						}
+					}
+					if(r_num1.hasChildNodes()){
+						for (i=r_num1.childNodes.length-1; i>=0; i--) {
+							r_num1.removeChild(r_num1.childNodes[i]);
+						}
+					}
+					if(r_num2.hasChildNodes()){
+						for (i=r_num2.childNodes.length-1; i>=0; i--) {
+							r_num2.removeChild(r_num2.childNodes[i]);
+						}
+					}
+					if(r_num3.hasChildNodes()){
+						for (i=r_num3.childNodes.length-1; i>=0; i--) {
+							r_num3.removeChild(r_num3.childNodes[i]);
+						}
+					}
+					if(r_num4.hasChildNodes()){
+						for (i=r_num4.childNodes.length-1; i>=0; i--) {
+							r_num4.removeChild(r_num4.childNodes[i]);
+						}
+					}
+					if(r_num5.hasChildNodes()){
+						for (i=r_num5.childNodes.length-1; i>=0; i--) {
+							r_num5.removeChild(r_num5.childNodes[i]);
+						}
+					}
+				}
+
+		        var numset = function(){
+					for(c=0;c<gon.equipcount;c++){
+						if(document.getElementById('equip1').value==gon.allequip[c].name){
+							var max_num1 = gon.allequip[c].number
+						}
+						if(document.getElementById('equip2').value==gon.allequip[c].name){
+							var max_num2 = gon.allequip[c].number
+						}
+						if(document.getElementById('equip3').value==gon.allequip[c].name){
+							var max_num3 = gon.allequip[c].number
+						}
+						if(document.getElementById('equip4').value==gon.allequip[c].name){
+							var max_num4 = gon.allequip[c].number
+						}
+						if(document.getElementById('equip5').value==gon.allequip[c].name){
+							var max_num5 = gon.allequip[c].number
+						}
+					}
+
+					for(i=1;i<=max_num1;i++){
+							var option = document.createElement('option');
+							option.textContent = i;
+							r_num1.appendChild(option);
+					}
+					for(i=1;i<=max_num2;i++){
+							var option = document.createElement('option');
+							option.textContent = i;
+							r_num2.appendChild(option);
+					}
+					for(i=1;i<=max_num3;i++){
+							var option = document.createElement('option');
+							option.textContent = i;
+							r_num3.appendChild(option);
+					}
+					for(i=1;i<=rmax_num4;i++){
+							var option = document.createElement('option');
+							option.textContent = i;
+							r_num4.appendChild(option);
+					}
+					for(i=1;i<=max_num5;i++){
+							var option = document.createElement('option');
+							option.textContent = i;
+							r_num5.appendChild(option);
+					}
+				}
+
+		        	var days = document.getElementById('day');
+		        	var month = document.getElementById('month');
+		        	var year = document.getElementById('year');
+
+			        for(i = 1; i <= 13; i++) {
+						dt.setDate(dt.getDate()+1);
+						if(dt.getDate()==1){mm=1;}
+					}
+					if(m==12 && mm==1){
+						yy=1;
+					}
+
+
+					// 年の設定
+					while(year.firstChild){
+					    year.removeChild(year.firstChild);
+					  }
+					var option = document.createElement('option');
+					option.textContent = y;
+					year.appendChild(option);
+					if(yy==1){
+						var option = document.createElement('option');
+						option.textContent = y+1;
+						year.appendChild(option);
+					}
+
+					// 月の設定
+					while(month.firstChild){
+					    month.removeChild(month.firstChild);
+					  }
+					var option = document.createElement('option');
+					option.textContent = m;
+					month.appendChild(option);
+					if(mm==1){
+						if(m==12){
+							var option = document.createElement('option');
+							option.textContent = 1;
+							month.appendChild(option);	
+						}else{
+							var option = document.createElement('option');
+							option.textContent = m+1;
+							month.appendChild(option);
+						}
+					}
+					
+					function monthset(){
+						while(month.firstChild){
+						    month.removeChild(month.firstChild);
+						  }
+						  while(days.firstChild){
+						    days.removeChild(days.firstChild);
+						 }
+						var dt = new Date();
+						if(document.getElementById('year').value==y){
+							var option = document.createElement('option');
+							option.textContent = m;
+							month.appendChild(option);
+							var option = document.createElement('option');
+							option.textContent = dt.getDate();
+							days.appendChild(option);
+								for(i = 1; i <= 14; i++) {
+									var option = document.createElement('option');
+									dt.setDate(dt.getDate()+1);
+									if(dt.getDate()==1){break;}
+									option.textContent = dt.getDate();
+									days.appendChild(option);
+								}
+						}
+						if(document.getElementById('year').value==y+1){
+							var option = document.createElement('option');
+							option.textContent = 1;
+							month.appendChild(option);
+							dt.setDate(dt.getDate()+14);
+							for(i = 1; i <= dt.getDate(); i++) {
+								var option = document.createElement('option');
+								option.textContent = i
+								days.appendChild(option);
+							}
+						}
+						num_set();
+					}
+
+					// 日にちの設定
+					// 日にちのoption要素を削除（方法はいろいろありますが）
+					while(days.firstChild){
+					    days.removeChild(days.firstChild);
+					  }
+					// 日にちのoption要素を生成
+					var dt = new Date();
+					if(document.getElementById('month').value==m){
+					var option = document.createElement('option');
+					option.textContent = dt.getDate();
+					days.appendChild(option);
+						for(i = 1; i <= 14; i++) {
+							var option = document.createElement('option');
+							dt.setDate(dt.getDate()+1);
+							if(dt.getDate()==1){break;}
+							option.textContent = dt.getDate();
+							days.appendChild(option);
+						}
+					}
+
+					function dayset(){
+						while(days.firstChild){
+						    days.removeChild(days.firstChild);
+						 }
+						var dt = new Date();
+						if(document.getElementById('month').value==m){
+						var option = document.createElement('option');
+						option.textContent = dt.getDate();
+						days.appendChild(option);
+							for(i = 1; i <= 14; i++) {
+								var option = document.createElement('option');
+								dt.setDate(dt.getDate()+1);
+								if(dt.getDate()==1){break;}
+								option.textContent = dt.getDate();
+								days.appendChild(option);
+							}
+						}
+						if(document.getElementById('month').value==m+1){
+							dt.setDate(dt.getDate()+14);
+							for(i = 1; i <= dt.getDate(); i++) {
+								var option = document.createElement('option');
+								option.textContent = i
+								days.appendChild(option);
+							}
+						}
+						num_set();
+					}
+
+				var option = document.createElement('option');
+				option.textContent = h
+				rental_h.appendChild(option);
+				for(i = 9; i <= 20; i++) {
+					var option = document.createElement('option');
+					option.textContent = i
+					rental_h.appendChild(option);
+				}
+
+				var option = document.createElement('option');
+				option.textContent = min
+				rental_m.appendChild(option);
+				var option = document.createElement('option');
+				option.textContent = '00'
+				rental_m.appendChild(option);
+				var option = document.createElement('option');
+				option.textContent = '30'
+				rental_m.appendChild(option);
+
+				var option = document.createElement('option');
+				option.textContent = h
+				return_h.appendChild(option);
+				for(i = 9; i <= 20; i++) {
+					var option = document.createElement('option');
+					option.textContent = i
+					return_h.appendChild(option);
+				}
+
+				var option = document.createElement('option');
+				option.textContent = min
+				return_m.appendChild(option);
+				var option = document.createElement('option');
+				option.textContent = '00'
+				return_m.appendChild(option);
+				var option = document.createElement('option');
+				option.textContent = '30'
+				return_m.appendChild(option);
+
+
+				function num_set(){
+					delelement();
+					deloption();
+					numset();
+				}
+
+				$('.bihin1').hide();
+				$('.bihin2').hide();
+				$('.bihin3').hide();
+				$('.bihin4').hide();
+				$('.bihin5').hide();
+
+				function addequip1(){
+					$('.bt1').hide();
+					$('.bihin1').show();
+					var option = document.createElement('option');
+					option.textContent = '高価備品';
+					cate1.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'コード類';
+					cate1.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '文具';
+					cate1.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '掃除工具調理';
+					cate1.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'スポーツ用品';
+					cate1.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '分室備品';
+					cate1.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '創立者セット';
+					cate1.appendChild(option);
+					catef1();
+				}
+				function addequip2(){
+					$('.bt2').hide();
+					$('.bihin2').show();
+					var option = document.createElement('option');
+					option.textContent = '高価備品';
+					cate2.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'コード類';
+					cate2.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '文具';
+					cate2.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '掃除工具調理';
+					cate2.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'スポーツ用品';
+					cate2.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '分室備品';
+					cate2.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '創立者セット';
+					cate2.appendChild(option);
+					catef2();
+				}
+				function addequip3(){
+					$('.bt3').hide();
+					$('.bihin3').show();
+					var option = document.createElement('option');
+					option.textContent = '高価備品';
+					cate3.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'コード類';
+					cate3.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '文具';
+					cate3.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '掃除工具調理';
+					cate3.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'スポーツ用品';
+					cate3.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '分室備品';
+					cate3.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '創立者セット';
+					cate3.appendChild(option);
+					catef3();
+				}
+				function addequip4(){
+					$('.bt4').hide();
+					$('.bihin4').show();
+					var option = document.createElement('option');
+					option.textContent = '高価備品';
+					cate4.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'コード類';
+					cate4.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '文具';
+					cate4.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '掃除工具調理';
+					cate4.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'スポーツ用品';
+					cate4.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '分室備品';
+					cate4.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '創立者セット';
+					cate4.appendChild(option);
+					catef4();
+				}
+				function addequip5(){
+					$('.bt5').hide();
+					$('.bihin5').show();
+					var option = document.createElement('option');
+					option.textContent = '高価備品';
+					cate5.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'コード類';
+					cate5.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '文具';
+					cate5.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '掃除工具調理';
+					cate5.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = 'スポーツ用品';
+					cate5.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '分室備品';
+					cate5.appendChild(option);
+					var option = document.createElement('option');
+					option.textContent = '創立者セット';
+					cate5.appendChild(option);
+					catef5();
+				}
+
+				
+				
+				
+				
+				
+
+
+
+				function catef1(){
+					if(equip1.hasChildNodes()){
+						for (i=equip1.childNodes.length-1; i>=0; i--) {
+							equip1.removeChild(equip1.childNodes[i]);
+						}
+					}
+					for(c=0;c<gon.equipcount;c++){
+						if(gon.allequip[c].category==document.getElementById('cate1').value){
+							var option = document.createElement('option');
+							option.textContent = gon.allequip[c].name;
+							equip1.appendChild(option);
+						}
+					}
+					num_set();
+				}
+				function catef2(){
+					if(equip2.hasChildNodes()){
+						for (i=equip2.childNodes.length-1; i>=0; i--) {
+							equip2.removeChild(equip2.childNodes[i]);
+						}
+					}
+					for(c=0;c<gon.equipcount;c++){
+						if(gon.allequip[c].category==document.getElementById('cate2').value){
+							var option = document.createElement('option');
+							option.textContent = gon.allequip[c].name;
+							equip2.appendChild(option);
+						}
+					}
+					num_set();
+				}
+				function catef3(){
+					if(equip3.hasChildNodes()){
+						for (i=equip3.childNodes.length-1; i>=0; i--) {
+							equip3.removeChild(equip3.childNodes[i]);
+						}
+					}
+					for(c=0;c<gon.equipcount;c++){
+						if(gon.allequip[c].category==document.getElementById('cate3').value){
+							var option = document.createElement('option');
+							option.textContent = gon.allequip[c].name;
+							equip3.appendChild(option);
+						}
+					}
+					num_set();
+				}
+				function catef4(){
+					if(equip4.hasChildNodes()){
+						for (i=equip4.childNodes.length-1; i>=0; i--) {
+							equip4.removeChild(equip4.childNodes[i]);
+						}
+					}
+					for(c=0;c<gon.equipcount;c++){
+						if(gon.allequip[c].category==document.getElementById('cate4').value){
+							var option = document.createElement('option');
+							option.textContent = gon.allequip[c].name;
+							equip4.appendChild(option);
+						}
+					}
+					num_set();
+				}
+				function catef5(){
+					if(equip5.hasChildNodes()){
+						for (i=equip5.childNodes.length-1; i>=0; i--) {
+							equip5.removeChild(equip5.childNodes[i]);
+						}
+					}
+					for(c=0;c<gon.equipcount;c++){
+						if(gon.allequip[c].category==document.getElementById('cate5').value){
+							var option = document.createElement('option');
+							option.textContent = gon.allequip[c].name;
+							equip5.appendChild(option);
+						}
+					}
+					num_set();
+				}
+
+
+ 
+
+ 				num_set();
+ 				catef1();
+ 				catef2();
+ 				catef3();
+ 				catef4();
+ 				catef5();
+
+				</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

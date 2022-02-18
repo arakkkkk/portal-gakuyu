@@ -1,0 +1,62 @@
+<%= render 'layouts/head_note' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <div class="mx-3">
+                    &lt;h&gtタイトル&lt;/h&gt&nbsp;&nbsp;&nbsp;&nbsp;＝＞&nbsp;&nbsp;&nbsp;&nbsp;<h>タイトル</h>
+                    <br>&lt;red&gt赤文字&lt;/red&gt&nbsp;&nbsp;&nbsp;&nbsp;＝＞&nbsp;&nbsp;&nbsp;&nbsp;<red>赤文字</red>
+                    <br><a href="http://www.fureai.or.jp/~irie/html-tag/" target=”_blank”>詳しくはこちら</a>
+
+                    <%= form_with(model: @content,:url => {:action => :editnote}, local: true) do |form| %>
+                        <%= hidden_field_tag :id, @content.id %>
+                        <br><hr>
+                        <p>
+                            <%= form.label :title, "タイトル" %><br>
+                            <%= form.text_field :title %>
+                        </p>
+                        <br><br>
+                        <div class="row mx-1 textarea">
+                          <p>
+                              <%= form.label :content, "テキスト" %><br>
+                              <%= form.text_area :content %>
+                          </p>
+                        </div>
+                        <div class="row mx-1">
+                          <p><%= form.submit "登録する"%></p>
+                        </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

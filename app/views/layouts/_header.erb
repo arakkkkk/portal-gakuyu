@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+		<title>学友会　備品貸出システム</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+	</head>
+	<body>
+	<header id="header">
+		<h1>学友会　備品貸出システム</h1>
+		<div class="logo">
+			<a href="/home">学友会<br /><span>Soka University</span></a>
+		</div>
+		<div class="info" id="user_info"></div>
+
+	</header>
+</html>
+
+
+<script language="javascript" type="text/javascript">
+	user_info.innerHTML = "";
+	if(gon.signstatus == "on"){
+		user_info.insertAdjacentHTML('afterbegin',
+									'<a id=openModal><div class="top_menu">'
+									+"<%= @username %>"
+									+"<span class='top_menu_font'>"
+									+gon.user_info.macname
+									+"さん  </span>"
+									+'<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/><path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/></svg>'
+									+"</div><a/>"
+									+'<section id="modalArea" class="modalArea">'
+									+'<div id="modalBg" class="modalBg"></div>'
+									+'<div class="modalWrapper">'
+									+'<div class="modalContents">'
+									+'<div class="box_title">アカウント</div>'
+									+'<div class="box_content">'
+									+'<a></a>名前<br>'
+									+gon.user_info.macname
+									+'<br><br>e-mail<br>'
+									+gon.user_info.name
+									+'<br><br>TELL<br>'
+									+gon.user_info.tell
+									+'<br><br><br><a href="/user_kasidasi">申請内容を確認する<a>'
+									+'<br>アカウント情報の変更*未実装'
+									+'<br><%= link_to 'ログアウト', logout_path, :method => :delete, data: { confirm: 'Are you sure?' } %>'
+									+'</div>'
+									+'</div>'
+									+'</div>'
+									+'</section>'
+									+'<a href="/howto_user">使い方</a>'
+									);
+	}
+	if(gon.signstatus == "off"){
+		user_info.insertAdjacentHTML('afterbegin',
+									'<a id=openModal><div class="top_menu">'
+									+"<%= @username %>"
+									+"<span class='top_menu_font'>"
+									+"ゲスト "
+									+"</span>"
+									+'<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/><path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/></svg>'
+									+"</div><a/>"
+									+'<section id="modalArea" class="modalArea">'
+									+'<div id="modalBg" class="modalBg"></div>'
+									+'<div class="modalWrapper">'
+									+'<div class="modalContents">'
+									+'<div class="box_title">アカウント</div>'
+									+'<div class="box_content">'
+									+'<br><a href="/login">ログイン</a>'
+									+'<br><br><a href="/uketuke_new">アカウントを作成する</a>'
+									+'<br><br><br>*アカウントを作成すると、申請時の入力を省いたり、申請した内容を自分で確認できるようになります。'
+									+'</div>'
+									+'</div>'
+									+'</div>'
+									+'</section>'
+									+'<a href="/howto_user">使い方</a>'
+									);
+	}
+	document.getElementById("openModal").onclick = function() {
+	  document.getElementById("modalArea").style.display="block";
+	};
+	document.getElementById("modalBg").onclick = function() {
+	  document.getElementById("modalArea").style.display="none";
+	};
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

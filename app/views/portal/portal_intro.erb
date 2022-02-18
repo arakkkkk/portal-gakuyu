@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <%# <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"> %>
+
+  <title>創価大学学友会P</title>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <%= include_gon %>
+
+  <!-- bootstrap CDN ( Contents Delivery Network ) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  
+  <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.2.1/intro.js" integrity="sha512-3FU3wmuqkdVSlkbilARthlThrcm55nEaOO1QPUq+4n/lM8dfbEEspyk4RWs5ETf0Q7CiEVc3dtts7q4NLY2ulg==" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.2.1/introjs.css" integrity="sha512-i+WzzATeaDcwcfi5CfLn63qBxrKqiQvDLC+IChU1zVlaPguPgJlddOR07nU28XOoIOno9WPmJ+3ccUInpmHxBg==" crossorigin="anonymous" />
+  <%= stylesheet_link_tag "inside/portal.css", media: 'all', 'data-turbolinks-track': 'reload' %>
+
+</head>
+<style>
+    #navbar{
+        background-image: url("<%= asset_path("gakusen41.jpg") %>");
+    }
+</style>
+
+
+
+
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓top bar↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
+<%# <div class="fixed-top"> %>
+<nav class="navbar navbar-expand-lg px-4 pt-0 pb-0 font-weight-bold" id="navbar">
+  <p class="navbar-brand"><span class="brand2">創価大学</span><span class="brand1">学友会<%= @titlec %></span><span class="brand2">ポータルサイト</span></p>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li>
+      </li>
+    </ul>
+  </div>
+</nav>
+<%# </div> %>
+
+<body>
+<div class="wrapper d-flex align-items-stretch">
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓side bar↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
+      <nav id="sidebar">
+        <div class="px-4 pt-0">
+          <ul class="list-unstyled components mb-5 font-weight-bold" id="sidevar">
+            <li>
+              <a href="" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">リスト１</a>
+            </li>
+            <li>
+              <a href="#list1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">リスト２</a>
+              <ul class="collapse list-unstyled show" id="">
+                <li>
+                  <a id="list1" href="/kportal1.'+portalnav.id.to_s+'">ページA</a>
+                  <a id="list1" href="/kportal1.'+portalnav.id.to_s+'">ページB</a>
+                  <a id="list1" href="/kportal1.'+portalnav.id.to_s+'">ページC</a>
+                  <button type="button" class="btn btn-secondary btn-sm my-2"><a  id="paddingnone" href="kportal_addchild.'+parent+'">＋</a></button>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">リスト３</a>
+            </li>
+            <button type="button" class="btn btn-secondary btn-sm my-2"><a href="kportal_addparent">＋</a></button></a></button></p>
+          </ul>
+        </div>
+      </nav>
+  <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑side bar↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑+</div> -->
+
+
+
+
+
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                  <div class="card-body"> 
+                  <h>メッセージ</h>
+                  <div data-title="連絡更新の申請" data-intro="局員からの連絡の申請が表示されます。" data-step='3'>
+                    <a href="#">※3件の更新依頼が来ています</a>
+                  </div>
+                  <hr>
+                  ●&nbsp;&nbsp;メッセージ１
+                  <br>●&nbsp;&nbsp;<red>【重要】</red>メッセージ２
+                  <br>●&nbsp;&nbsp;メッセージ３
+                  <br>●&nbsp;&nbsp;<green>【要回答】</green>メッセージ４
+                  <br>●&nbsp;&nbsp;メッセージ５
+                  <br>●&nbsp;&nbsp;６
+                  <br><a href="/kportal_allmessage">~もっと見る〜</a><br>
+                  <div data-title="メッセージの追加" data-intro="ここから新規メッセージを追加することができます。" data-step='1'>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">メッセージの追加</button>
+                  </div>
+                  <br><hr><br>
+                  <div data-title="ページの編集" data-intro="ここからトップページに掲載する内容を編集できます。" data-step='2'>
+                    <button type="button" class="btn btn-primary">ページの編集</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+<script>
+  introJs().start().oncomplete(function() {
+    window.location.href = '/portal_index';
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">貸出カレンダー</h3>
+     	<article>
+     		<input id="date" onchange="dateset()" name="date" type="date" />
+     		<div id="calender"></div> 
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+<script language="javascript" type="text/javascript">
+window.onunload = function(){};
+var call_cal = function(y,m,d){
+	var normal=[]
+	var syukuhaku=[]
+	var all=[]
+	var judge=0
+	time_list=["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00"
+				,"12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00"
+				,"17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00"]
+
+	for(n=0;n<gon.scount;n++){
+		if(gon.support[n].time==null){
+			continue;
+		}
+		var reny = parseInt(gon.support[n].time.slice(0,4));
+		var renm = parseInt(gon.support[n].time.slice(5,7));
+		var rend = parseInt(gon.support[n].time.slice(8,10));
+		var renH = parseInt(gon.support[n].time.slice(11,13));
+		var renM = parseInt(gon.support[n].time.slice(14,16));
+
+		rental_day = new Date(reny,renm-1,rend,renH,renM);
+
+		if(reny==y&&renm==m&&rend==d){
+			normal.push(gon.support[n].id)
+			all.push(gon.support[n].id)
+		}
+		if(reny<y&&renm<m&&rend<d){
+			syukuhaku.push(gon.support[n].id)
+			all.push(gon.support[n].id)
+		}
+	}
+
+	console.log(all)
+
+	calender.innerHTML = "";
+	calender_text=""
+	calender_text=calender_text+'<div class="wrap"><table id="targetTable" class="targetTable"><thead><br><tr><th></th>'
+	for(let i in all) {
+		calender_text=calender_text+'<th class="plan1">'
+									// +'<div class="price">Free</div><a class="btn" href="#">くわしく</a>'
+									+'</th>'
+		var allnum=i
+	}
+	calender_text=calender_text+'</tr></thead>'
+	for(let i = 0; i < time_list.length; i++) {
+		calender_text=calender_text+'<tr><th>'+time_list[i]
+		for(let n = 0; n < all.length; n++) {
+			if(gon.support[n].time==null){
+				continue;
+			}
+			reny = parseInt(gon.support[n].time.slice(0,4));
+			renm = parseInt(gon.support[n].time.slice(5,7));
+			rend = parseInt(gon.support[n].time.slice(8,10));
+			renH = parseInt(gon.support[n].time.slice(11,13));
+			renM = parseInt(gon.support[n].time.slice(14,16));
+			rental_day = new Date(reny,renm-1,rend,renH,renM);
+			if(renM==0){
+				renM="00"
+				return_day = new Date(reny,renm-1,rend,renH+1,"30");
+			}
+			if(renM==30){
+				return_day = new Date(reny,renm-1,rend,renH+2,"00");
+			}
+			if(i!=26){
+				if(time_list[i].length==4){
+					var selected_date = new Date(y,m-1,d,time_list[i].slice(0,1),time_list[i].slice(2,4));
+				}else{
+					var selected_date = new Date(y,m-1,d,time_list[i].slice(0,2),time_list[i].slice(3,5));
+				}
+				if(time_list[i+1].length==4){
+					var nselected_date = new Date(y,m-1,d,time_list[i+1].slice(0,1),time_list[i+1].slice(2,4));
+				}else{
+					var nselected_date = new Date(y,m-1,d,time_list[i+1].slice(0,2),time_list[i+1].slice(3,5));
+				}
+				if(reny==y&&renm==m&&rend==d&&renH+':'+renM==time_list[i]){
+					if(gon.support[n].status=="許可待ち"){
+						calender_text=calender_text+'<td class="checked_cell" rowspan=3>'
+					}
+					if(gon.support[n].status=="許可済み"){
+						calender_text=calender_text+'<td class="normal_cell" rowspan=3>'
+					}
+					calender_text=calender_text+'<a href="/support_one.'
+											+gon.support[n].id
+											+'">'
+											+'<span class="tooltips">'
+											+'申請者：'+gon.support[n].name
+											+'<br>団体名：'+gon.support[n].g_name
+											+'<br>tell：'+gon.support[n].tell
+											+'</span>'
+											+gon.support[n].name+'<br>'
+											+gon.support[n].g_name
+											+'</a></td>'
+				}else{
+					if(rental_day<=selected_date&&nselected_date<=return_day){
+					}else{
+						calender_text=calender_text+'<td class="none_cell"></td>'
+					}
+				}
+			}else{
+				var nselected_date = new Date(y,m-1,d,21,30);
+			}
+		}
+		calender_text=calender_text+'</th></tr>'
+	            
+	}
+	calender_text=calender_text+'</thead></table></div>'
+	calender.insertAdjacentHTML('beforeend',calender_text);
+}
+
+var today = new Date();
+var y = today.getFullYear();
+var m = today.getMonth()+1;
+var d = today.getDate();
+var H = today.getHours();
+var M = today.getMinutes();
+call_cal(y,m,d);
+
+function dateset(){
+	var y = document.getElementById('date').value.slice(0,4)
+	var m = document.getElementById('date').value.slice(5,7)
+	var d = document.getElementById('date').value.slice(8,10)
+	console.log(y+"-"+m+"-"+d)
+	call_cal(y,m,d);
+}
+
+
+
+
+
+</script>
+
+
+<style type="text/css">
+	.tooltips a{
+		color: white;
+	}
+	.tooltips {
+	  display: none;
+	  position: absolute;
+	  bottom: -13em;
+	  z-index: 1000;
+	  padding: 2.0em;
+	  color: white;
+	  background: #111111;
+	  border-radius: 0.5em;
+	  width: 200px;
+	  font-size: 13px;
+	}
+	.tooltips:after {
+	  width: 100%;
+	  content: "";
+	  display: block;
+	  position: absolute;
+	  left: 2.5em;
+	  top: -8px;
+	  border-top:8px solid transparent;
+	  border-left:8px solid #111111;
+	}
+
+	.normal_cell:hover .tooltips {
+	  display: block;
+	}
+	.normal_cell{
+		padding-left: 15px;
+		margin-left: 15px;
+		background-color: #75A9FF;
+		border-right: 5px solid#fff;
+		position:relative;
+		  margin:20px 0px;
+		  padding: 10px;
+		  list-style-type: none;
+		  color: white;
+		  font-size: 10px;
+		  /*border-radius: 15px;*/
+	}
+	.normal_cell:hover{
+		cursor : pointer;
+		background-color: #46EEFF;
+	}
+	.checked_cell:hover .tooltips {
+	  display: block;
+	}
+	.checked_cell{
+		padding-left: 15px;
+		margin-left: 15px;
+		background-color: #FF5F17;
+		border-right: 5px solid#fff;
+		position:relative;
+		  margin:20px 0px;
+		  padding: 10px;
+		  list-style-type: none;
+		  color: white;
+		  font-size: 10px;
+		  /*border-radius: 15px;*/
+	}
+	.checked_cell:hover{
+		cursor : pointer;
+		background-color: #FFA500;
+	}
+	.wrap table {
+	  border-collapse: separate;
+	  margin: 0;
+	  padding: 0;
+	  width: 100%;
+	  height: 800px;
+	  table-layout: fixed;
+	}
+	.wrap thead th{
+	  padding: 1em .8em;
+	  border-right: 5px solid#fff;
+	  border-radius: 10px
+	}
+	.wrap table tr {
+	  background-color: #fff;
+	  padding: .35em;
+	}
+	.wrap table tr:nth-child(even){
+	  background-color: #f9f9f9;
+	}
+	.wrap table td {
+	  padding: .7em;
+	  text-align: center;
+	}
+	.wrap table td a{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.wrap table td a:hover{
+		color: black;
+	}
+	.wrap table th {
+	  font-size: 10px;
+	  text-align: right;
+	  vertical-align: top;
+	  padding-right: 10px;
+	}
+	.plan1{
+	  background: #03A9F4;
+	}
+	.plan1_i{
+	  color:#03A9F4;
+	}
+	.plan4{
+	  background: #009688;
+	}
+	.plan4_i{
+	  color:#009688;
+	}
+	.plan3{
+	  background: #4caf50;
+	}
+	.plan3_i{
+	  color:#4caf50;
+	}
+	.plan2{
+	  background: #cddc39;
+	}
+	.plan2_i{
+	  color:#cddc39;
+	}
+	.price{
+	  color: #fff;
+	  font-weight: bold;
+	  font-size: 1.0em;
+	  text-align: left;
+	  margin-bottom:10px
+	}
+	.price span {
+	    font-size: .6em;
+	}
+	.btn{
+	  background:#fff;
+	  color:#000;
+	  padding: 1em;
+	  border-radius:5px;
+	  display:block;
+	  text-decoration:none;
+	  font-size:.8em
+	}
+
+	@media screen and (max-width: 600px) {
+	.wrap{
+	   	overflow-x: scroll;
+	}
+</style>
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

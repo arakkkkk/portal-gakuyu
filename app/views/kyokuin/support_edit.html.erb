@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">お問い合わせ</h3>
+     	<article>
+     		<div class="btn">
+     			<a href="/support" class="btn-flat-border">--------前の画面へ戻る--------</a>
+     		</div>
+     		<p5>申請日：<%= @support.created_at.try(:strftime,'%m/%d-%H:%M') %></p5><br>
+     		<%= form_with(model: @support,:url => {:action => :support_edit}, local: true) do |form| %>
+			    <p>
+			        <%= form.label :name, "申請者名" %><br>
+			        <%= form.text_field :name, id: "name" %>
+			    </p>
+			    <p>
+			        <%= form.label :tell, "電話番号：" %><br>
+			        <%= form.text_field :tell, id: "tell" %>
+			    </p>
+			    <p>
+			        <%= form.label :email, "e-mail：" %><br>
+			        <%= form.text_field :email, id: "email" %>
+			    </p>
+            	<p>
+		            <%= form.label :g_name, "団体名：" %><br>
+		            <%= form.text_field :g_name, id: "g_name" %>
+		        </p>
+		        <p>
+		            <%= form.label :time, "時間：" %><br>
+		            <%= form.datetime_select :time, :minute_step => 30  %>
+		        </p>
+		        <p>
+		            <%= form.label :text, "内容：" %><br>
+		            <%= form.text_area :text, id: "text" %>
+		        </p>
+		        <p>
+  					  <%= form.radio_button :status, :許可待ち %>
+					  <%= form.label :status, "許可待ち", {value: :許可待ち, style: "display: inline-block;"} %>
+					  <%= form.radio_button :status, :許可済み %>
+					  <%= form.label :status, "許可済み", {value: :許可済み, style: "display: inline-block;"} %>
+		        </p>
+
+				<%= form.submit "送信" %>
+   			<% end %>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>
+
+
+<style>
+	.itiran a{
+		margin-right: 0;
+		text-align: right;
+	}
+</style>
+<script language="javascript" type="text/javascript">
+</script>

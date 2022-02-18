@@ -1,0 +1,2 @@
+class Portaltext < ApplicationRecord
+end

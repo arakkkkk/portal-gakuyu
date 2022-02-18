@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/header' %>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<!-- <nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/jimu"><strong>備品チェック</strong><span>check</span></a></li>
+			<li><a href="/jimu2"><strong>備品の追加</strong><span>correction</span></a></li>
+			<li><a href="/jimu3"><strong>備品の変更</strong><span>correction</span></a></li>
+			<li><a href="/jimu4"><strong>共有は命</strong><span>share</span></a></li>
+			<li class="active"><a href="/jimu6"><strong>要望書</strong><span>special</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav> -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li class="active"><a href="/uketuke5"><strong>備品予約</strong><span>創大祭期間</span></a></li>
+			<li><a href="/soudaisai_bihin"><strong>予約一覧</strong><span>備品ごと</span></a></li>
+			<li><a href="/soudaisai_club"><strong>予約一覧</strong><span>団体ごと</span></a></li>
+			<li><a href="/soudaisai_time"><strong>予約一覧</strong><span>日付ごと</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper" class="create">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">創大祭　学友会備品予約</h3>
+
+<!-- 追記部分 開始 -->
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
+<!-- 追記部分 終了-->
+     	<article>
+
+     		<h2>Import Products</h2>
+
+			<%= form_tag uketuke55_path, multipart: true do %>
+			  <%= file_field_tag :file %>
+			  <%= submit_tag "Import" %>
+			<% end %>
+
+		    <%= form_with(model: @equipment, local: true) do |form| %>
+		    	<a>備品：</a><br>
+				<select id="kate" onchange="katekate()" >
+					<option value='高価備品'>高価備品</option>
+			    	<option value='コード類'>コード類</option>
+			    	<option value='文具'>文具</option>
+			    	<option value='掃除工具調理'>掃除工具調理</option>
+			    	<option value='スポーツ用品'>スポーツ用品</option>
+			    	<option value='分室備品'>分室備品</option>
+			    	<option value='創立者セット'>創立者セット</option>
+			    </select>
+			    <select id="equip" onchange="num_set()"></select><br>
+
+
+				<a>借りる時間：</a><br>
+				<select id="rental_year" onchange="monthset()">
+			    </select>
+			    <label>年</label>
+			    <select id="rental_month" onchange="dayset()">
+			    	<option value='10'>10</option>
+			    </select>
+			    <label>月</label>
+			    <select id="rental_day" onchange="num_set()">
+		        </select>
+		        <label>日</label>
+		        <select id="rental_h" onchange="num_set()">
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+			    	<option value='12'>12</option>
+			    	<option value='13'>13</option>
+			    	<option value='14'>14</option>
+			    	<option value='15'>15</option>
+			    	<option value='16'>16</option>
+			    	<option value='17'>17</option>
+			    	<option value='18'>18</option>
+			    	<option value='19'>19</option>
+			    	<option value='20'>20</option>
+		        </select>
+		        <label>時</label>
+		        <select id="rental_m" onchange="num_set()">
+		        	<option value='0'>0</option>
+		        	<option value='1'>1</option>
+			    	<option value='2'>2</option>
+			    	<option value='3'>3</option>
+			    	<option value='4'>4</option>
+			    	<option value='5'>5</option>
+			    	<option value='6'>6</option>
+			    	<option value='7'>7</option>
+			    	<option value='8'>8</option>
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+			    	<option value='12'>12</option>
+			    	<option value='13'>13</option>
+			    	<option value='14'>14</option>
+			    	<option value='15'>15</option>
+			    	<option value='16'>16</option>
+			    	<option value='17'>17</option>
+			    	<option value='18'>18</option>
+			    	<option value='19'>19</option>
+			    	<option value='20'>20</option>
+			    	<option value='21'>21</option>
+			    	<option value='22'>22</option>
+			    	<option value='23'>23</option>
+			    	<option value='24'>24</option>
+			    	<option value='25'>25</option>
+			    	<option value='26'>26</option>
+			    	<option value='27'>27</option>
+			    	<option value='28'>28</option>
+			    	<option value='29'>29</option>
+			    	<option value='30'>30</option>
+			    	<option value='31'>41</option>
+			    	<option value='32'>42</option>
+			    	<option value='33'>43</option>
+			    	<option value='34'>44</option>
+			    	<option value='35'>45</option>
+			    	<option value='36'>46</option>
+			    	<option value='37'>47</option>
+			    	<option value='38'>48</option>
+			    	<option value='39'>49</option>
+			    	<option value='50'>50</option>
+			    	<option value='51'>51</option>
+			    	<option value='52'>52</option>
+			    	<option value='53'>53</option>
+			    	<option value='54'>54</option>
+			    	<option value='55'>55</option>
+			    	<option value='56'>56</option>
+			    	<option value='57'>57</option>
+			    	<option value='58'>58</option>
+			    	<option value='59'>59</option>
+			    </select>
+		        <label>分</label><br>
+
+		        <a>返却の時間：</a><br>
+		        <select id="return_year" onchange="monthset()">
+			    </select>
+			    <label>年</label>
+			    <select id="return_month" onchange="dayset()">
+			    	<option value='10'>10</option>
+			    </select>
+			    <label>月</label>
+			    <select id="return_day" onchange="num_set()">
+		        </select>
+		        <label>日</label>
+		        <select id="return_h" onchange="num_set()">
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+			    	<option value='12'>12</option>
+			    	<option value='13'>13</option>
+			    	<option value='14'>14</option>
+			    	<option value='15'>15</option>
+			    	<option value='16'>16</option>
+			    	<option value='17'>17</option>
+			    	<option value='18'>18</option>
+			    	<option value='19'>19</option>
+			    	<option value='20'>20</option>
+		        </select>
+		        <label>時</label>
+		        <select id="return_m" onchange="num_set()">
+		        	<option value='0'>0</option>
+		        	<option value='1'>1</option>
+			    	<option value='2'>2</option>
+			    	<option value='3'>3</option>
+			    	<option value='4'>4</option>
+			    	<option value='5'>5</option>
+			    	<option value='6'>6</option>
+			    	<option value='7'>7</option>
+			    	<option value='8'>8</option>
+			    	<option value='9'>9</option>
+			    	<option value='10'>10</option>
+			    	<option value='11'>11</option>
+			    	<option value='12'>12</option>
+			    	<option value='13'>13</option>
+			    	<option value='14'>14</option>
+			    	<option value='15'>15</option>
+			    	<option value='16'>16</option>
+			    	<option value='17'>17</option>
+			    	<option value='18'>18</option>
+			    	<option value='19'>19</option>
+			    	<option value='20'>20</option>
+			    	<option value='21'>21</option>
+			    	<option value='22'>22</option>
+			    	<option value='23'>23</option>
+			    	<option value='24'>24</option>
+			    	<option value='25'>25</option>
+			    	<option value='26'>26</option>
+			    	<option value='27'>27</option>
+			    	<option value='28'>28</option>
+			    	<option value='29'>29</option>
+			    	<option value='30'>30</option>
+			    	<option value='31'>41</option>
+			    	<option value='32'>42</option>
+			    	<option value='33'>43</option>
+			    	<option value='34'>44</option>
+			    	<option value='35'>45</option>
+			    	<option value='36'>46</option>
+			    	<option value='37'>47</option>
+			    	<option value='38'>48</option>
+			    	<option value='39'>49</option>
+			    	<option value='50'>50</option>
+			    	<option value='51'>51</option>
+			    	<option value='52'>52</option>
+			    	<option value='53'>53</option>
+			    	<option value='54'>54</option>
+			    	<option value='55'>55</option>
+			    	<option value='56'>56</option>
+			    	<option value='57'>57</option>
+			    	<option value='58'>58</option>
+			    	<option value='59'>59</option>
+		        </select>
+		        <label>分</label>
+		        <a>まで</a><br>
+
+		        <a>借りる数：</a>
+		        <select id="r_num"></select>
+		        <br>
+		        <!-- <p></p><div class="list" id="list"></div> -->
+
+		        <p>
+		            <%= form.label :no_text, "No.：" %><br>
+		            <%= form.text_field :no_text, id: "no_text"%>
+		        </p>
+		        <p>
+		            <%= form.label :g_name, "団体名：" %><br>
+		            <%= form.text_field :g_name, id: "g_name" %>
+		        </p>
+		        <p>
+		            <%= form.label :r_name, "申請者名" %><br>
+		            <%= form.text_field :r_name, id: "r_name" %>
+		        </p>
+		        <p>
+		            <%= form.label :tell, "電話番号：" %><br>
+		            <%= form.text_field :tell, id: "tell" %>
+		        </p>
+		        <p>
+		            <%= form.hidden_field :kyoka, id: "kasidasi" %>
+		            <%= form.hidden_field :kyoka, id: "henkyaku" %>
+		        </p>
+		        <button type="button" onclick="youbousyo()">送信</button>
+		    <% end %>
+    	</article>
+    </section>
+</div>
+
+
+<!-- / ============================コンテンツ============================ -->
+<script language="javascript" type="text/javascript">
+// var newtext = document.createElement('p');
+// newtext.textContent = document.getElementById('year');
+// list.appendChild(newtext);
+
+// var delelement = function(){
+// 	if(list.hasChildNodes()){
+// 		for (i=list.childNodes.length-1; i>=0; i--) {
+// 			list.removeChild(list.childNodes[i]);
+// 		}
+// 	}
+// }
+
+
+
+
+
+
+
+
+
+var dt = new Date();
+var y = dt.getFullYear();
+var m = dt.getMonth()+1;
+var d = dt.getDate();
+var h = dt.getHours();
+var min = dt.getMinutes();
+
+var option = document.createElement('option');
+option.textContent = y;
+rental_year.appendChild(option);
+var option = document.createElement('option');
+option.textContent = y+1;
+rental_year.appendChild(option);
+var option = document.createElement('option');
+option.textContent = y;
+return_year.appendChild(option);
+var option = document.createElement('option');
+option.textContent = y+1;
+return_year.appendChild(option);
+
+
+
+				// var delelement = function(){
+				// 	if(list.hasChildNodes()){
+				// 		for (i=list.childNodes.length-1; i>=0; i--) {
+				// 			list.removeChild(list.childNodes[i]);
+				// 		}
+				// 	}
+				// }
+
+
+				var deloption = function(){
+					if(r_num.hasChildNodes()){
+						for (i=r_num.childNodes.length-1; i>=0; i--) {
+							r_num.removeChild(r_num.childNodes[i]);
+						}
+					}
+				}
+				var numset = function(){
+					var equip=document.getElementById('equip').value;
+					for(i=0;i<gon.ecount;i++){
+						if(equip == gon.equipment[i].name){
+							var rental_num = gon.equipment[i].number;
+							var max_num = gon.equipment[i].number;
+						}
+					}
+					var today = new Date();
+					var ty = today.getFullYear();
+				    var tm = today.getMonth()+1;
+				    var td = today.getDate();
+	    			var th = today.getHours();
+				    var tM = today.getMinutes();
+
+				    var rental_day = new Date();
+					var return_day = new Date();
+			    	var selected_rental_day = new Date();
+			    	var selected_return_day = new Date();
+
+		    	    selected_reny = document.getElementById('rental_year').value;
+				    selected_renm = document.getElementById('rental_month').value;
+					selected_rend = document.getElementById('rental_day').value;
+			   	    selected_renh = document.getElementById('rental_h').value;
+			   	    selected_renM = document.getElementById('rental_m').value;
+			   	    selected_rety = parseInt(document.getElementById('return_year').value);
+			        selected_retm = parseInt(document.getElementById('return_month').value);
+					selected_retd = parseInt(document.getElementById('return_day').value);
+		    	    selected_reth = parseInt(document.getElementById('return_h').value);
+		    	    selected_retM = parseInt(document.getElementById('return_m').value);
+
+		    	    for(n=0;n<gon.rcount;n++){
+						reny = parseInt(gon.rentalequip[n].rental_at.slice(0,4));
+					    renm = parseInt(gon.rentalequip[n].rental_at.slice(5,7));
+						rend = parseInt(gon.rentalequip[n].rental_at.slice(8,10));
+				   	    renh = parseInt(gon.rentalequip[n].rental_at.slice(11,13));
+				   	    renM = parseInt(gon.rentalequip[n].rental_at.slice(14,16));
+				   	    rety = parseInt(gon.rentalequip[n].return_at.slice(0,4));
+				        retm = parseInt(gon.rentalequip[n].return_at.slice(5,7));
+						retd = parseInt(gon.rentalequip[n].return_at.slice(8,10));
+
+			    	    reth = parseInt(gon.rentalequip[n].return_at.slice(11,13));
+			    	    retM = parseInt(gon.rentalequip[n].return_at.slice(14,16));
+
+			    	    rental_day = new Date(reny,renm-1,rend,renh,renM);
+			    	    return_day = new Date(rety,retm-1,retd,reth,retM);
+			    	    selected_rental_day = new Date(selected_reny,selected_renm-1,selected_rend,selected_renh,selected_renM)
+			    	    selected_return_day = new Date(selected_rety,selected_retm-1,selected_retd,selected_reth,selected_retM)
+
+			    	    if(equip==gon.rentalequip[n].name){
+				    	    if(selected_rental_day<=return_day&&return_day<=selected_return_day||selected_rental_day<=rental_day&&rental_day<=selected_return_day){
+				    	    	max_num=max_num-gon.rentalequip[n].r_num;
+				    // 	    	var newtext = document.createElement('a1');
+								// newtext.textContent = 
+								// gon.rentalequip[n].rental_at.slice(5,7)+'/'+gon.rentalequip[n].rental_at.slice(8,10)+'     '+
+								// gon.rentalequip[n].rental_at.slice(11,13)+'時'+gon.rentalequip[n].rental_at.slice(14,16)+'分'
+								// +'~'+gon.rentalequip[n].return_at.slice(11,13)+'時'+gon.rentalequip[n].return_at.slice(14,16)+'分'
+								// +'まで     個数：'+gon.rentalequip[n].r_num;
+								// list.appendChild(newtext);
+				    	    }
+				    	    if(rental_day<=selected_rental_day&&selected_return_day<=return_day){
+				    	    	max_num=max_num-gon.rentalequip[n].r_num;
+				    // 	    	var newtext = document.createElement('a1');
+								// newtext.textContent = 
+								// gon.rentalequip[n].rental_at.slice(5,7)+'/'+gon.rentalequip[n].rental_at.slice(8,10)+'     '+
+								// gon.rentalequip[n].rental_at.slice(11,13)+'時'+gon.rentalequip[n].rental_at.slice(14,16)+'分'
+								// +'~'+gon.rentalequip[n].return_at.slice(11,13)+'時'+gon.rentalequip[n].return_at.slice(14,16)+'分'
+								// +'まで     個数：'+gon.rentalequip[n].r_num;
+								// list.appendChild(newtext);
+				    		}
+			    		}
+			    	}
+
+					// if(max_num<rental_num){rental_num=max_num;}
+					for(i=1;i<=rental_num;i++){
+							var option = document.createElement('option');
+							option.textContent = i;
+							r_num.appendChild(option);
+					}
+				}
+
+
+
+				var kate = function(){
+					for(p=0;p<gon.ecount;p++){
+						if(document.getElementById('kate').value==gon.equipment[p].category){
+							var option = document.createElement('option');
+							option.textContent = gon.equipment[p].name;
+							equip.appendChild(option);
+						}
+					}
+				}
+				var delkate = function(){
+					if(equip.hasChildNodes()){
+						for (i=equip.childNodes.length-1; i>=0; i--) {
+							equip.removeChild(equip.childNodes[i]);
+						}
+					}
+				}
+
+for(i=gon.firstday;i<=gon.firstday+gon.daynum;i++){
+		var option = document.createElement('option');
+		option.textContent = i;
+		rental_day.appendChild(option);
+		var option = document.createElement('option');
+		option.textContent = i;
+		return_day.appendChild(option);
+}
+
+// ログインーーーーーーーーーーーーーーーーーーーーー
+function login(){
+	// 入力ダイアログを表示 ＋ 入力内容を user に代入
+	user = window.prompt("password", "");
+	// 入力内容が tama の場合は example_tama.html にジャンプ
+	if(user == 'tama'){
+	// 空の場合やキャンセルした場合は警告ダイアログを表示
+	}else{
+		location.href = "uketuke5";
+	}
+}
+
+
+login();
+
+function katekate(){
+	delkate();
+	kate();
+	num_set();
+}
+function num_set(){
+	// delelement();
+	deloption();
+	numset();
+}
+function dayset(){
+	// delelement();
+	deloption();
+	numset();
+}
+function monthset(){
+	// delelement();
+	deloption();
+	numset();
+}
+
+numset();
+katekate();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

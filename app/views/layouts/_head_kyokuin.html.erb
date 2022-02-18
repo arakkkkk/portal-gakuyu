@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+		<title>学友会　備品貸出システム</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+	</head>
+	<body>
+	<header id="header">
+		<h1>学友会　備品貸出システム</h1>
+		<div class="logo">
+			<a href="/home">学友会<br /><span>Soka University</span></a>
+		</div>
+	</header>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+	    	<ul>
+	    		<li id="oractive1"><a href="/kyokuin1"><strong>引き継ぎ</strong><span>Take over</span></a></li>
+				<li id="oractive2"><a><strong>備品</strong><span>Equipment</span></a>
+					<ul>
+						<li><a href="/kyokuin2"><strong>貸出中</strong><span>Equipment</span></a></li>
+					</ul>
+					<ul>
+						<li><a href="/kyokuin4"><strong>予約一覧</strong><span>Equipmet</span></a></li>
+					</ul>   
+				</li>
+				<li id="oractive3"><a><strong>鍵</strong><span>Facility</span></a>
+					<ul>
+						<li><a href="/kyokuin3"><strong>貸出中</strong><span>Facility</span></a></li>
+					</ul>
+					<ul>
+						<li><a href="/kyokuin5"><strong>予約一覧</strong><span>Equipmet</span></a></li>
+					</ul>
+				</li>
+				<li id="oractive4"><a><strong>カレンダー</strong><span>Equipmet</span></a>
+					<ul>
+						<li><a a href="/kyokuin_kasidasische"><strong>備品</strong><span>Equipmet</span></a>
+					</ul>
+					<ul>
+						<li><a a href="/kyokuin_musicsche"><strong>音楽練習室</strong><span>Equipmet</span></a>
+					</ul>
+					<ul>
+						<li><a a href="/kyokuin_meetsche"><strong>会議室・和室・厨房</strong><span>Equipmet</span></a>
+					</ul>
+					<ul>
+						<li><a a href="/kyokuin_actsche"><strong>お問い合わせ</strong><span>Equipmet</span></a>
+					</ul>
+				</li>
+				<li id="oractive5"><a href="/support"><strong>問い合わせ</strong><span>Support</span></a></li>
+			</ul>   
+    	</div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+</html>
+
+<script language="javascript" type="text/javascript">
+var pathname = location.pathname;
+if(pathname.match("/kyokuin1")){
+	var obj = document.getElementById("oractive1");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+if(pathname.match("/kyokuin2")){
+	var obj = document.getElementById("oractive2");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+if(pathname.match("/kyokuin3")){
+	var obj = document.getElementById("oractive3");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+if(pathname.match("/kyokuin_")){
+	var obj = document.getElementById("oractive4");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+if(pathname.match("/support")){
+	var obj = document.getElementById("oractive5");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+</script>
+
+
+
+
+
+
+
+
+
+

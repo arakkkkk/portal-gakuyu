@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<title>学友会　備品貸出システム</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<script src="js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+<header id="header">
+	<h1>学友会　備品貸出システム</h1>
+  <!-- ロゴ -->
+	<div class="logo">
+		<a href="/home">学友会<br /><span>Soka University</span></a>
+	</div>
+	<!-- / ロゴ -->
+	<!-- 電話番号+受付時間 -->
+	
+  <div class="info">
+<!-- 		<p class="tel"><span>電話:</span> 012-3456-7890</p>
+		<p class="open">受付時間: 平日 AM 10:00 〜 PM 5:00</p> -->
+	</div>
+	<!-- / 電話番号+受付時間 -->
+</header>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<!-- <nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/jimu"><strong>備品チェック</strong><span>check</span></a></li>
+			<li><a href="/jimu2"><strong>備品の追加</strong><span>correction</span></a></li>
+			<li><a href="/jimu3"><strong>備品の変更</strong><span>correction</span></a></li>
+			<li class="active"><a><strong>共有は命</strong><span>share</span></a></li>
+			<li><a href="/jimu6"><strong>要望書</strong><span>special</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav> -->
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper" class="create">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">月活表</h3>
+     	<article>
+     		<div class="kategori"><p><%= @club.group %></p></div><br>
+<!--      		<% @gekkatu.each do |gekkatu| %>
+     			<a><%= gekkatu.name %></a>
+     		<% end %> -->
+     		<select id="year" onchange="monthset()"></select>
+
+     		<div class="list" id="list"></div>
+
+
+
+
+
+
+    	</article>
+    </section>
+</div>
+
+
+<!-- / ============================コンテンツ============================ -->
+
+<script language="javascript" type="text/javascript">
+
+var month=0
+var year=2019
+var year = document.getElementById('year');
+var dt = new Date();
+var y = dt.getFullYear();
+var crey=0
+var crem=0
+var cred=0
+var creh=0
+var creM=0
+
+
+while(year.firstChild){
+    year.removeChild(year.firstChild);
+}
+var option = document.createElement('option');
+option.textContent = y;
+year.appendChild(option);
+for(i=2019;i<=y+1;i++){
+	var option = document.createElement('option');
+	option.textContent = i;
+	year.appendChild(option);
+}
+
+
+var delelement = function(){
+	if(list.hasChildNodes()){
+		for (i=list.childNodes.length-1; i>=0; i--) {
+			list.removeChild(list.childNodes[i]);
+		}
+	}
+}
+
+monthset()
+
+function monthset(){ 
+	delelement()
+	var select_y=document.getElementById('year').value
+	for(M=1;M<=12;M++){
+		var state='none';
+		for(i=0;i<gon.count;i++){
+			if(gon.gekkatu[i].year==select_y){
+				if(gon.gekkatu[i].month==M){
+					var newtext = document.createElement('a5');
+					newtext.textContent = M+'月 ';
+					list.appendChild(newtext);
+
+					crey = parseInt(gon.gekkatu[i].created_at.slice(0,4));
+					crem = parseInt(gon.gekkatu[i].created_at.slice(5,7));
+			
+			 		cred = parseInt(gon.gekkatu[i].created_at.slice(8,10));
+				   	creh = parseInt(gon.gekkatu[i].created_at.slice(11,13));
+				   	creM = parseInt(gon.gekkatu[i].created_at.slice(14,16));
+					var newtext = document.createElement('a5');
+					newtext.textContent = crey+'年'+crem+'月'+cred+'日'+creh+'時'+creM+'分に提出';
+					list.appendChild(newtext);
+
+					var newtext = document.createElement('p');
+					newtext.textContent = '';
+					list.appendChild(newtext);
+
+					state='exist'
+				}
+			}
+		}
+		if(state=='none'){
+			var newtext = document.createElement('a5');
+			newtext.textContent = M+'月 ';
+			list.appendChild(newtext);
+
+			var newtext = document.createElement('a5');
+			newtext.textContent = '未定出';
+			list.appendChild(newtext);
+
+			var newtext = document.createElement('p');
+			newtext.textContent = '';
+			list.appendChild(newtext);
+		}
+	}
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

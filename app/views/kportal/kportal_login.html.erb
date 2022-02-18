@@ -1,0 +1,44 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <%= form_with(model: @session,:url => {:action => :create, :controller=>"sessions" }, local: true) do |form| %>
+                  	<p>
+                  		<div class="row mx-3">Id:<%= form.text_field :name %></div>
+                  		<div class="row mx-3">password:<%= form.password_field :password %></div>
+                  	</p>
+                  	<%= form.submit "login" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+<script>
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

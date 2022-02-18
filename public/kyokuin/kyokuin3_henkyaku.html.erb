@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<title>学友会　備品貸出システム</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<script src="js/css3-mediaqueries.js"></script>
+<![endif]-->
+<script src="js/jquery1.7.2.min.js"></script>
+<script src="js/script.js"></script>
+<%= stylesheet_link_tag    "inside/style1", media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag "application", 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<header id="header">
+	<h1>学友会　備品貸出システム</h1>
+  <!-- ロゴ -->
+	<div class="logo">
+		<a href="/home">学友会<br /><span>Soka University</span></a>
+	</div>
+	<!-- / ロゴ -->
+	<!-- 電話番号+受付時間 -->
+	
+  <div class="info">
+<!-- 		<p class="tel"><span>電話:</span> 012-3456-7890</p>
+		<p class="open">受付時間: 平日 AM 10:00 〜 PM 5:00</p> -->
+	</div>
+	<!-- / 電話番号+受付時間 -->
+</header>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/kyokuin1"><strong>引き継ぎ</strong><span>Take over</span></a></li>
+			<li><a href="/kyokuin2"><strong>貸出中（備品）</strong><span>Equipment</span></a></li>
+			<li class="active"><a href="/kyokuin3"><strong>貸出中（鍵）</strong><span>Facility</span></a></li>
+			<li><a href="/kyokuin4"><strong>予約一覧（備品）</strong><span>Equipmet</span></a></li>
+			<li><a href="/kyokuin5"><strong>予約一覧（鍵）</strong><span>Facility</span></a></li>
+			<li><a href="/kyokuin6"><strong>貸出履歴</strong><span>History</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+
+     		<div class="btn">
+     		<a href="/kyokuin2" class="btn-flat-border">---------貸出中備品一覧--------</a>
+     		</div>
+
+		    <%= form_with(model: @rentalequip,:url => {:action => :kyokuin3_new}, local: true) do |form| %>
+		    	<p>
+		            <%= form.label :henkyaku, "名前：" %><br>
+		            <%= form.text_field :henkyaku %>
+		        </p>
+		        <%= form.submit "変更する" %>
+		    <% end %>
+
+     	
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

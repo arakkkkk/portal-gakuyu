@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<title>学友会　備品貸出システム</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+</head>
+
+<body>
+<header id="header">
+	<h1>学友会　備品貸出システム</h1>
+  <!-- ロゴ -->
+	<div class="logo">
+		<a href="/home">学友会<br /><span>Soka University</span></a>
+	</div>
+	<!-- / ロゴ -->
+	<!-- 電話番号+受付時間 -->
+	
+  <div class="info">
+<!-- 		<p class="tel"><span>電話:</span> 012-3456-7890</p>
+		<p class="open">受付時間: 平日 AM 10:00 〜 PM 5:00</p> -->
+	</div>
+	<!-- / 電話番号+受付時間 -->
+</header>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">設定</h3>
+     	<article>
+			<%# <a href= "https://gakuyukai.herokuapp.com/home" >学友会のページへ戻る</a> %>
+			<%= form_with(model: @session,:url => {:action => :create, :controller=>"sessions" }, local: true) do |form| %>
+				<p>
+					Id / e-mail<%= form.text_field :name %><br>
+					password<%= form.password_field :password %>
+				</p>
+				<%= form.submit "login" %>
+				<%# <p><br><a href="/uketuke_new">アカウントを作成する</a></p> %>
+			<% end %>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+
+</body>
+</html>
+
+<style>
+input[type="text"] {
+        height: 40px;
+    }
+</style>

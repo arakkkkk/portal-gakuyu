@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  r_num: 1
+  rental_at: 2019-08-14 15:07:46
+  return_at: 2019-08-14 15:07:46
+  g_name: MyString
+  r_name: MyString
+  tell: MyString
+  no_text: MyString
+
+two:
+  name: MyString
+  r_num: 1
+  rental_at: 2019-08-14 15:07:46
+  return_at: 2019-08-14 15:07:46
+  g_name: MyString
+  r_name: MyString
+  tell: MyString
+  no_text: MyString

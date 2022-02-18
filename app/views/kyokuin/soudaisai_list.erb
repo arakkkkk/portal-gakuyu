@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<!-- <nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/kyokuin1"><strong>引き継ぎ</strong><span>Take over</span></a></li>
+			<li class="active"><a href="/kyokuin2"><strong>貸出中（備品）</strong><span>Equipment</span></a></li>
+			<li><a href="/kyokuin3"><strong>貸出中（鍵）</strong><span>Facility</span></a></li>
+			<li><a href="/kyokuin4"><strong>予約一覧（備品）</strong><span>Equipmet</span></a></li>
+			<li><a href="/kyokuin5"><strong>予約一覧（鍵）</strong><span>Facility</span></a></li>
+			<li><a href="/kyokuin6"><strong>貸出履歴</strong><span>History</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav> -->
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+		<p>備品一覧</p>
+     		<div id="optional">
+     			備品,
+     			貸出時間,
+     			返却時間,
+     			個数,
+     			団体名,
+     			名前,
+     			電話番号,
+     			貸出者,
+     			<br>
+     		<% @rentalequip.each do |rental_equip| %>
+				<%= rental_equip.name %>,
+				<%= rental_equip.rental_at.try(:strftime,'%m/%d-%H:%M') %>,
+	        	<%= rental_equip.return_at.try(:strftime,'%m/%d-%H:%M') %>,
+	     		<%= rental_equip.r_num %>,
+	        	<%= rental_equip.g_name %>,
+	        	<%= rental_equip.r_name %>,
+	        	<%= rental_equip.tell %>,
+	        	<%= rental_equip.kasidasi %>,
+	        <br>
+	        <% end %>
+	    </div>
+	        <p></p>
+     	
+
+	        <button onclick="copy_2()">
+				コピーする
+			</button>
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+<script language="javascript" type="text/javascript">
+
+function copy_2() {
+
+
+//p要素の文字列を取得
+var text = document.getElementById("optional").innerText;
+
+//textareaを生成
+var area = document.createElement("textarea");
+
+//p要素の内容をtextareaに記述
+area.textContent = text;
+
+//生成したものをdocumentに追加
+document.body.appendChild(area);
+
+//選択/コピーして・・
+area.select();
+document.execCommand("copy");
+
+//すぐに消す。
+document.body.removeChild(area);
+
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

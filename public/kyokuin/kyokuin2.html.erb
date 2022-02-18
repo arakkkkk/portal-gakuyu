@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<title>学友会　備品貸出システム</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<script src="js/css3-mediaqueries.js"></script>
+<![endif]-->
+<script src="js/jquery1.7.2.min.js"></script>
+<script src="js/script.js"></script>
+<%= stylesheet_link_tag    "inside/style1", media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag "application", 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<header id="header">
+	<h1>学友会　備品貸出システム</h1>
+  <!-- ロゴ -->
+	<div class="logo">
+		<a href="/home">学友会<br /><span>Soka University</span></a>
+	</div>
+	<!-- / ロゴ -->
+	<!-- 電話番号+受付時間 -->
+	
+  <div class="info">
+<!-- 		<p class="tel"><span>電話:</span> 012-3456-7890</p>
+		<p class="open">受付時間: 平日 AM 10:00 〜 PM 5:00</p> -->
+	</div>
+	<!-- / 電話番号+受付時間 -->
+</header>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/kyokuin1"><strong>引き継ぎ</strong><span>Take over</span></a></li>
+			<li class="active"><a href="/kyokuin2"><strong>貸出中（備品）</strong><span>Equipment</span></a></li>
+			<li><a href="/kyokuin3"><strong>貸出中（鍵）</strong><span>Facility</span></a></li>
+			<li><a href="/kyokuin4"><strong>予約一覧（備品）</strong><span>Equipmet</span></a></li>
+			<li><a href="/kyokuin5"><strong>予約一覧（鍵）</strong><span>Facility</span></a></li>
+			<li><a href="/kyokuin6"><strong>貸出履歴</strong><span>History</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+     		<a><%= @time %></a>
+     		<br>
+
+     	<div class="kategori">
+     		<p>貸し出し許可未</p>
+     		<% @kasidasi.each do |rental_equip| %>
+	        <div class="col_rental">
+	        	返却：<a><%= rental_equip.return_at.try(:strftime,'%m/%d-%H:%M') %></a>
+	        </div>
+	        <div class="col_rental"><div class="width_50">
+	        	数：<a><%= rental_equip.r_num %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	団体名：<a><%= rental_equip.g_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	名前：<a><%= rental_equip.r_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	TELL：<a><%= rental_equip.tell %></a>
+	        </div></div><br>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出許可：<a><%= rental_equip.kyoka %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出：<a><%= rental_equip.kasidasi %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	要望書：<a><%= rental_equip.youbousyo %></a>
+	        </div></div><br>
+	        <div class="col_name">
+	        	<a class="aaa">備品：<%= rental_equip.name %></a>
+	        </div>
+	        <div class="col_name">
+	        	<div class="btn2">
+	        	<td><%= link_to '変更', kyokuin2_edit_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<td><%= link_to '貸出', kyokuin2_kasidasi_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<tr>
+		        <td><%= link_to 'Destroy', deletedata_path(rental_equip), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+			    </tr>
+	        </div></div>
+	        <br>
+	        <br>
+    		<% end %>
+
+
+
+
+     		<p>延滞中備品</p>
+     		<% @entai.each do |rental_equip| %>
+	        <div class="col_rental">
+	        	返却：<a><%= rental_equip.return_at.try(:strftime,'%m/%d-%H:%M') %></a>
+	        </div>
+	        <div class="col_rental"><div class="width_50">
+	        	数：<a><%= rental_equip.r_num %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	団体名：<a><%= rental_equip.g_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	名前：<a><%= rental_equip.r_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	TELL：<a><%= rental_equip.tell %></a>
+	        </div></div><br>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出許可：<a><%= rental_equip.kyoka %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出：<a><%= rental_equip.kasidasi %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	要望書：<a><%= rental_equip.youbousyo %></a>
+	        </div></div><br>
+	        <div class="col_name">
+	        	<a class="aaa">備品：<%= rental_equip.name %></a>
+	        </div>
+	        <div class="col_name"><div class="btn2">
+	        	<td><%= link_to '変更', kyokuin2_edit_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<td><%= link_to '返却', kyokuin2_henkyaku_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<tr>
+		        <td><%= link_to 'Destroy', deletedata_path(rental_equip), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+			    </tr>
+	        </div></div><br>
+	        <% end %>
+
+
+
+
+
+     		<p>貸出中備品</p>
+     		<% @kasidasityu.each do |rental_equip| %>
+	        <div class="col_rental">
+	        </div>
+	        <div class="col_rental"><div class="width_50">
+	        	数：<a><%= rental_equip.r_num %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	団体名：<a><%= rental_equip.g_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	名前：<a><%= rental_equip.r_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	TELL：<a><%= rental_equip.tell %></a>
+	        </div></div><br>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出許可：<a><%= rental_equip.kyoka %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出：<a><%= rental_equip.kasidasi %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	要望書：<a><%= rental_equip.youbousyo %></a>
+	        </div></div><br>
+	        <div class="col_name">
+	        	<a class="aaa">備品：<%= rental_equip.name %></a>
+	        </div>
+	        <div class="col_name"><div class="btn2">
+	        	<td><%= link_to '変更', kyokuin2_edit_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<td><%= link_to '返却', kyokuin2_henkyaku_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<tr>
+		        <td><%= link_to 'Destroy', deletedata_path(rental_equip), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+			    </tr>
+	        </div></div><br>
+	        <% end %>
+    	</div>
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

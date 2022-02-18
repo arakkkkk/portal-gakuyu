@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">創大祭備品予約　備品ごと</h3>
+     	<article>
+     		
+     		<a>カテゴリ：</a><br>
+				<select id="kate" onchange="katekate()" >
+					<option value='高価備品'>高価備品</option>
+			    	<option value='コード類'>コード類</option>
+			    	<option value='文具'>文具</option>
+			    	<option value='掃除工具調理'>掃除工具調理</option>
+			    	<option value='スポーツ用品'>スポーツ用品</option>
+			    	<option value='分室備品'>分室備品</option>
+			    	<option value='創立者セット'>創立者セット</option>
+			    </select>
+			<select id="equip" onchange="set_equip()"></select><br><p></p>最大数を明記
+
+
+
+
+     	<div class="kategori">
+     		<div class="day1" id="day1"></div>
+     			<div class="itiran"><a>個数</a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>返却</a></div>
+	     		<div class="itiran"></div>
+	     		<br>
+	     		<div class="bord"></div>
+	     		<div class="list1" id="list1"></div> 
+
+	     	<div class="day2" id="day2"></div>
+     			<div class="itiran"><a>個数</a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>返却</a></div>
+	     		<div class="itiran"></div>
+	     		<br>
+	     		<div class="bord"></div>
+	     		<div class="list2" id="list2"></div> 
+
+	     	<div class="day3" id="day3"></div>
+     			<div class="itiran"><a>個数</a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>返却</a></div>
+	     		<div class="itiran"></div>
+	     		<br>
+	     		<div class="bord"></div>
+	     		<div class="list3" id="list3"></div>
+
+	     	<div class="day4" id="day4"></div>
+     			<div class="itiran"><a>個数</a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>返却</a></div>
+	     		<div class="itiran"></div>
+	     		<br>
+	     		<div class="bord"></div>
+	     		<div class="list4" id="list4"></div> 
+
+	     	<div class="day5" id="day5"></div>
+     			<div class="itiran"><a>個数</a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>返却</a></div>
+	     		<div class="itiran"></div>
+	     		<br>
+	     		<div class="bord"></div>
+	     		<div class="list5" id="list5"></div> 
+
+	     	<div class="day6" id="day6"></div>
+     			<div class="itiran"><a>個数</a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>返却</a></div>
+	     		<div class="itiran"></div>
+	     		<br>
+	     		<div class="bord"></div>
+	     		<div class="list6" id="list6"></div> 
+    	</div>
+
+
+    	</article>
+    </section>
+</div>
+
+
+<!-- / ============================javascript============================ -->
+<script language="javascript" type="text/javascript">
+// ＝＝＝＝＝＝＝＝備品のカテゴリ設定＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+var kate = function(){
+	for(p=0;p<gon.ecount;p++){
+		if(document.getElementById('kate').value==gon.equipment[p].category){
+			var option = document.createElement('option');
+			option.textContent = gon.equipment[p].name;
+			equip.appendChild(option);
+		}
+	}
+}
+var delkate = function(){
+	if(equip.hasChildNodes()){
+		for (i=equip.childNodes.length-1; i>=0; i--) {
+			equip.removeChild(equip.childNodes[i]);
+		}
+	}
+}
+
+// ＝＝＝＝＝＝＝＝予約の出力＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+var out_equip = function(){
+	for(i=0;i<gon.rcount;i++){
+		if(document.getElementById('equip').value==gon.rentalequip[i].name){
+			if(parseInt(gon.rentalequip[i].rental_at.slice(8,10)) == gon.firstday){
+				var newtext = document.createElement('a50');
+				newtext.textContent = gon.rentalequip[i].r_num;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].rental_at.slice(11,13)+'時'
+				+gon.rentalequip[i].rental_at.slice(14,16)+'分';
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].return_at.slice(11,13)+'時'
+				+gon.rentalequip[i].return_at.slice(14,16)+'分';
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].g_name;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].r_name;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].tell;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].kasidasi;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].henkyaku;
+				list1.appendChild(newtext);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_edit." + gon.rentalequip[i].id;
+				newurl.innerText = "変更 ";
+				list1.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_kasidasi." + gon.rentalequip[i].id;
+				newurl.innerText = "貸出 ";
+				list1.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_henkyaku." + gon.rentalequip[i].id;
+				newurl.innerText = "返却";
+				list1.appendChild(newurl);
+				var newtext = document.createElement('br');
+				newtext.textContent = "";
+				list1.appendChild(newtext);
+			}
+			if(parseInt(gon.rentalequip[i].rental_at.slice(8,10)) == gon.firstday+1){
+				var newtext = document.createElement('a50');
+				newtext.textContent = gon.rentalequip[i].r_num;
+				list2.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].rental_at.slice(11,13)+'時'
+				+gon.rentalequip[i].rental_at.slice(14,16)+'分';
+				list2.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].return_at.slice(11,13)+'時'
+				+gon.rentalequip[i].return_at.slice(14,16)+'分';
+				list2.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].g_name;
+				list2.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].r_name;
+				list2.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].tell;
+				list2.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].kasidasi;
+				list2.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].henkyaku;
+				list2.appendChild(newtext);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_edit." + gon.rentalequip[i].id;
+				newurl.innerText = "変更 ";
+				list2.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_kasidasi." + gon.rentalequip[i].id;
+				newurl.innerText = "貸出 ";
+				list2.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_henkyaku." + gon.rentalequip[i].id;
+				newurl.innerText = "返却";
+				list2.appendChild(newurl);
+				var newtext = document.createElement('br');
+				newtext.textContent = "";
+				list2.appendChild(newtext);
+			}
+			if(parseInt(gon.rentalequip[i].rental_at.slice(8,10)) == gon.firstday+2){
+				var newtext = document.createElement('a50');
+				newtext.textContent = gon.rentalequip[i].r_num;
+				list3.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].rental_at.slice(11,13)+'時'
+				+gon.rentalequip[i].rental_at.slice(14,16)+'分';
+				list3.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].return_at.slice(11,13)+'時'
+				+gon.rentalequip[i].return_at.slice(14,16)+'分';
+				list3.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].g_name;
+				list3.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].r_name;
+				list3.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].tell;
+				list3.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].kasidasi;
+				list3.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].henkyaku;
+				list3.appendChild(newtext);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_edit." + gon.rentalequip[i].id;
+				newurl.innerText = "変更 ";
+				list3.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_kasidasi." + gon.rentalequip[i].id;
+				newurl.innerText = "貸出 ";
+				list3.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_henkyaku." + gon.rentalequip[i].id;
+				newurl.innerText = "返却";
+				list3.appendChild(newurl);
+				var newtext = document.createElement('br');
+				newtext.textContent = "";
+				list3.appendChild(newtext);
+			}
+			if(parseInt(gon.rentalequip[i].rental_at.slice(8,10)) == gon.firstday+3){
+				var newtext = document.createElement('a50');
+				newtext.textContent = gon.rentalequip[i].r_num;
+				list4.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].rental_at.slice(11,13)+'時'
+				+gon.rentalequip[i].rental_at.slice(14,16)+'分';
+				list4.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].return_at.slice(11,13)+'時'
+				+gon.rentalequip[i].return_at.slice(14,16)+'分';
+				list4.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].g_name;
+				list4.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].r_name;
+				list4.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].tell;
+				list4.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].kasidasi;
+				list4.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].henkyaku;
+				list4.appendChild(newtext);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_edit." + gon.rentalequip[i].id;
+				newurl.innerText = "変更 ";
+				list4.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_kasidasi." + gon.rentalequip[i].id;
+				newurl.innerText = "貸出 ";
+				list4.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_henkyaku." + gon.rentalequip[i].id;
+				newurl.innerText = "返却";
+				list4.appendChild(newurl);
+				var newtext = document.createElement('br');
+				newtext.textContent = "";
+				list4.appendChild(newtext);
+			}
+			if(parseInt(gon.rentalequip[i].rental_at.slice(8,10)) == gon.firstday+4){
+				var newtext = document.createElement('a50');
+				newtext.textContent = gon.rentalequip[i].r_num;
+				list5.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].rental_at.slice(11,13)+'時'
+				+gon.rentalequip[i].rental_at.slice(14,16)+'分';
+				list5.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].return_at.slice(11,13)+'時'
+				+gon.rentalequip[i].return_at.slice(14,16)+'分';
+				list5.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].g_name;
+				list5.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].r_name;
+				list5.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].tell;
+				list5.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].kasidasi;
+				list5.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].henkyaku;
+				list5.appendChild(newtext);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_edit." + gon.rentalequip[i].id;
+				newurl.innerText = "変更 ";
+				list5.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_kasidasi." + gon.rentalequip[i].id;
+				newurl.innerText = "貸出 ";
+				list5.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_henkyaku." + gon.rentalequip[i].id;
+				newurl.innerText = "返却";
+				list5.appendChild(newurl);
+				var newtext = document.createElement('br');
+				newtext.textContent = "";
+				list5.appendChild(newtext);
+			}
+			if(parseInt(gon.rentalequip[i].rental_at.slice(8,10)) == gon.firstday+5){
+				var newtext = document.createElement('a50');
+				newtext.textContent = gon.rentalequip[i].r_num;
+				list6.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].rental_at.slice(11,13)+'時'
+				+gon.rentalequip[i].rental_at.slice(14,16)+'分';
+				list6.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+gon.rentalequip[i].return_at.slice(11,13)+'時'
+				+gon.rentalequip[i].return_at.slice(14,16)+'分';
+				list6.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].g_name;
+				list6.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].r_name;
+				list6.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].tell;
+				list6.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].kasidasi;
+				list6.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].henkyaku;
+				list6.appendChild(newtext);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_edit." + gon.rentalequip[i].id;
+				newurl.innerText = "変更 ";
+				list6.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_kasidasi." + gon.rentalequip[i].id;
+				newurl.innerText = "貸出 ";
+				list6.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_henkyaku." + gon.rentalequip[i].id;
+				newurl.innerText = "返却";
+				list6.appendChild(newurl);
+				var newtext = document.createElement('br');
+				newtext.textContent = "";
+				list6.appendChild(newtext);
+			}
+		}			
+	}
+
+
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list1.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list1.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list2.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list2.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list3.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list3.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list4.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list4.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list5.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list5.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list6.appendChild(newtext);
+		var newtext = document.createElement('br');
+		newtext.textContent = "";
+		list6.appendChild(newtext);
+}
+
+
+
+var delelement = function(){
+	if(list1.hasChildNodes()){
+		for (i=list1.childNodes.length-1; i>=0; i--) {
+			list1.removeChild(list1.childNodes[i]);
+		}
+	}
+	if(list2.hasChildNodes()){
+		for (i=list2.childNodes.length-1; i>=0; i--) {
+			list2.removeChild(list2.childNodes[i]);
+		}
+	}
+	if(list3.hasChildNodes()){
+		for (i=list3.childNodes.length-1; i>=0; i--) {
+			list3.removeChild(list3.childNodes[i]);
+		}
+	}
+	if(list4.hasChildNodes()){
+		for (i=list4.childNodes.length-1; i>=0; i--) {
+			list4.removeChild(list4.childNodes[i]);
+		}
+	}
+	if(list5.hasChildNodes()){
+		for (i=list5.childNodes.length-1; i>=0; i--) {
+			list5.removeChild(list5.childNodes[i]);
+		}
+	}
+	if(list6.hasChildNodes()){
+		for (i=list6.childNodes.length-1; i>=0; i--) {
+			list6.removeChild(list6.childNodes[i]);
+		}
+	}
+}
+
+var newtext = document.createElement('p');
+newtext.textContent = gon.firstday+"日";
+day1.appendChild(newtext);
+var newtext = document.createElement('p');
+newtext.textContent = gon.firstday+1+"日";
+day2.appendChild(newtext);
+var newtext = document.createElement('p');
+newtext.textContent = gon.firstday+2+"日";
+day3.appendChild(newtext);
+var newtext = document.createElement('p');
+newtext.textContent = gon.firstday+3+"日";
+day4.appendChild(newtext);
+var newtext = document.createElement('p');
+newtext.textContent = gon.firstday+4+"日";
+day5.appendChild(newtext);
+var newtext = document.createElement('p');
+newtext.textContent = gon.firstday+5+"日";
+day6.appendChild(newtext);
+
+
+// ログインーーーーーーーーーーーーーーーーーーーーー
+function login(){
+	// 入力ダイアログを表示 ＋ 入力内容を user に代入
+	user = window.prompt("password", "");
+	// 入力内容が tama の場合は example_tama.html にジャンプ
+	if(user == 'tama'){
+	// 空の場合やキャンセルした場合は警告ダイアログを表示
+	}else{
+		location.href = "soudaisai_bihin";
+	}
+}
+
+
+login();
+
+function katekate(){
+	delkate();
+	kate();
+	set_equip();
+}
+function set_equip(){
+	delelement();
+	out_equip();
+}
+katekate();
+set_equip();
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

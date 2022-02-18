@@ -1,0 +1,58 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <h>メッセージ</h>
+
+<%= form_tag(portal_allmessage_path(), :method => 'get') do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag 'Search' %>
+<% end %>
+                  
+                  <hr>
+                  <% @navlist.each do |portalnav| %>
+                    <% if portalnav.parent == "clubmessage" && portalnav.child != nil && portalnav.title != "false" then %>
+                      ●&nbsp;&nbsp;
+                      <% if portalnav.check == "imp" then %><sred>【重要】</sred>
+                        <% elsif portalnav.check == "ask" then %><sgreen>【要回答】</sgreen>
+                        <% elsif portalnav.check == "tt" then %><sblack>【体育会】</sblack>
+                        <% elsif portalnav.check == "gg" then %><sblack>【学術局】</sblack>
+                        <% elsif portalnav.check == "bb" then %><sblack>【文芸局】</sblack>
+                      <% end %>
+                      <%= link_to portalnav.child, portal1_path(portalnav.id) %><br>
+                    <% end %>
+                  <% end %>
+                  <br><%= paginate @navlist %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+<script>
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

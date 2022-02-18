@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<title>学友会　備品貸出システム</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<script src="js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+<header id="header">
+	<h1>学友会　備品貸出システム</h1>
+  <!-- ロゴ -->
+	<div class="logo">
+		<a href="/home">学友会<br /><span>Soka University</span></a>
+	</div>
+	<!-- / ロゴ -->
+	<!-- 電話番号+受付時間 -->
+	
+  <div class="info">
+<!-- 		<p class="tel"><span>電話:</span> 012-3456-7890</p>
+		<p class="open">受付時間: 平日 AM 10:00 〜 PM 5:00</p> -->
+	</div>
+	<!-- / 電話番号+受付時間 -->
+</header>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+<!--     		<li class="active"><a><strong>備品の貸出</strong><span>Rental equipment</span></a></li>
+			<li><a href="/uketuke2_new"><strong>音楽練習室</strong><span>Borrowed</span></a></li>
+			<li><a href="/uketuke3_new"><strong>会議室・和室・厨房</strong><span>cReservation</span></a></li>
+			<li><a href="/uketuke4_new"><strong>その他施設</strong><span>History</span></a></li> -->
+      <!-- <li><a href="/uketuke5"><strong>要望書</strong><span>special</span></a></li> -->
+		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会 備品の貸出</h3>
+     	<article>
+     		<div class="btn">
+	        <a href="/events" class="btn-flat-border">---------イベント一覧に戻る--------</a>
+  	      </div>
+
+     			<%= form_with(model: @event, local: true) do |form| %>
+		    	<p>
+		            <%= form.label :title, "タイトル：" %><br>
+		            <%= form.text_field :title %>
+		        </p>
+		        <p>
+		            <%= form.label :description, "説明：" %><br>
+		            <%= form.text_area :description %>
+		        </p>
+		        <p>
+		            <%= form.label :end, "開始時間：" %><br>
+		            <%= raw sprintf(
+			            form.datetime_select(
+			              :start,
+			              use_month_numbers: true,
+			              start_year: (Time.now.year),
+			              end_year: (Time.now.year+20),
+			              default: (Time.now),
+			              date_separator: '%s'),
+			            '年 ', '月 ') %>
+		        </p>
+		        <p>
+		            <%= form.label :end, "終了時間：" %><br>
+		            <%= raw sprintf(
+			            form.datetime_select(
+			              :end,
+			              use_month_numbers: true,
+			              tart_year: (Time.now.year),
+			              end_year: (Time.now.year+20),
+			              default: (Time.now),
+			              date_separator: '%s'),
+			            '年 ', '月 ') %>
+		        </p>
+		        <%= form.submit "予定を作成する"%>
+		    <% end %>
+
+
+        </div>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

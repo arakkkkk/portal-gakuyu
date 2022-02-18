@@ -1,0 +1,2 @@
+class Notelist < ApplicationRecord
+end

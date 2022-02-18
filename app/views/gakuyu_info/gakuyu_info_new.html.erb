@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_gakuyu_info' %>
+
+<!-- ============================メインナビゲーション================================ -->
+
+
+
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">アカウント作成</h3>
+     	<article>
+        <%= form_with(model: @nuser,:url => {:action => :gakuyu_info_create}, local: true) do |form| %>
+            <p>
+                <%= form.label :macname, "名前" %><br>
+                <%= form.text_field :macname %>
+            </p>
+            <p>
+                <%= form.label :name, "id：" %><br>
+                <%= form.text_field :name %>
+            </p>
+            <p>
+                <%= form.label :password, "パスワード：(英数字)" %><br>
+                <%= form.text_field :password %>
+            </p>
+            <%= form.submit "登録する"%>
+        <% end %>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">お問い合わせ</h3>
+     	<article>
+     		<div class="btn">
+     			<a href="/support" class="btn-flat-border">--------前の画面へ戻る--------</a>
+     		</div>
+     	<div class="kategori">
+			<p>申請者情報</p>
+     			<p5>団体名：<%= @support.g_name %></p5><br>
+		        <p5>名前：<%= @support.name %></p5><br>
+		        <p5>電話番号：<%= @support.tell %></p5><br>
+		        <p5>email：<%= @support.email %></p5><br>
+     		<br><p>内容</p>
+     			<p5>申請日：<%= @support.created_at.try(:strftime,'%m/%d-%H:%M') %></p5><br>
+		        <p5>時間：<%= @support.time.try(:strftime,'%m/%d-%H:%M') %></p5><br>
+				<p5>内容：<%= @support.text %></p5><br>
+			<br><p>状態</p>
+		        <br><p5><%= @support.status %></p5><br>
+		    <td><%= link_to '変更', support_edit_path(@support.id) %></td>
+		</div>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>
+
+
+<style>
+	.itiran a{
+		margin-right: 0;
+		text-align: right;
+	}
+</style>
+<script language="javascript" type="text/javascript">
+</script>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<!-- <nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/kyokuin1"><strong>引き継ぎ</strong><span>Take over</span></a></li>
+			<li class="active"><a href="/kyokuin2"><strong>貸出中（備品）</strong><span>Equipment</span></a></li>
+			<li><a href="/kyokuin3"><strong>貸出中（鍵）</strong><span>Facility</span></a></li>
+			<li><a href="/kyokuin4"><strong>予約一覧（備品）</strong><span>Equipmet</span></a></li>
+			<li><a href="/kyokuin5"><strong>予約一覧（鍵）</strong><span>Facility</span></a></li>
+			<li><a href="/kyokuin6"><strong>貸出履歴</strong><span>History</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav> -->
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+
+     		<div class="btn">
+     		<a href="javascript:history.back()" class="btn-flat-border">---------前のページに戻る--------</a>
+     		</div>
+
+		    <%= form_with(model: @rentalequip,:url => {:action => :soudaisai_update}, local: true) do |form| %>
+		    	<p>
+		            <%= form.label :henkyaku, "名前：" %><br>
+		            <%= form.text_field :henkyaku %>
+		        </p>
+		        <%= form.submit "返却" %>
+		        
+		    <% end %>
+
+     	
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<%= render 'layouts/head_note' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <div class="card-body">
+                     <% begin %><green><%= @notegroup.grouptwo %>　＞　<%= @notegroup.groupthree %></green><br><% rescue => e %><% aa=0 %><% end %>
+                    <h>ノート一覧</h><br>
+
+
+<%= form_tag(notenote_path(params[:format]), :method => 'get') do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag 'Search' %>
+<% end %>
+
+
+
+
+                    <hr>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+                      <a href=<%="notenote2."+params[:format]%>>新規追加</a><br>
+                    </button><br><br>                                   
+                      
+                      <% @notelist.each do |notelist| %>
+                          ●&nbsp;&nbsp;
+                          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=<%= "#portalmodal" + notelist.id.to_s %> >■</button>
+                          <div class="modal fade" id=<%= "portalmodal" + notelist.id.to_s %> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"><%= notelist.title %></h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                              <div class="modal-body"></div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary"><%= link_to "完了", {controller: "kportal", action: "toggletodo", id: notelist.id}, method: :post %></button>
+                              </div>
+                            </div>
+                            </div>
+                          </div>
+                        <%= link_to notelist.title, notecontent_path(notelist.id) %><br>
+                        <% end %>
+                        <% begin %>
+                          <br><%= paginate @notelist %>
+                        <% rescue => e %>
+                        <% p "no data "%>
+                        <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+<script>
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

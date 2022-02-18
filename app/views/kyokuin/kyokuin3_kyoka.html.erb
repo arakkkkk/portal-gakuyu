@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+
+     		<div class="btn">
+     		<a href="/kyokuin2" class="btn-flat-border">---------貸出中備品一覧--------</a>
+     		</div>
+
+	        	<div class="col_rental">
+	        	返却：<a><%= @facility.return_at.try(:strftime,'%m/%d-%H:%M') %></a>
+	        </div>
+	        <div class="col_rental"><div class="width_200">
+	        	団体名：<a><%= @facility.g_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	責任者名：<a><%= @facility.r_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	TELL：<a><%= @facility.tell %></a>
+	        </div></div>
+	        <div class="col_name">
+	        	<a class="aaa">部屋：<%= @facility.room %></a>
+	        </div>
+	        <br>
+
+		    <%= form_with(model: @facility,:url => {:action => :kyokuin3_crecre}, local: true) do |form| %>
+		    	<p>
+		            <%= form.label :kyoka, "許可者：" %><br>
+		            <%= form.text_field :kyoka, id: "kyoka" %>
+		        </p>
+		        <p>
+		        	<input type="radio" id="kasidasi" name="kasidasi" value="now">今すぐ貸し出す
+		        	<input type="radio" id="kasidasi" name="kasidasi" value="after">予約
+		        </p>
+		        <p>
+		        	<input type="hidden" id="id" name="id" value=<%= @facility.id %>>
+		        </p>
+
+		        <button type="button" onclick="sisetukyoka()">許可する</button>
+		    <% end %>
+
+     	
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

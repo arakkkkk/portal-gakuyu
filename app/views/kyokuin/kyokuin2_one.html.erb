@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">貸出詳細</h3>
+     	<article>
+     		<div class="btn">
+     			<a href="/kyokuin2" class="btn-flat-border">--------前の画面へ戻る--------</a>
+     		</div>
+     	<div class="kategori">
+     		<p>申請者情報</p>
+     			<p5>団体名：<%= @rentalequip.g_name %></p5><br>
+		        <p5>名前：<%= @rentalequip.r_name %></p5><br>
+		        <p5>電話番号：<%= @rentalequip.tell %></p5><br>
+		        <p5>email：<%= @rentalequip.email %></p5><br>
+     		<br><p>備品情報</p>
+     			<p5>備品：<%= @rentalequip.name %></p5><br>
+     			<p5>数：<%= @rentalequip.r_num %></p5><br>
+     			<p5>貸出時間：<%= @rentalequip.rental_at.try(:strftime,'%m/%d-%H:%M') %></p5><br>
+		        <p5>返却時間：<%= @rentalequip.return_at.try(:strftime,'%m/%d-%H:%M') %></p5><br>
+		        <p5>No.：<%= @rentalequip.no_text %></p5><br>
+				<p5>使用場所：<%= @rentalequip.place %></p5><br>
+				<p5>理由：<%= @rentalequip.katudo_naiyo %></p5><br>
+			<br><p>他</p>
+		        <br><p5>貸出許可：<%= @rentalequip.kyoka %></p5><br>
+		        <p5>貸出者：<%= @rentalequip.kasidasi %></p5><br>
+
+		        <br><br><a><%= link_to '変更', kyokuin2_edit_path(@rentalequip.id) %><span>__</span>
+                    <%= link_to '消去', deletedata_path(@rentalequip.id), :method => :delete, data: { confirm: 'Are you sure?' } %></a>
+     	</div>
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+
+
+     	<div class="kategori">
+			<%= form_with (:url => {:action => :kyokuin6_serch}, local: true) do |form| %>
+			  <%= f.label :weather_key, 'Sarch weather' %>
+			  <%= f.text_field :weather_key %>
+			  <%= f.submit 'Search' %>
+			<% end %>
+		</div>
+		<br>
+
+    	<div class="kategori">
+    	<p>検索結果</p>
+     		<% @serch.each do |rental_equip| %>
+	        	<div class="col_rental">
+	        	貸出：<a><%= rental_equip.rental_at.try(:strftime,'%m/%d-%H:%M') %></a>
+	        </div>
+	        <div class="col_rental"><div class="width_50">
+	        	数：<a><%= rental_equip.r_num %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	団体名：<a><%= rental_equip.g_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	責任者名：<a><%= rental_equip.r_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	TELL：<a><%= rental_equip.tell %></a>
+	        </div></div>
+	        <div class="col_name">
+	        	<a class="aaa">備品：<%= rental_equip.name %></a>
+	        </div>
+	        <br>
+    		<% end %>
+    	</div></div>
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+<script language="javascript" type="text/javascript">
+	$('.music').hide();
+	$('.meeting').hide();
+	$('.others').hide();
+	function set(){
+		var checked = document.getElementById('seach').value;
+		if (checked == "備品"){
+			$('.rentalequip').hide();
+			$('.music').hide();
+			$('.meeting').hide();
+			$('.others').hide();
+			$('.rentalequip').show();
+		}
+		if (checked=="音楽練習室"){
+			$('.rentalequip').hide();
+			$('.music').hide();
+			$('.meeting').hide();
+			$('.others').hide();
+			$('.music').show();
+		}
+		if (checked=="会議室・厨房・和室"){
+			$('.rentalequip').hide();
+			$('.music').hide();
+			$('.meeting').hide();
+			$('.others').hide();
+			$('.meeting').show();
+		}
+		if (checked=="その他施設"){
+			$('.rentalequip').hide();
+			$('.music').hide();
+			$('.meeting').hide();
+			$('.others').hide();
+			$('.others').show();
+		}
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

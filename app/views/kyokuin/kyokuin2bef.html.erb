@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+
+     	<div class="kategori">
+     		<div class="btn">
+     		<a href="/kyokuin2_itiran" class="btn-flat-border">--------一覧で見る--------</a>
+     		</div>
+     		<p>貸し出し許可未</p>
+     		<% @kasidasi.each do |rental_equip| %>
+	        <div class="col_rental">
+	        	返却：<a><%= rental_equip.return_at.try(:strftime,'%m/%d-%H:%M') %></a>
+	        </div>
+	        <div class="col_rental"><div class="width_50">
+	        	数：<a><%= rental_equip.r_num %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	団体名：<a><%= rental_equip.g_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	名前：<a><%= rental_equip.r_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	TELL：<a><%= rental_equip.tell %></a>
+	        </div></div><br>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出許可：<a><%= rental_equip.kyoka %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出：<a><%= rental_equip.kasidasi %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	No.：<a><%= rental_equip.no_text %></a>
+	        </div></div><br>
+	        <div class="col_name">
+	        	<a class="aaa">備品：<%= rental_equip.name %></a>
+	        </div>
+	        <div class="col_name">
+	        	<div class="btn2">
+	        	<td><%= link_to '変更', kyokuin2_edit_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<td><%= link_to '貸出', kyokuin2_kyoka_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<tr>
+		        <td><%= link_to 'Destroy', deletedata_path(rental_equip), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+			    </tr>
+	        </div></div>
+	        <br>
+	        <br>
+    		<% end %>
+
+
+
+
+     		<p>延滞中備品</p>
+     		<% @entai.each do |rental_equip| %>
+	        <div class="col_rental">
+	        	返却：<a><%= rental_equip.return_at.try(:strftime,'%m/%d-%H:%M') %></a>
+	        </div>
+	        <div class="col_rental"><div class="width_50">
+	        	数：<a><%= rental_equip.r_num %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	団体名：<a><%= rental_equip.g_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	名前：<a><%= rental_equip.r_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	TELL：<a><%= rental_equip.tell %></a>
+	        </div></div><br>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出許可：<a><%= rental_equip.kyoka %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出：<a><%= rental_equip.kasidasi %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	No.：<a><%= rental_equip.no_text %></a>
+	        </div></div><br>
+	        <div class="col_name">
+	        	<a class="aaa">備品：<%= rental_equip.name %></a>
+	        </div>
+	        <div class="col_name"><div class="btn2">
+	        	<td><%= link_to '変更', kyokuin2_edit_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<td><%= link_to '返却', kyokuin2_henkyaku_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<tr>
+		        <td><%= link_to 'Destroy', deletedata_path(rental_equip), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+			    </tr>
+	        </div></div><br>
+	        <% end %>
+
+
+
+
+
+     		<p>貸出中備品</p>
+     		<% @kasidasityu.each do |rental_equip| %>
+	        <div class="col_rental">
+	        	返却：<a><%= rental_equip.return_at.try(:strftime,'%m/%d-%H:%M') %></a>
+	        </div>
+	        <div class="col_rental"><div class="width_50">
+	        	数：<a><%= rental_equip.r_num %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	団体名：<a><%= rental_equip.g_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	名前：<a><%= rental_equip.r_name %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	TELL：<a><%= rental_equip.tell %></a>
+	        </div></div><br>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出許可：<a><%= rental_equip.kyoka %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	貸出：<a><%= rental_equip.kasidasi %></a>
+	        </div></div>
+	        <div class="col_rental"><div class="width_200">
+	        	No.：<a><%= rental_equip.no_text %></a>
+	        </div></div><br>
+	        <div class="col_name">
+	        	<a class="aaa">備品：<%= rental_equip.name %></a>
+	        </div>
+	        <div class="col_name"><div class="btn2">
+	        	<td><%= link_to '変更', kyokuin2_edit_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<td><%= link_to '返却', kyokuin2_henkyaku_path(rental_equip) %></td>
+	        	</div><div class="btn2">
+	        	<tr>
+		        <td><%= link_to 'Destroy', deletedata_path(rental_equip), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+			    </tr>
+	        </div></div><br>
+	        <% end %>
+    	</div>
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

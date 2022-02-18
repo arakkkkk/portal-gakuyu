@@ -1,0 +1,123 @@
+<!DOCTYPE html> 
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/header' %>
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">    
+      <ul>
+      	<li class="active"><a><strong>備品の貸出</strong><span>Rental equipment</span></a></li>
+  			<li><a href="/uketuke2_new"><strong>音楽練習室</strong><span>Borrowed</span></a></li>
+  			<li><a href="/uketuke3_new"><strong>会議室・和室・厨房</strong><span>cReservation</span></a></li>
+  			<li><a href="/uketuke4_new"><strong>その他施設</strong><span>History</span></a></li>
+        <!-- <li><a href="/uketuke5"><strong>要望書</strong><span>special</span></a></li> -->
+  		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+<div id="wrapper">
+  <section id="main">
+      <div class="red_text">
+        ・試験運用
+      </div>
+  </section>
+</div>
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会 備品の貸出</h3>
+     	<article>
+     	<div class="kategori">
+     		<p>高価備品</p>
+     		<% @koukabihin.each do |equipment| %>
+	        	<a><%= link_to equipment.name, uketuke1_new_path(equipment) %></a>
+	        <br>
+    		<% end %>
+    	</div>
+    	<div class="kategori">
+    		<p>コード類</p>
+     		<% @kodorui.each do |equipment| %>
+	        	<a><%= link_to equipment.name, uketuke1_new_path(equipment) %></a>
+	        <br>
+    		<% end %>
+    	</div>
+    	<div class="kategori">
+    		<p>文具</p>
+     		<% @bungu.each do |equipment| %>
+	        	<a><%= link_to equipment.name, uketuke1_new_path(equipment) %></a>
+	        <br>
+    		<% end %>
+    	</div>
+        <div class="kategori">
+        	<p>掃除工具調理</p>
+     		<% @souzikougutyouri.each do |equipment| %>
+	        	<a><%= link_to equipment.name, uketuke1_new_path(equipment) %></a>
+	        <br>
+    		<% end %>
+    	</div>
+        <div class="kategori">
+        	<p>スポーツ用品</p>
+     		<% @supotuyouhin.each do |equipment| %>
+	        	<a><%= link_to equipment.name, uketuke1_new_path(equipment) %></a>
+	        <br>
+    		<% end %>
+    	</div>
+        <div class="kategori">
+            <p>分室備品</p>
+            <% @bunsitu.each do |equipment| %>
+                <a><%= link_to equipment.name, uketuke1_new_path(equipment) %></a>
+            <br>
+            <% end %>
+        </div>
+        <div class="kategori">
+            <p>創立者セット</p>
+            <% @souritusya.each do |equipment| %>
+                <a><%= link_to equipment.name, uketuke1_new_path(equipment) %></a>
+            <br>
+            <% end %>
+        </div>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

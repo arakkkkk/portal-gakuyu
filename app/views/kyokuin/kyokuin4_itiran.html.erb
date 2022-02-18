@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+     		<div class="btn">
+     		<a href="/kyokuin4" class="btn-flat-border">--------前の画面に戻る--------</a>
+     		</div>
+     	<div class="kategori">
+     		<p>予約備品</p>
+	     		<div class="itiran"><a>備品</a></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>個数</a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出者</a></div>
+	     		<br>
+	     		<div class="bord"></div>
+<!-- 	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a></a></div> -->
+     		<% @yoyaku.each do |rental_equip| %>
+     			<div class="itiran"><a/><%= rental_equip.name %></a></div>
+     			<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= rental_equip.rental_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= rental_equip.return_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	     		<div class="itiran"><a></a></div>
+	        	<div class="itiran"><a><%= rental_equip.r_num %></a>個</div>
+	        	<div class="itiran"><div class="w100"><a><%= rental_equip.g_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= rental_equip.r_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= rental_equip.tell %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= rental_equip.kasidasi %></a></div></div>
+	        	<td><%= link_to '変更', kyokuin2_edit_path(rental_equip) %></td>
+	        	<td><%= link_to '貸出', kyokuin2_kasidasi_path(rental_equip) %></td>
+		        <td><%= link_to '消去', deletedata_path(rental_equip), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+	        <br>
+	        <% end %>
+    	</div>
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

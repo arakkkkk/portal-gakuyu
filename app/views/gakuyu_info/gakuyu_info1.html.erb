@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<title>学友会　備品貸出システム</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<%= include_gon %>
+</head>
+
+
+
+<body>
+
+<%= render 'layouts/head_gakuyu_info' %>
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main" class="content">
+    	<h3 class="heading">局員全体連絡</h3>
+     	<article>
+
+		<div class="btn">
+		<a href="/gakuyu_info1_new" class="btn-flat-border">---------新規投稿--------</a>
+		</div>
+		<div class="infolist" id="infolist"></div>
+
+		</article>
+	</section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+<!-- / フッター -->
+</body>
+</html>
+
+
+<script>
+	console.log(gon.info)
+	text=""
+	for(i=gon.info.length-1;i>=0;i--){
+		if(gon.info[i]["done"]==null){
+			text = text+'<div class="alert alert-secondary" role="alert">'
+					+'<a href="gakuyu_info1_content.'+gon.info[i]["id"]+'">'+gon.info[i]["title"]+'</a>'
+					+'<hr>'
+			if(gon.info[i]["badgelist"].includes('1')){
+				text = text+'<span class="badge badge-danger">重要</span>'
+			}else{
+				text = text+'<span class="badge">重要</span>'
+			}
+			if(gon.info[i]["badgelist"].includes('2')){		
+				text = text+'<span class="badge badge-success">回答</span>'
+			}else{		
+				text = text+'<span class="badge">回答</span>'
+			}
+			if(gon.info[i]["badgelist"].includes('3')){		
+				text = text+'<span class="badge badge-primary">宣伝</span>'
+			}else{		
+				text = text+'<span class="badge">宣伝</span>'
+			}
+			if(gon.info[i]["badgelist"].includes('4')){		
+				text = text+'<span class="badge badge-info">クラブ</span>'
+			}else{		
+				text = text+'<span class="badge">クラブ</span>'
+			}
+			text = text+'</div>'
+		}else if(gon.info[i]["done"].includes(gon.user_info.macname)){
+			text = text+'<div class="alert alert-light" role="alert">'
+					+'<a href="gakuyu_info1_content.'+gon.info[i]["id"]+'">'+gon.info[i]["title"]+'</a>'
+					+'<hr>'
+			if(gon.info[i]["badgelist"].includes('1')){
+				text = text+'<span class="badge badge-danger">重要</span>'
+			}else{
+				text = text+'<span class="badge">重要</span>'
+			}
+			if(gon.info[i]["badgelist"].includes('2')){		
+				text = text+'<span class="badge badge-success">回答</span>'
+			}else{		
+				text = text+'<span class="badge">回答</span>'
+			}
+			if(gon.info[i]["badgelist"].includes('3')){		
+				text = text+'<span class="badge badge-primary">宣伝</span>'
+			}else{		
+				text = text+'<span class="badge">宣伝</span>'
+			}
+			if(gon.info[i]["badgelist"].includes('4')){		
+				text = text+'<span class="badge badge-info">クラブ</span>'
+			}else{		
+				text = text+'<span class="badge">クラブ</span>'
+			}
+			text = text+'</div>'
+		}else{
+			text = text+'<div class="alert alert-secondary" role="alert">'
+					+'<a href="gakuyu_info1_content.'+gon.info[i]["id"]+'">'+gon.info[i]["title"]+'</a>'
+					+'<hr>'
+			if(gon.info[i]["badgelist"].includes('1')){
+				text = text+'<span class="badge badge-danger">重要</span>'
+			}else{
+				text = text+'<span class="badge">重要</span>'
+			}
+			if(gon.info[i]["badgelist"].includes('2')){		
+				text = text+'<span class="badge badge-success">回答</span>'
+			}else{		
+				text = text+'<span class="badge">回答</span>'
+			}
+			if(gon.info[i]["badgelist"].includes('3')){		
+				text = text+'<span class="badge badge-primary">宣伝</span>'
+			}else{		
+				text = text+'<span class="badge">宣伝</span>'
+			}
+			if(gon.info[i]["badgelist"].includes('4')){		
+				text = text+'<span class="badge badge-info">クラブ</span>'
+			}else{		
+				text = text+'<span class="badge">クラブ</span>'
+			}
+			text = text+'</div>'
+		}
+	}
+	document.getElementById('infolist').insertAdjacentHTML('afterbegin',text)
+
+
+
+
+
+</script>

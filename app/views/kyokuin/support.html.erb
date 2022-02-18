@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">お問い合わせ</h3>
+     	<article>
+     			
+     		<% @support.each do |support| %>
+     			<div class="itiran"><div class="w100"><a><%= support.created_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	        	<div class="itiran"></div>
+				<div class="itiran"><div class="w100"><a/><%= support.name %></a></div></div>
+     			<div class="itiran"></div><div class="itiran"><a></a></div>
+	        	<div class="itiran"><div class="w100"><a><%= support.g_name %></a></div></div>
+	        	<div class="itiran"><a></a></div><div class="itiran"><a></a></div><div class="itiran"><a></a></div>
+	        	<div class="itiran"><div class="w100"><a><%= support.tell %></a></div></div>
+	        	<div class="itiran"></div><div class="itiran"><a></a></div>
+	        	<div class="itiran"><div class="w100"><a><%= support.status %></a></div></div>
+	        	<div class="itiran"></div>
+	        		<td><%= link_to '変更', support_edit_path(support) %></td>
+		        	<td><%= link_to '詳細', support_one_path(support) %></td><br>
+	        <% end %>
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>
+
+
+<style>
+	.itiran a{
+		margin-right: 0;
+		text-align: right;
+	}
+</style>
+<script language="javascript" type="text/javascript">
+</script>

@@ -1,0 +1,2 @@
+class Portalnav < ApplicationRecord
+end

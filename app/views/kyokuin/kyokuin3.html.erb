@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+
+
+
+     	<div class="kategori">
+     		<p>貸し出し許可未</p>
+     			<div class="itiran"><a>部屋</a></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出者</a></div>
+	     		<br>
+	     		<div class="bord"></div>
+     		<% @kasidasi.each do |facility| %>
+	        	<div class="itiran"><div class="w100"><a/><%= facility.room %></a></div></div>
+     			<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.rental_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.return_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	     		<div class="itiran"><a></a></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.g_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.r_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.tell %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.kasidasi %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<td><%= link_to '変更', kyokuin3_edit_path(facility) %></td>
+	        	<td><%= link_to '許可', kyokuin3_kyoka_path(facility) %></td>
+		        <td><%= link_to '詳細', kyokuin3_one_path(facility) %></td>
+			    <br>
+    		<% end %>
+    		<br><br><br><br><br>
+
+     		<p>延滞中</p>
+     			<div class="itiran"><a>部屋</a></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出者</a></div>
+	     		<br>
+	     		<div class="bord"></div>
+     		<% @entai.each do |facility| %>
+	        	<div class="itiran"><div class="w100"><a/><%= facility.room %></a></div></div>
+     			<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.rental_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.return_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	     		<div class="itiran"><a></a></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.g_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.r_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.tell %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.kasidasi %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<td><%= link_to '変更', kyokuin3_edit_path(facility) %></td>
+	        	<td><%= link_to '返却', kyokuin3_henkyaku_path(facility) %></td>
+		        <td><%= link_to '変更', kyokuin3_edit_path(facility) %></td>
+	        	<td><%= link_to '返却', kyokuin3_henkyaku_path(facility) %></td>
+		        <td><%= link_to '詳細', kyokuin3_one_path(facility) %></td>
+			    <br>
+    		<% end %>
+    		<br><br><br><br><br>
+
+     		<p>使用中</p>
+     			<div class="itiran"><a>部屋</a></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>団体名</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出者</a></div>
+	     		<br>
+	     		<div class="bord"></div>
+     		<% @kasidasityu.each do |facility| %>
+	        	<div class="itiran"><div class="w100"><a/><%= facility.room %></a></div></div>
+     			<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.rental_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.return_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	     		<div class="itiran"><a></a></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.g_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.r_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.tell %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.kasidasi %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<td><%= link_to '変更', kyokuin3_edit_path(facility) %></td>
+	        	<td><%= link_to '返却', kyokuin3_henkyaku_path(facility) %></td>
+	        	<td><%= link_to '詳細', kyokuin3_one_path(facility) %></td>
+			    <br>
+    		<% end %>
+    		<br><br><br><br><br>
+    		<% @tyuothers.each do |facility| %>
+	        	<div class="itiran"><div class="w100"><a/><%= facility.room %></a></div></div>
+     			<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.rental_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.return_at.try(:strftime,'%m/%d-%H:%M') %></a></div></div>
+	     		<div class="itiran"><a></a></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.g_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.r_name %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.tell %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<div class="itiran"><div class="w100"><a><%= facility.kasidasi %></a></div></div>
+	        	<div class="itiran"></div>
+	        	<td><%= link_to '変更', kyokuin3_edit_path(facility) %></td>
+	        	<td><%= link_to '返却', kyokuin3_henkyaku_path(facility) %></td>
+	        	<td><%= link_to '詳細', kyokuin3_one_path(facility) %></td>
+			    <br>
+    		<% end %>
+    		<br><br><br><br><br>
+    		
+    	</div>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

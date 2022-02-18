@@ -1,0 +1,143 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <div class="card-body">
+                    <h>メッセージ</h>
+                    <br>
+                    <% request = 0%>
+                    <% @request.each do |portalnav| %>
+                      <% if portalnav.title == "false" then %>
+                        <% request += 1 %>
+                      <% end %>
+                    <% end %>
+                    <% if @user.logtype == "editor" then %>
+                      <p class="text-danger"><a href="portal_request">
+                        <% if request > 0 %>
+                          ※<%= request %>件の更新依頼が来ています
+                        <% end %>
+                      </p></a>
+                    <% end %>
+
+
+                    <hr>
+                    <div data-title="メッセージの確認" data-intro="メッセージが一覧で確認できます。タイトルをクリックすることでメッセージの内容を表示することができます。" data-step='2'>
+                      <% @navlist.each do |portalnav| %>
+                        <% if portalnav.parent == "clubmessage" && portalnav.child != nil && portalnav.title != "false" then %>
+                          ●&nbsp;&nbsp;
+                          <% if portalnav.check == "imp" then %><sred>【重要】</sred>
+                          <% elsif portalnav.check == "ask" then %><sgreen>【要回答】</sgreen>
+                          <% elsif portalnav.check == "tt" then %><sblack>【体育会】</sblack>
+                          <% elsif portalnav.check == "gg" then %><sblack>【学術局】</sblack>
+                          <% elsif portalnav.check == "bb" then %><sblack>【文芸局】</sblack>
+                          <% end %>
+                          <%= link_to portalnav.child, portal1_path(portalnav.id) %>
+                          <% if @user.logtype == "editor" then %>
+                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=<%= "#portalmodal" + portalnav.id.to_s %> >消去</button>
+                            <div class="modal fade" id=<%= "portalmodal" + portalnav.id.to_s %> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><%= portalnav.child %>の消去</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+                            <div class="modal-body">一度消去するともとには戻せません</div>
+                            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary"><%= link_to "消去", delete_portalnav_path(portalnav.id) %></button>
+                            </div></div></div></div>
+                          <% end %>
+                          <br>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <a href="/portal_allmessage">~もっと見る〜</a><br>
+                    <% if @user.logtype == "editor" then %>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+                        メッセージの追加
+                      </button>                                   
+                      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">メッセージの追加</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body" >
+                                <%= form_with(model: @portalnav,:url => {:action => :club_addnavchild}, local: true) do |form| %>
+                                  <br><p>
+                                      <%= form.label :child, "タイトル" %><br>
+                                      <%= form.text_field :child %>
+                                  </p><br><br>
+                                  <%= form.hidden_field :group, :value => "club" %>
+                                  <%= form.hidden_field :parent, :value => "clubmessage" %>
+
+                                  <br><%= form.radio_button :check, :imp %>【重要】
+                                  <br><%= form.radio_button :check, :ask %>【要回答】
+                                  <br><%= form.radio_button :check, :tt %>【体育会】
+                                  <%= form.radio_button :check, :gg %>【文芸局】
+                                  <%= form.radio_button :check, :bb %>【学術局】
+                                </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary"><%= form.submit "登録する"%></button><% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        <hr>
+                        <button type="button" class="btn btn-primary">
+                            <span class="buttontext"><%= link_to 'ページの編集', portal2_url(100) %></span>
+                        </button>
+                    <% elsif @user.logtype == "kyokuin" %>
+                      <div data-title="メッセージの更新依頼" data-intro="ここからメッセージの更新を依頼することができます。" data-step='3'>
+                        <a href="portal3"><button type="button" class="btn btn-warning">更新依頼</button></a>
+
+                      </div>
+                    <% end %>
+                    <hr>
+                    <div class="docarea" id="docarea">
+                        <div id="editor"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+  <!-- Include the Quill library -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <!-- for quill table -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0-dev.3/quill.min.js" type="text/javascript"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0-dev.3/quill.snow.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/quill-table-ui@1.0.5/dist/umd/index.js" type="text/javascript"></script>
+  <link href="https://unpkg.com/quill-table-ui@1.0.5/dist/index.css" rel="stylesheet">
+  <!-- local js -->
+  <%= javascript_include_tag 'quill2.js' %>
+  <!-- stylesheet -->
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <%= stylesheet_link_tag "inside/quill.css", media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

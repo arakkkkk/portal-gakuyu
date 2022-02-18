@@ -1,0 +1,41 @@
+/* for editor */
+.docarea{
+    width: 80%;
+    height: 100%;
+}
+.ql-editor p{
+    font-size: 18px;
+    height: auto;
+}
+.setbutton{
+    margin-top: 60px
+}
+.bi-code-slash{
+    color: black; 
+}
+.bi-code-slash:hover{
+    color: #0166CC;
+}
+
+
+
+/* for view */
+table, td{
+    border-collapse: collapse;
+    border-color:grey;
+    border-style:solid;
+    border-width:1px ;
+}
+td{
+    padding:5px 10px;
+}
+span.ql-size-small{
+    font-size: 13.5;
+}
+span.ql-size-large{
+    font-size: 27;
+}
+span.ql-size-huge{
+    font-size: 45;
+}
+

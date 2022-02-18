@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.75, minimum-scale=0.75, user-scalable=yes">
+
+  <title>創価大学学友会P</title>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <%= include_gon %>
+
+  <!-- bootstrap CDN ( Contents Delivery Network ) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  
+  <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.2.1/intro.js" integrity="sha512-3FU3wmuqkdVSlkbilARthlThrcm55nEaOO1QPUq+4n/lM8dfbEEspyk4RWs5ETf0Q7CiEVc3dtts7q4NLY2ulg==" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.2.1/introjs.css" integrity="sha512-i+WzzATeaDcwcfi5CfLn63qBxrKqiQvDLC+IChU1zVlaPguPgJlddOR07nU28XOoIOno9WPmJ+3ccUInpmHxBg==" crossorigin="anonymous" />
+  <%= stylesheet_link_tag "inside/portal.css", media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'portal_.js' %>
+
+</head>
+<style>
+    #navbar{
+        background-image: url("<%= asset_path("gakusen41.jpg") %>");
+    }
+</style>
+
+
+
+
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓top bar↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
+<%# <div class="fixed-top"> %>
+<div class="imagenav">
+  <nav class="navbar navbar-expand-lg px-4 pt-0 pb-0 font-weight-bold" id="navbar">
+    <p class="navbar-brand"><span class="brand2">創価大学</span><span class="brand1">学友会<%= @titlec %></span><span class="brand2">ポータルサイト</span></p>
+  </nav>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button onclick="togglemenubtn()" class="tgbtn">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <button class="navbar-toggler navbtn" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav mr-auto"></ul>
+    <ul class="navbar-nav">
+      <li class="nav-item mx-2 h5">
+        <a href="/portal_login">ログイン</a>
+      </li>
+      <% if @user != nil then %>
+        <% if @user.logtype == "editor" || @user.logtype == "kyokuin" then %>
+          <li class="nav-item mx-2 h5">
+            <a href="/portal_index">クラブページ</a>
+          </li>
+          <li class="nav-item mx-2 h5">
+            <a href="/kportal_index">局員ページ</a>
+          </li>
+          <li class="nav-item mx-2 h5">
+            <a href="/kportal_note">ノート</a>
+          </li>
+        <% end %>
+      <% end %> 
+      <li class="nav-item mx-2 h5">
+        <!-- <a href="https://gakuyukai.soka.ac.jp/" target=”_blank”>学友会HP</a> -->
+        <a href="https://gakuyukai.soka.ac.jp/" target=”_blank”>学友会HP</a> 
+      </li>
+      <li class="nav-item mx-2 h5">
+        <a href ="#" id="introjs">使い方</a>
+      <li>
+    </ul>
+  </div>
+</nav>
+<%# </div> %>
+
+<body>
+
+<div class="wrapper d-flex align-items-stretch">
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓side bar↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
+  <nav id="sidebar">
+  <div class="px-4 pt-0">
+    <ul class="list-unstyled components mb-5 font-weight-bold" id="">
+      <% url = request.url %>
+      <% if url.match('notecontent') == nil %>
+        <li>
+            <a href=<%= "notetodo."+params[:format] %>>ToDoList</a>
+        </li>
+        <li>
+          <a href=<%= "notenote."+params[:format] %>>ノート</a>
+        </li>
+      <% else %>
+        <li>
+            <a href=<%= "notetodo."+@content.parent %>>ToDoList</a>
+        </li>
+        <li>
+          <a href=<%= "notenote."+@content.parent %>>ノート</a>
+        </li>
+      <% end %>
+      <%# <li> %>
+        <%# <a href="#list1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">リスト２</a> %>
+        <%# <ul class="collapse list-unstyled show" id=""> %>
+          <%# <li> %>
+            <%# <a id="list1" href="/kportal1.'+portalnav.id.to_s+'">ページA</a> %>
+            <%# <a id="list1" href="/kportal1.'+portalnav.id.to_s+'">ページB</a> %>
+            <%# <a id="list1" href="/kportal1.'+portalnav.id.to_s+'">ページC</a> %>
+            <%# <button type="button" class="btn btn-secondary btn-sm my-2"><a  id="paddingnone" href="kportal_addchild.'+parent+'">＋</a></button> %>
+          <%# </li> %>
+        <%# </ul> %>
+      <%# </li> %>
+    </ul>
+  </div>
+</nav>
+  <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑side bar↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑+</div> -->
+
+

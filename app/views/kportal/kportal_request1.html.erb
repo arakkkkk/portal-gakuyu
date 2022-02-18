@@ -1,0 +1,70 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                        <button type="button" class="btn btn-primary">
+                            <span class="buttontext"><%= link_to 'ページを編集して投稿', portal2_url(params[:format]) %></span>
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            <span class="buttontext"><%= link_to 'ページの投稿を許可', portal_request2_url(params[:format]) %></span>
+                        </button>
+                        <hr>
+                    <div class="portalcontent" id="portalcontent"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+<script>
+    text=""
+    if(gon.content["content"] != null){
+      if(gon.content["content"].indexOf('\n') != -1){
+        for(i=0;i<gon.content["content"].split('\n').length;i++){	
+            textcontent = gon.content["content"].split('\n')[i].replace('<h>','<br><h>').replace('</h>','</h><hr>')
+            textcontent = AutoLink(textcontent)
+            text = text+textcontent + '<br>'
+        }
+      }else{
+        text = gon.content["content"]
+      }
+    }
+    text = text.replaceAll('(emoji)','')
+    text = text.replaceAll('(zero)','<green>0</green>')
+    text = text.replaceAll('(one)','<green>1</green>')
+    text = text.replaceAll('(two)','<green>2</green>')
+    text = text.replaceAll('(three)','<green>3</green>')
+    text = text.replaceAll('(four)','<green>4</green>')
+    text = text.replaceAll('(five)','<green>5</green>')
+    text = text.replaceAll('(six)','<green>6</green>')
+    text = text.replaceAll('(seven)','<green>7</green>')
+    text = text.replaceAll('(eight)','<green>8</green>')
+    text = text.replaceAll('(nine)','<green>9</green>')
+    text = text.replaceAll('(ten)','<green>10</green>')
+    text = text.replaceAll(/\(.\)/g,function(){return arguments[0].replace('(','<green>').replace(')','</green>')})
+    document.getElementById('portalcontent').insertAdjacentHTML('beforeend',text)
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

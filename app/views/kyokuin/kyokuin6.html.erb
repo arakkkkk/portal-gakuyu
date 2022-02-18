@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+
+     	<a>絞り込み</a><br>
+     	<div class="kategori">
+			<select id="seach" onchange="set()">
+				<option value="備品">備品</option>
+				<option value="音楽練習室">音楽練習室</option>
+				<option value="会議室・厨房・和室">会議室・厨房・和室</option>
+				<option value="その他施設">その他施設</option>
+			</select>
+		</div>
+		<div class="search1">
+			<select id="equip" onchange="set2()">
+				<option value='全ての備品'>全ての備品</option>
+				<% @equipment.each do |equipment| %>
+				<option value=<%= equipment.name %>><%= equipment.name %></option>
+				<% end %>
+			</select>
+		</div>
+		<br>
+		<div class="search2">
+			<select id="music" onchange="set3()">
+				<option value='全ての施設'>全ての施設</option>
+				<option value="音楽練習室A">音楽練習室A</option>
+				<option value="音楽練習室B">音楽練習室B</option>
+				<option value="音楽練習室C">音楽練習室C</option>
+				<option value="音楽練習室D">音楽練習室D</option>
+				<option value="音楽練習室E">音楽練習室E</option>
+				<option value="音楽練習室F">音楽練習室F</option>
+				<option value="音楽練習室G">音楽練習室G</option>
+			</select>
+		</div>
+		<br>
+		<div class="search3">
+			<select id="meeting" onchange="set4()">
+				<option value='全ての施設'>全ての施設</option>
+				<option value="会議室１">会議室１</option>
+				<option value="会議室２">会議室２</option>
+				<option value="会議室３">会議室３</option>
+				<option value="厨房">厨房</option>
+				<option value="和室">和室</option>
+			</select>
+		</div>
+		<br>
+		<div class="search4">
+			<select id="others" onchange="set5()">
+				<option value='全ての施設'>全ての施設</option>
+				<option value='共同ホール'>共同ホール</option>
+				<option value='301の鍵（同好会）'>301の鍵（同好会）</option>
+				<option value='体育倉庫（小）'>体育倉庫（小）</option>
+				<option value='プレハブ（白百合）'>プレハブ（白百合）</option>
+				<option value='物干し室'>物干し室</option>
+				<option value='共スタ１'>共スタ１</option>
+				<option value='共スタ２'>共スタ２</option>
+				<option value='中スタ'>中スタ</option>
+				<option value='中音'>中音</option>
+				<option value='大スタ'>大スタ</option>
+				<option value='大練'>大練</option>
+				<option value='318の鍵'>318の鍵</option>
+				<option value='池田記念講堂B1'>池田記念講堂B1</option>
+			</select>
+		</div>
+		<br>
+
+		<div class="list" id="list"></div>
+
+
+
+
+
+
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+<script language="javascript" type="text/javascript">
+		var allequip = function(){
+		for(i=0;i<gon.count;i++){
+			var newtext = document.createElement('a5');
+			newtext.textContent = '貸出：'+gon.rentalequip[i].rental_at.slice(5,7)+'月'
+			+gon.rentalequip[i].rental_at.slice(8,10)+'日'
+			+gon.rentalequip[i].rental_at.slice(11,13)+'時'
+			+gon.rentalequip[i].rental_at.slice(14,16)+'分';
+			list.appendChild(newtext);
+			var newtext = document.createElement('a5');
+			newtext.textContent = '返却：'+gon.rentalequip[i].return_at.slice(5,7)+'月'
+			+gon.rentalequip[i].return_at.slice(8,10)+'日'
+			+gon.rentalequip[i].return_at.slice(11,13)+'時'
+			+gon.rentalequip[i].return_at.slice(14,16)+'分';
+			list.appendChild(newtext);
+			var newtext = document.createElement('a5');
+			newtext.textContent = '団体名：'+gon.rentalequip[i].g_name;
+			list.appendChild(newtext);
+			var newtext = document.createElement('a5');
+			newtext.textContent = '責任者名：'+gon.rentalequip[i].r_name;
+			list.appendChild(newtext);
+			var newtext = document.createElement('a5');
+			newtext.textContent = 'TELL：'+gon.rentalequip[i].tell;
+			list.appendChild(newtext);
+			var newtext = document.createElement('a5');
+			newtext.textContent = '貸出者：'+gon.rentalequip[i].kasidasi;
+			list.appendChild(newtext);
+			var newtext = document.createElement('a5');
+			newtext.textContent = '返却受付者：'+gon.rentalequip[i].henkyaku;
+			list.appendChild(newtext);
+			var newtext = document.createElement('br');
+			list.appendChild(newtext);
+			var newtext = document.createElement('a6');
+			newtext.textContent = '備品：'+gon.rentalequip[i].name;
+			list.appendChild(newtext);
+			var newtext = document.createElement('a6');
+			newtext.textContent = '個数：'+gon.rentalequip[i].r_num;
+			list.appendChild(newtext);
+			var newtext = document.createElement('br');
+			list.appendChild(newtext);
+		}
+	}
+
+	var music_room = function(){
+		var selected = document.getElementById("music")
+		for(i=0;i<gon.fcount;i++){
+			if(gon.facility[i].room=='音楽練習室A'||gon.facility[i].room=='音楽練習室B'||gon.facility[i].room=='音楽練習室C'||
+			gon.facility[i].room=='音楽練習室D'||gon.facility[i].room=='音楽練習室E'||gon.facility[i].room=='音楽練習室F'||
+			gon.facility[i].room=='音楽練習室G'){
+				var newtext = document.createElement('a5');
+				newtext.textContent = '貸出：'+gon.facility[i].rental_at.slice(5,7)+'月'
+				+gon.facility[i].rental_at.slice(8,10)+'日'
+				+gon.facility[i].rental_at.slice(11,13)+'時'
+				+gon.facility[i].rental_at.slice(14,16)+'分';
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '返却：'+gon.facility[i].return_at.slice(5,7)+'月'
+				+gon.facility[i].return_at.slice(8,10)+'日'
+				+gon.facility[i].return_at.slice(11,13)+'時'
+				+gon.facility[i].return_at.slice(14,16)+'分';
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '団体名：'+gon.facility[i].g_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '責任者名：'+gon.facility[i].r_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = 'TELL：'+gon.facility[i].tell;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '貸出者：'+gon.facility[i].kasidasi;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '返却受付者：'+gon.facility[i].henkyaku;
+				list.appendChild(newtext);
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+				var newtext = document.createElement('a6');
+				newtext.textContent = '部屋：'+gon.facility[i].room;
+				list.appendChild(newtext);
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+			}
+		}
+	}
+	var meeting_room = function(){
+		for(i=0;i<gon.fcount;i++){
+			if(gon.facility[i].room=='会議室１'||gon.facility[i].room=='会議室２'||gon.facility[i].room=='会議室３'||
+			gon.facility[i].room=='和室'||gon.facility[i].room=='厨房'){
+				var newtext = document.createElement('a5');
+				newtext.textContent = '貸出：'+gon.facility[i].rental_at.slice(5,7)+'月'
+				+gon.facility[i].rental_at.slice(8,10)+'日'
+				+gon.facility[i].rental_at.slice(11,13)+'時'
+				+gon.facility[i].rental_at.slice(14,16)+'分';
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '返却：'+gon.facility[i].return_at.slice(5,7)+'月'
+				+gon.facility[i].return_at.slice(8,10)+'日'
+				+gon.facility[i].return_at.slice(11,13)+'時'
+				+gon.facility[i].return_at.slice(14,16)+'分';
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '団体名：'+gon.facility[i].g_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '責任者名：'+gon.facility[i].r_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = 'TELL：'+gon.facility[i].tell;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '貸出者：'+gon.facility[i].kasidasi;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '返却受付者：'+gon.facility[i].henkyaku;
+				list.appendChild(newtext);
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+				var newtext = document.createElement('a6');
+				newtext.textContent = '部屋：'+gon.facility[i].room;
+				list.appendChild(newtext);
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+			} 
+		}
+	}
+	var other_room = function(){
+		for(i=0;i<gon.fcount;i++){
+			if(gon.facility[i].room=='共同ホール'||gon.facility[i].room=='301の鍵（同好会）'||gon.facility[i].room=='体育倉庫（小）'||
+			gon.facility[i].room=='プレハブ（白百合）'||gon.facility[i].room=='物干し室'||gon.facility[i].room=='共スタ１'||
+			gon.facility[i].room=='共スタ２'||gon.facility[i].room=='中スタ'||gon.facility[i].room=='中音'||
+			gon.facility[i].room=='大スタ'||gon.facility[i].room=='大練'||gon.facility[i].room=='318の鍵'||
+			gon.facility[i].room=='池田記念講堂B1'){
+				var newtext = document.createElement('a5');
+				newtext.textContent = '貸出：'+gon.facility[i].rental_at.slice(5,7)+'月'
+				+gon.facility[i].rental_at.slice(8,10)+'日'
+				+gon.facility[i].rental_at.slice(11,13)+'時'
+				+gon.facility[i].rental_at.slice(14,16)+'分';
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '団体名：'+gon.facility[i].g_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '責任者名：'+gon.facility[i].r_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = 'TELL：'+gon.facility[i].tell;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '貸出者：'+gon.facility[i].kasidasi;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '返却受付者：'+gon.facility[i].henkyaku;
+				list.appendChild(newtext);
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+				var newtext = document.createElement('a6');
+				newtext.textContent = '部屋：'+gon.facility[i].room;
+				list.appendChild(newtext);
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+			} 
+		}
+	}
+
+	var room_point = function(){
+		for(i=0;i<gon.fcount;i++){
+			if(room_selected==gon.facility[i].room){
+				var newtext = document.createElement('a5');
+				newtext.textContent = '貸出：'+gon.facility[i].rental_at.slice(5,7)+'月'
+				+gon.facility[i].rental_at.slice(8,10)+'日'
+				+gon.facility[i].rental_at.slice(11,13)+'時'
+				+gon.facility[i].rental_at.slice(14,16)+'分';
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '返却：'+gon.facility[i].return_at.slice(5,7)+'月'
+				+gon.facility[i].return_at.slice(8,10)+'日'
+				+gon.facility[i].return_at.slice(11,13)+'時'
+				+gon.facility[i].return_at.slice(14,16)+'分';
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '団体名：'+gon.facility[i].g_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '責任者名：'+gon.facility[i].r_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = 'TELL：'+gon.facility[i].tell;
+				list.appendChild(newtext);
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+
+				var newtext = document.createElement('a6');
+				newtext.textContent = '部屋：'+gon.facility[i].room;
+				list.appendChild(newtext);
+			
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+			} 
+		}
+	}
+
+	var delelement = function(){
+		if(list.hasChildNodes()){
+			for (i=list.childNodes.length-1; i>=0; i--) {
+				list.removeChild(list.childNodes[i]);
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+	$('.music').hide();
+	$('.meeting').hide();
+	$('.others').hide();
+	$('.search2').hide();
+	$('.search3').hide();
+	$('.search4').hide();
+	allequip();
+	var room_selected = 0;
+
+	function set(){
+		delelement();
+		var checked = document.getElementById('seach').value;
+		if (checked == "備品"){
+			$('.music').hide();
+			$('.meeting').hide();
+			$('.others').hide();
+			$('.search1').hide();
+			$('.search2').hide();
+			$('.search3').hide();
+			$('.search4').hide();
+			$('.search1').show();
+			allequip();
+		}
+		if (checked=="音楽練習室"){
+			$('.music').hide();
+			$('.meeting').hide();
+			$('.others').hide();
+			$('.music').show();
+			$('.search1').hide();
+			$('.search2').hide();
+			$('.search3').hide();
+			$('.search4').hide();
+			$('.search2').show();
+			music_room();
+		}
+		if (checked=="会議室・厨房・和室"){
+			$('.music').hide();
+			$('.meeting').hide();
+			$('.others').hide();
+			$('.meeting').show();
+			$('.search1').hide();
+			$('.search2').hide();
+			$('.search3').hide();
+			$('.search4').hide();
+			$('.search3').show();
+			meeting_room();
+		}
+		if (checked=="その他施設"){
+			$('.music').hide();
+			$('.meeting').hide();
+			$('.others').hide();
+			$('.others').show();
+			$('.search1').hide();
+			$('.search2').hide();
+			$('.search3').hide();
+			$('.search4').hide();
+			$('.search4').show();
+			other_room();
+		}
+	}
+
+	function set2(){
+		var equip=document.getElementById('equip').value;
+		delelement();
+
+		if(equip=='全ての備品'){allequip();}
+		for(i=0;i<gon.count;i++){
+			if(gon.rentalequip[i].name==equip){
+				var newtext = document.createElement('a5');
+				newtext.textContent = '貸出：'+gon.rentalequip[i].rental_at.slice(5,7)+'月'
+				+gon.rentalequip[i].rental_at.slice(8,10)+'日'
+				+gon.rentalequip[i].rental_at.slice(11,13)+'時'
+				+gon.rentalequip[i].rental_at.slice(14,16)+'分';
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '返却：'+gon.rentalequip[i].return_at.slice(5,7)+'月'
+				+gon.rentalequip[i].return_at.slice(8,10)+'日'
+				+gon.rentalequip[i].return_at.slice(11,13)+'時'
+				+gon.rentalequip[i].return_at.slice(14,16)+'分';
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '団体名：'+gon.rentalequip[i].g_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '責任者名：'+gon.rentalequip[i].r_name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = 'TELL：'+gon.rentalequip[i].tell;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '貸出者：'+gon.rentalequip[i].kasidasi;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a5');
+				newtext.textContent = '返却受付者：'+gon.rentalequip[i].henkyaku;
+				list.appendChild(newtext);
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+				var newtext = document.createElement('a6');
+				newtext.textContent = '備品：'+gon.rentalequip[i].name;
+				list.appendChild(newtext);
+				var newtext = document.createElement('a6');
+				newtext.textContent = '個数：'+gon.rentalequip[i].r_num;
+				list.appendChild(newtext);
+				var newtext = document.createElement('br');
+				list.appendChild(newtext);
+			}
+		}
+	}
+	
+
+	function set3(){
+		room_selected = document.getElementById('music').value;
+		delelement();
+		if(room_selected=='全ての施設'){music_room();}
+		room_point(room_selected);
+	}
+
+	function set4(){
+		room_selected = document.getElementById('meeting').value;
+		delelement();
+		if(room_selected=='全ての施設'){meeting_room();}
+		room_point(room_selected);
+	}
+
+	function set5(){
+		room_selected = document.getElementById('others').value;
+		delelement();
+		if(room_selected=='全ての施設'){other_room();}
+		room_point(room_selected);
+	}
+
+
+
+
+
+	
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

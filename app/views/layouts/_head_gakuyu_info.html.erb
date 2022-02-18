@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+		<title>学友会　備品貸出システム</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+	</head>
+	<body>
+	<header id="header">
+		<h1>学友会　備品貸出システム</h1>
+		<div class="logo">
+			<a href="/home">学友会<br /><span>Soka University</span></a>
+		</div>
+		<div class="info" id="user_info"></div>
+	</header>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+	    	<ul>
+	    		<li id="oractive1"><a href="/gakuyu_info1"><strong>全体連絡</strong><span>all</span></a></li>
+	    		<li id="oractive"><a><strong>各局連絡</strong><span>all</span></a></li>
+
+				<li id="oractive2"><a href="/gakuyu_info2"><strong>体育会</strong><span>taiiku</span></a></li>
+				<li id="oractive3"><a href="/gakuyu_info3"><strong>学術局</strong><span>gakuzyutu</span></a></li>
+				<li id="oractive4"><a href="/gakuyu_info4"><strong>文芸局</strong><span>bungei</span></a></li>
+				<li id="oractive5"><a href="/gakuyu_info_s"><strong>編集用</strong><span>edit</span></a></li>
+
+
+<%# #  <li id="oractive4"><a><strong>その他</strong><span>Equipmet</span></a> %>
+					<%# # <ul> %>
+						<%# # <li><a a href="/gakuyu_info1"><strong>その他1</strong><span>Equipmet</span></a> %>
+					<%# # </ul> %>
+					<%# # <ul> %>
+						<%# # <li><a a href="/gakuyu_info1"><strong>その他2</strong><span>Equipmet</span></a> %>
+					<%# # </ul> %>
+					<%# # <ul> %>
+						<%# # <li><a a href="/gakuyu_info1"><strong>その他3</strong><span>Equipmet</span></a> %>
+					<%# # </ul> %>
+					<%# # <ul> %>
+						<%# # <li><a a href="/gakuyu_info1"><strong>その他4</strong><span>Equipmet</span></a> %>
+					<%# # </ul> %>
+				<%# # </li>  %>
+			</ul>   
+    	</div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+</html>
+
+<script language="javascript" type="text/javascript">
+var pathname = location.pathname;
+if(pathname.match("/gakuyu_info1")){
+	var obj = document.getElementById("oractive1");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+if(pathname.match("/gakuyu_info2")){
+	var obj = document.getElementById("oractive2");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+if(pathname.match("/gakuyu_info3")){
+	var obj = document.getElementById("oractive3");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+if(pathname.match("/gakuyu_info4")){
+	var obj = document.getElementById("oractive4");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+if(pathname.match("/gakuyu_info_s")){
+	var obj = document.getElementById("oractive5");
+	//要素に設定されているclassの一覧を取得する
+	var list = obj.classList;
+	console.log(list);
+	//要素にclass="hoge"を追加する
+	obj.classList.add("active");
+	console.log(obj.classList);
+}
+</script>
+
+
+
+<script language="javascript" type="text/javascript">
+	user_info.innerHTML = "";
+	if(gon.signstatus == "on"){
+		user_info.insertAdjacentHTML('afterbegin',
+									'<a id=openModal><div class="top_menu">'
+									+"<%= @username %>"
+									+"<span class='top_menu_font'>"
+									+gon.user_info.macname
+									+"さん  </span>"
+									+'<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/><path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/></svg>'
+									+"</div><a/>"
+									+'<section id="modalArea" class="modalArea">'
+									+'<div id="modalBg" class="modalBg"></div>'
+									+'<div class="modalWrapper">'
+									+'<div class="modalContents">'
+									+'<div class="box_title">アカウント</div>'
+									+'<div class="box_content">'
+									+'<a></a>名前<br>'
+									+gon.user_info.macname
+									+'<br><br>id<br>'
+									+gon.user_info.name
+									+'<br><br><br>'
+									+'<p><a href="/gakuyu_info_new">アカウントを作成する</a>'
+									+'<br><%= link_to 'ログアウト', logout_path, :method => :delete, data: { confirm: 'Are you sure?' } %>'
+									+'</div>'
+									+'</div>'
+									+'</div>'
+									+'</section>'
+									);
+	}
+	if(gon.signstatus == "off"){
+		user_info.insertAdjacentHTML('afterbegin',
+									'<a id=openModal><div class="top_menu">'
+									+"<%= @username %>"
+									+"<span class='top_menu_font'>"
+									+"ゲスト "
+									+"</span>"
+									+'<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/><path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/></svg>'
+									+"</div><a/>"
+									+'<section id="modalArea" class="modalArea">'
+									+'<div id="modalBg" class="modalBg"></div>'
+									+'<div class="modalWrapper">'
+									+'<div class="modalContents">'
+									+'<div class="box_title">アカウント</div>'
+									+'<div class="box_content">'
+									+'<br><a href="/login">ログイン</a>'
+									+'<br><br><a href="/uketuke_new">アカウントを作成する</a>'
+									+'<br><br><br>*アカウントを作成すると、申請時の入力を省いたり、申請した内容を自分で確認できるようになります。'
+									+'</div>'
+									+'</div>'
+									+'</div>'
+									+'</section>'
+									);
+	}
+	document.getElementById("openModal").onclick = function() {
+	  document.getElementById("modalArea").style.display="block";
+	};
+	document.getElementById("modalBg").onclick = function() {
+	  document.getElementById("modalArea").style.display="none";
+	};
+</script>
+
+
+
+
+
+

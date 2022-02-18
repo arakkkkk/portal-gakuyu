@@ -1,0 +1,49 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                    <%= form_with(model: @portaluser,:url => {:action => :portal_updateaccount}, local: true) do |form| %>
+                        <br><p>
+                            <%= form.label :name, "ID:" %><br>
+                            <%= form.text_field :name %>
+                        </p>
+                        <br><p>
+                            <%= form.label :password, "PASSWORD:" %><br>
+                            <%= form.text_field :password %>
+                        </p>
+                        <br><br><p><%= form.submit "登録する"%></p>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

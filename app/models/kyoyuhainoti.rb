@@ -1,0 +1,2 @@
+class Kyoyuhainoti < ApplicationRecord
+end

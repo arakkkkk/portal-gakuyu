@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">創大祭備品予約　団体ごと</h3>
+     	<article>
+     		<a>団体名：</a>
+				<select id="clubname" onchange="set_equip()" ></select>
+			<p></p>
+			<div class="kategori">
+				<div class="itiran"><div class="w100"><a>備品</a></div></div>
+	     		<div class="itiran"><a></a></div>
+     			<div class="itiran"><a>個数</a></div>
+	     		<div class="itiran"><div class="w100"><a>貸出時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><div class="w100"><a>返却時間</a></div></div>
+	     		<div class="itiran"><a></a></div>
+	     		<div class="itiran"><a>名前</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><div class="w100"><a>電話番号</a></div></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>貸出</a></div>
+	     		<div class="itiran"></div>
+	     		<div class="itiran"><a>返却</a></div>
+	     		<div class="itiran"></div>
+	     		<br>
+	     		<div class="bord"></div>
+	     		<div class="list1" id="list1"></div> 
+		    </div>
+
+
+
+
+    	</article>
+    </section>
+</div>
+
+
+<!-- / ============================コンテンツ============================ -->
+<!-- / ============================javascript============================ -->
+<script language="javascript" type="text/javascript">
+var club=[];
+for(p=0;p<gon.rcount;p++){
+var j=0;
+	for(i=0;i<club.length;i++){
+		if(gon.rentalequip[p].g_name==club[i]){
+			j=1;
+		}
+	}
+	if(j==0){
+		club.push(gon.rentalequip[p].g_name)
+	}
+}
+
+for(i=0;i<club.length;i++){
+	var option = document.createElement('option');
+	option.textContent = club[i];
+	clubname.appendChild(option);
+}
+
+var out_equip = function(){
+	for(i=0;i<gon.rcount;i++){
+		if(document.getElementById('clubname').value==gon.rentalequip[i].g_name){
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].name;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a50');
+				newtext.textContent = gon.rentalequip[i].r_num;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+parseInt(gon.rentalequip[i].rental_at.slice(8,10))+'日-'
+				+parseInt(gon.rentalequip[i].rental_at.slice(11,13))+'時'
+				+parseInt(gon.rentalequip[i].rental_at.slice(14,16))+'分';
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = 
+				+parseInt(gon.rentalequip[i].return_at.slice(8,10))+'日-'
+				+parseInt(gon.rentalequip[i].return_at.slice(11,13))+'時'
+				+parseInt(gon.rentalequip[i].return_at.slice(14,16))+'分';
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].r_name;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].tell;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].kasidasi;
+				list1.appendChild(newtext);
+				var newtext = document.createElement('a100');
+				newtext.textContent = gon.rentalequip[i].henkyaku;
+				list1.appendChild(newtext);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_edit." + gon.rentalequip[i].id;
+				newurl.innerText = "変更 ";
+				list1.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_kasidasi." + gon.rentalequip[i].id;
+				newurl.innerText = "貸出 ";
+				list1.appendChild(newurl);
+				var newurl = document.createElement("a");
+				newurl.href = "/soudaisai_henkyaku." + gon.rentalequip[i].id;
+				newurl.innerText = "返却";
+				list1.appendChild(newurl);
+				var newtext = document.createElement('br');
+				newtext.textContent = "";
+				list1.appendChild(newtext);
+			
+		}
+	}
+}
+var delelement = function(){
+	if(list1.hasChildNodes()){
+		for (i=list1.childNodes.length-1; i>=0; i--) {
+			list1.removeChild(list1.childNodes[i]);
+		}
+	}
+}
+
+// ログインーーーーーーーーーーーーーーーーーーーーー
+function login(){
+	// 入力ダイアログを表示 ＋ 入力内容を user に代入
+	user = window.prompt("password", "");
+	// 入力内容が tama の場合は example_tama.html にジャンプ
+	if(user == 'tama'){
+	// 空の場合やキャンセルした場合は警告ダイアログを表示
+	}else{
+		location.href = "soudaisai_club";
+	}
+}
+
+
+login();
+
+function set_equip(){
+	delelement();
+	out_equip();
+}
+
+set_equip();
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

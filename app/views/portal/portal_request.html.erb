@@ -1,0 +1,64 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <h>更新依頼</h><hr>
+                  <% @navlist.each do |portalnav| %>
+                    <% if portalnav.parent == "clubmessage" && portalnav.child != nil && portalnav.title == "false" then %>
+                      ●&nbsp;&nbsp;
+                      <% if portalnav.check == "imp" then %><sred>【重要】</sred>
+                        <% elsif portalnav.check == "ask" then %><sgreen>【要回答】</sgreen>
+                        <% elsif portalnav.check == "tt" then %><sblack>【体育会】</sblack>
+                        <% elsif portalnav.check == "gg" then %><sblack>【学術局】</sblack>
+                        <% elsif portalnav.check == "bb" then %><sblack>【文芸局】</sblack>
+                      <% end %>
+                      <%= link_to portalnav.child, portal1_path(portalnav.id) %>
+
+                      <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=<%= "#portalmodal" + portalnav.id.to_s %> >消去</button>
+                      <div class="modal fade" id=<%= "portalmodal" + portalnav.id.to_s %> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel"><%= portalnav.child %>の消去</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+                      <div class="modal-body">一度消去するともとには戻せません</div>
+                      <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary"><%= link_to "消去", delete_portalnav_path(portalnav.id) %></button>
+                      </div></div></div></div>
+                      <br>
+
+
+
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+<script>
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

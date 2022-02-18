@@ -1,0 +1,63 @@
+<!DOCTYPE html> 
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/header' %>
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">    
+      <ul>
+      	<li class="active"><a><strong>備品の貸出</strong><span>Rental equipment</span></a></li>
+  			<li><a href="/uketuke2_new"><strong>音楽練習室</strong><span>Borrowed</span></a></li>
+  			<li><a href="/uketuke3_new"><strong>会議室・和室・厨房</strong><span>cReservation</span></a></li>
+  			<li><a href="/uketuke4_new"><strong>その他施設</strong><span>History</span></a></li>
+        <!-- <li><a href="/uketuke5"><strong>要望書</strong><span>special</span></a></li> -->
+  		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会 備品の貸出</h3>
+     	<article>
+        <%= form_with(model: @user,:url => {:action => :uketuke_create}, local: true) do |form| %>
+            <p>
+                <%= form.label :macname, "名前" %><br>
+                <%= form.text_field :macname %>
+            </p>
+            <p>
+                <%= form.label :name, "e-mail：" %><br>
+                <%= form.text_field :name %>
+            </p>
+            <p>
+                <%= form.label :tell, "電話番号：" %><br>
+                <%= form.text_field :tell %>
+            </p>
+            <p>
+                <%= form.label :password, "パスワード：(英数字)" %><br>
+                <%= form.text_field :password %>
+            </p>
+            <%= form.submit "登録する"%>
+        <% end %>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

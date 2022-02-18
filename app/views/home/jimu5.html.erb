@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_jimu' %>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/jimu"><strong>備品チェック</strong><span>check</span></a></li>
+			<li><a href="/jimu2"><strong>備品の追加</strong><span>correction</span></a></li>
+			<li><a href="/jimu3"><strong>備品の変更</strong><span>correction</span></a></li>
+			<li class="active"><a><strong>共有は命</strong><span>share</span></a></li>
+			<li><a href="/jimu6"><strong>要望書</strong><span>special</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper" class="create">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品の追加</h3>
+     	<article>
+
+		    <%= form_with(model: @kyoyuhainoti, local: true) do |form| %>
+		    	<p>
+		            <%= form.label :name, "共有者名：" %><br>
+		            <%= form.text_field :name %>
+		        </p>
+		        <p>
+		            <%= form.label :title, "タイトル：" %><br>
+		            <%= form.text_field :title %>
+		        </p>
+		        <div class="textarea">
+		        <p>
+		            <%= form.label :text, "共有：" %><br>
+		            <%= form.text_area :text, :size=> "90x10" %>
+		        </p>
+		    	</div>
+		        <%= form.submit "共有" %>
+		    <% end %>
+		    <div class="btn">
+		    <a href="/jimu4" class="btn-flat-border">--共有は命　一覧を見る--</a>
+			</div>
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+    	</article>
+    </section>
+</div>
+
+
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

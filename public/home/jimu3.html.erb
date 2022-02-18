@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<title>学友会　備品貸出システム</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<script src="js/css3-mediaqueries.js"></script>
+<![endif]-->
+<script src="js/jquery1.7.2.min.js"></script>
+<script src="js/script.js"></script>
+<%= stylesheet_link_tag    "inside/style1", media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag "application", 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<header id="header">
+	<h1>学友会　備品貸出システム</h1>
+  <!-- ロゴ -->
+	<div class="logo">
+		<a href="/home">学友会<br /><span>Soka University</span></a>
+	</div>
+	<!-- / ロゴ -->
+	<!-- 電話番号+受付時間 -->
+	
+  <div class="info">
+<!-- 		<p class="tel"><span>電話:</span> 012-3456-7890</p>
+		<p class="open">受付時間: 平日 AM 10:00 〜 PM 5:00</p> -->
+	</div>
+	<!-- / 電話番号+受付時間 -->
+</header>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/jimu"><strong>備品チェック</strong><span>check</span></a></li>
+			<li><a href="/jimu2"><strong>備品の追加</strong><span>correction</span></a></li>
+			<li class="active"><a><strong>備品の変更</strong><span>correction</span></a></li>
+			<li><a href="/jimu4"><strong>共有は命</strong><span>share</span></a></li>
+			<li><a href="/jimu6"><strong>要望書</strong><span>special</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper" class="create">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会事務局　備品チェック</h3>
+     	<article>
+     	<div class="cate">
+     		<h4>高価備品</h4>
+     		<% @koukabihin.each do |equipment| %>
+     		<div class="column">
+	     		<a>名前：</a>
+	        	<a><%= equipment.name %></a>
+	        </div>
+	        <div class="column">
+	        	<a>個数：</a>
+	        	<a><%= equipment.number %></a>
+	        </div>
+	        <div class="column">
+	        	<a>貸出上限：</a>
+	        	<a><%= equipment.max_number %></a>
+	        </div>
+	        <tr>
+	        <td><%= link_to 'Edit', jimu3_edit_path(equipment) %></td>
+	        <td><%= link_to 'Destroy', equipment, :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+		    </tr>
+        	<br>
+    		<% end %>
+    	</div>
+    	<div class="cate">
+    		<h4>コード類</h4>
+     		<% @kodorui.each do |equipment| %>
+     		<div class="column">
+	     		<a>名前：</a>
+	        	<a><%= equipment.name %></a>
+	        </div>
+	        <div class="column">
+	        	<a>個数：</a>
+	        	<a><%= equipment.number %></a>
+	        </div>
+	        <div class="column">
+	        	<a>貸出上限：</a>
+	        	<a><%= equipment.max_number %></a>
+	        </div>
+	        <tr>
+	        <td><%= link_to 'Edit', jimu3_edit_path(equipment) %></td>
+	        <td><%= link_to 'Destroy', equipment, :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+		    </tr>
+        	<br>
+    		<% end %>
+    	</div>
+    	<div class="cate">
+    		<h4>文具</h4>
+     		<% @bungu.each do |equipment| %>
+     		<div class="column">
+	     		<a>名前：</a>
+	        	<a><%= equipment.name %></a>
+	        </div>
+	        <div class="column">
+	        	<a>個数：</a>
+	        	<a><%= equipment.number %></a>
+	        </div>
+	        <div class="column">
+	        	<a>貸出上限：</a>
+	        	<a><%= equipment.max_number %></a>
+	        </div>
+	        <tr>
+	        <td><%= link_to 'Edit', jimu3_edit_path(equipment) %></td>
+	        <td><%= link_to 'Destroy', equipment, :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+		    </tr>
+        	<br>
+        	<% end %>
+        </div>
+        <div class="cate">
+        	<h4>掃除工具調理</h4>
+     		<% @souzikougutyouri.each do |equipment| %>
+     		<div class="column">
+	     		<a>名前：</a>
+	        	<a><%= equipment.name %></a>
+	        </div>
+	        <div class="column">
+	        	<a>個数：</a>
+	        	<a><%= equipment.number %></a>
+	        </div>
+	        <div class="column">
+	        	<a>貸出上限：</a>
+	        	<a><%= equipment.max_number %></a>
+	        </div>
+	        <tr>
+	        <td><%= link_to 'Edit', jimu3_edit_path(equipment) %></td>
+	        <td><%= link_to 'Destroy', equipment, :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+		    </tr>
+        	<br>
+        	<% end %>
+        </div>
+        <div class="cate">
+        	<h4>スポーツ用品</h4>
+     		<% @supotuyouhin.each do |equipment| %>
+     		<div class="column">
+	     		<a>名前：</a>
+	        	<a><%= equipment.name %></a>
+	        </div>
+	        <div class="column">
+	        	<a>個数：</a>
+	        	<a><%= equipment.number %></a>
+	        </div>
+	        <div class="column">
+	        	<a>貸出上限：</a>
+	        	<a><%= equipment.max_number %></a>
+	        </div>
+	        <tr>
+	        <td><%= link_to 'Edit', jimu3_edit_path(equipment) %></td>
+	        <td><%= link_to 'Destroy', equipment, :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+		    </tr>
+        	<br>
+        	<% end %>
+        </div>
+        <div class="cate">
+        	<h4>未分類</h4>
+     		<% @nocate.each do |equipment| %>
+     		<div class="column">
+	     		<a>名前：</a>
+	        	<a><%= equipment.name %></a>
+	        </div>
+	        <div class="column">
+	        	<a>個数：</a>
+	        	<a><%= equipment.number %></a>
+	        </div>
+	        <div class="column">
+	        	<a>貸出上限：</a>
+	        	<a><%= equipment.max_number %></a>
+	        </div>
+	        <tr>
+	        <td><%= link_to 'Edit', jimu3_edit_path(equipment) %></td>
+	        <td><%= link_to 'Destroy', equipment, :method => :delete, data: { confirm: 'Are you sure?' }  %></td>
+		    </tr>
+        	<br>
+        	<% end %>
+        </div>
+    	</article>
+    </section>
+</div>
+
+
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

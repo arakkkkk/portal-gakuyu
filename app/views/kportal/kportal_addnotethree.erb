@@ -1,0 +1,50 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <%= form_with(model: @notegroup,:url => {:action => :addnotetwo}, local: true) do |form| %>
+                    <br>
+                    <h>
+                      「 <%= params[:one] %> ＞ <%= params[:two] %> 」の追加
+                    </h><hr>
+                      <%= form.hidden_field :groupone, :value => params[:one] %>
+                      <%= form.hidden_field :grouptwo, :value => params[:two] %>
+                      <%= form.label :groupthree, "グループ名" %><br>
+                      <%= form.text_field :groupthree %>
+                    </p><br><br>
+                    <%= form.submit "追加"%>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

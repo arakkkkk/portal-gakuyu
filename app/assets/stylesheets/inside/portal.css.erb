@@ -1,0 +1,383 @@
+/*********************************/
+/************side var/************/
+/*********************************/
+
+@media screen and (min-width: 767px) { /*ウィンドウ幅が767px以上の場合に適用*/
+  #sidebar {
+    width: 200px !important;
+    background: #2C7CFF;
+    color: rgb(82,90,100);
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; 
+    min-height: 82vh;
+  }
+  .tgbtn{
+    display: none;
+  }
+}
+@media screen and (max-width: 766px) { /*ウィンドウ幅が767px以上の場合に適用*/
+  #sidebar {
+    width: 1000vw !important;
+    background: #2C7CFF;
+    color: rgb(82,90,100);
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; 
+    min-height: 82vh;
+    display: none;
+  }
+}
+
+#sidebar.active {
+  margin-left: -300px; 
+}
+#sidebar .logo {
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto; 
+}
+#sidebar .logo span {
+  display: block; 
+}
+#sidebar ul.components {
+  padding: 0; 
+}
+#sidebar ul li {
+  font-size: 14px; 
+}
+#sidebar ul li > ul {
+  margin-left: 10px; 
+}
+#sidebar ul li > ul li {
+  font-size: 12px !important; 
+}
+#sidebar ul li a {
+  padding: 10px 0;
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+}
+#sidebar ul li a:hover {
+  color: #00bfff; 
+  text-decoration:none
+}
+#sidebar ul li.active > a {
+  background: transparent;
+  color: #00bfff; 
+}
+
+a[data-toggle="collapse"] {
+  position: relative; 
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); 
+}
+
+.footer p {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+/*********************************/
+/************top var/************/
+/*********************************/
+#navbar{
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-bottom: 0;
+  height: 100px;
+}
+#navbar .logo {
+  display: inline;
+  margin: 0 auto; 
+}
+#navbar .logo span {
+  display: inline; 
+}
+#navbar ul.components {
+  padding: 0; 
+}
+#navbar ul li {
+  font-size: 16px; 
+  height: 100px;
+  padding-right: 20px;
+  padding-left: 40px;
+  line-height: 150px; 
+  display: inline-block;
+}
+#navbar ul li a {
+  text-align: right;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #2C7CFF;
+  border-bottom: 1px solid rgba(255, 255, 255,0.5); 
+}
+#navbar ul li a:hover {
+  color: #00bfff; 
+  text-decoration:none
+}
+#navbar ul li.active > a {
+  background: transparent;
+  color: #00bfff; 
+}
+#navbar p {
+  font-size: 40px;
+  color: rgba(255, 255, 255,1); 
+  margin-bottom: 0;
+  /*font-family: Candara;*/
+  font-family: Comic Sans MS;
+}
+.brand1{
+  font-size: 40px;
+  font-weight: 700;
+}
+.brand2{
+  font-size: 20px;
+  font-weight: 500;
+}
+.navbtn{
+  margin-left: 200px !important;
+}
+/*********************************/
+/************content/************/
+/*********************************/
+body {
+  background-color: #EEFFFF;
+}
+#bgcolor{
+  background-color: #4689FF	;
+}
+#bgcolor h6{
+  font-size: 18px;
+}
+.container{
+  margin-top:30px;
+}
+.container p{
+  font-size :14px;
+  height: 27px;
+}
+.card-body{
+  min-height: 70vh;
+}
+.buttontext a{
+  color: white;
+}
+.portalcontent{
+  margin: 30px 30px;
+  font-size: 16px;
+}
+.portalcontent hr{
+  margin: 0;
+  margin-bottom: -10px;
+}
+h{
+  font-weight: bold;
+  font-size: 22px;
+  color: blue;
+}
+red{
+  font-weight: bold;
+  color: red;
+  font-size: 20px;
+}
+blue{
+  font-weight: bold;
+  color: blue;
+  font-size: 20px;
+}
+green{
+  font-weight: bold;
+  color: green;
+  font-size: 20px;
+}
+black{
+  font-weight: bold;
+  color: black;
+  font-size: 20px;
+}
+sred{
+  font-weight: bold;
+  color: red;
+}
+sblue{
+  font-weight: bold;
+  color: blue;
+}
+sgreen{
+  font-weight: bold;
+  color: green;
+}
+sblack{
+  font-weight: bold;
+  color: black;
+}
+.textarea{
+  margin-bottom: 450px;
+}
+input[type="text"] {
+        width: 400px;
+        height: 40px;
+        font-size: 16px;
+    }
+input[type="password"] {
+        width: 400px;
+        height: 40px;
+        font-size: 16px;
+    }
+@media screen and (min-width: 767px) { /*ウィンドウ幅が767px以上の場合に適用*/
+    textarea {
+        width: 800px;
+        height: 400px;
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 766px) { /*ウィンドウ幅が767px以上の場合に適用*/
+    textarea {
+        width: 400px;
+        height: 400px;
+        font-size: 16px;
+    }
+}
+button a{
+  color: white;
+}
+button a:hover{
+  color: white;
+}
+#paddingnone{
+  padding: 0 !important;
+}
+.nowpage{
+  color: orange !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

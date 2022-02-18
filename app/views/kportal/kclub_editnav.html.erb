@@ -1,0 +1,107 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="kategori">
+                        <p>リスト</p>
+                        <div id="addnavlist"></div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+                                  リストグループの追加
+                                </button>                                   
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">リストグループの追加</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <%= form_with(model: @portalnav,:url => {:action => :kclub_addnavparent}, local: true) do |form| %>
+                                            <br><p>
+                                                <%= form.label :parent, "リストグループ名" %><br>
+                                                <%= form.text_field :parent %>
+                                            </p><br><br>
+                                            <%= form.hidden_field :group, :value => "kyokuin" %>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary"><%= form.submit "登録する"%></button><% end %>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>   
+                            <div class="col-xl-6 col-lg-6">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+                                  リストの追加
+                                </button>                                   
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">リストの追加</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <%= form_with(model: @portalnav,:url => {:action => :kclub_addnavchild2}, local: true) do |form| %>
+                                            <br><p>
+                                                <%= form.label :parent, "リストグループ" %><br>
+                                                <%= form.select :parent, @parent_array %>
+                                            </p>
+                                            <br><p>
+                                                <%= form.label :child, "リストタイトル" %><br>
+                                                <%= form.text_field :child %>
+                                            </p><br><br>
+                                            <%= form.hidden_field :group, :value => "kyokuin" %>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary"><%= form.submit "登録する"%></button><% end %>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>   
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+<script>
+    add_navtext()
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,2 @@
+class Portalnotegroup < ApplicationRecord
+end

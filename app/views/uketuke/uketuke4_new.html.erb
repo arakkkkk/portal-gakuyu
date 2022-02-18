@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/header' %>
+
+
+<!-- ============================メインナビゲーション================================ -->
+<nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li><a href="/uketuke1"><strong>備品の貸出</strong><span>Rental equipment</span></a></li>
+			<li><a href="/uketuke2_new"><strong>音楽練習室</strong><span>Borrowed</span></a></li>
+			<li><a href="/uketuke3_new"><strong>会議室・和室・厨房</strong><span>cReservation</span></a></li>
+			<li class="active"><a href="/uketuke4_new"><strong>その他施設</strong><span>History</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav>
+<!-- / ==========================メインナビゲーション=============================== -->
+<div id="wrapper">
+  <section id="main">
+      <div class="red_text">
+        ・試験運用
+      </div>
+  </section>
+</div>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">学友会 備品の貸出</h3>
+     	<article>
+
+     		<%= form_with(model: @facility, local: true) do |form| %>
+		    	<p>
+		            <%= form.label :g_name, "団体名：" %><br>
+		            <%= form.text_field :g_name %>
+		        </p>
+		        <p>
+		            <%= form.label :r_name, "名前：" %><br>
+		            <%= form.text_field :r_name %>
+		        </p>
+		        <p>
+		            <%= form.label :tell, "TELL：" %><br>
+		            <%= form.text_field :tell %>
+		        </p>
+		        <p>
+		        	<%= form.label :"部屋：" %>
+					<%= form.select :room ,
+					[["共同ホール", "共同ホール"], ["301の鍵（同好会）", "301の鍵（同好会）"], ["体育倉庫（小）", "体育倉庫（小）"], ["プレハブ（白百合）", "プレハブ（白百合）"], ["物干し室", "物干し室"], ["共スタ１", "共スタ１"], ["共スタ２", "共スタ２"], ["中スタ・中音", "中スタ"], ["大スタ・大練", "大スタ"], ["318の鍵", "318の鍵"], ["池田記念講堂B1", "池田記念講堂B1"]]%>
+		        </p>
+		        <%= form.submit "借りる"%>
+		    <% end %>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <%= form_with(model: @portalnav,:url => {:action => :club_addnavchild}, local: true) do |form| %>
+                    <br><p>
+                      <%= form.label :child, "リスト名" %><br>
+                      <%= form.text_field :child %>
+                    </p><br><br>
+                    <%= form.hidden_field :group, :value => "club" %>
+                    <%= form.hidden_field :parent, :value => params[:format] %>
+                    <%= form.submit "追加"%>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

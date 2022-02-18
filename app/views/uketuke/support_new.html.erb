@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/header' %>
+
+<!-- ============================メインナビゲーション================================ -->
+<!-- <nav id="mainNav">
+	<div class="inner">
+  	<a class="menu" id="menu"><span>MENU</span></a>
+		<div class="panel">   
+    	<ul>
+    		<li class="active"><a><strong>備品の貸出</strong><span>Rental equipment</span></a></li>
+			<li><a href="/uketuke2_new"><strong>音楽練習室</strong><span>Music room</span></a></li>
+			<li><a href="/uketuke3_new"><strong>会議室・和室・厨房</strong><span>Meeting room</span></a></li>
+			<li><a href="/uketuke4_new"><strong>その他施設</strong><span>Others</span></a></li>
+		</ul>   
+    </div>
+	</div> 
+</nav> -->
+<!-- / ==========================メインナビゲーション=============================== -->
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">お問い合わせ</h3>
+     	<article>
+
+     		<%= form_with(model: @support,:url => {:action => :support_create}, local: true) do |form| %>
+     			 <div id="log_hide">
+			        <p>
+			            <%= form.label :name, "申請者名" %><br>
+			            <%= form.text_field :name, id: "name" %>
+			        </p>
+			        <p>
+			            <%= form.label :tell, "電話番号：" %><br>
+			            <%= form.text_field :tell, id: "tell" %>
+			        </p>
+			        <p>
+			            <%= form.label :email, "e-mail：" %><br>
+			            <%= form.text_field :email, id: "email" %>
+			        </p>
+		    	</div>
+            	<p>
+		            <%= form.label :g_name, "団体名：" %><br>
+		            <%= form.text_field :g_name, id: "g_name" %>
+		        </p>
+		        <p>
+		            <%= form.label :text, "内容：" %><br>
+		            <%= form.text_area :text, id: "text" %>
+		        </p>
+				<%= form.submit "送信" %>
+   			<% end %>
+
+
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>
+
+<style>
+  
+</style>
+
+<script language="javascript" type="text/javascript">
+				function or_login(){
+	 				if(gon.signstatus=="on"){
+	 					if(gon.user_info.logtype=="member"){
+	 						log_hide.innerHTML = "";
+			 				log_hide.insertAdjacentHTML('afterbegin',
+											'<p>申請者名：　　<span id="r_name">'
+											+gon.user_info.macname
+											+'</span></p><p>電話番号：　　<span id="tell">'
+											+gon.user_info.tell
+											+'</span></p><p>e-mail：　　　<span id="email">'
+											+gon.user_info.name
+											+'</span></p>'
+											);
+			 			}
+		 			}
+		 		}
+		 		or_login()
+</script>

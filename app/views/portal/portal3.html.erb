@@ -1,0 +1,70 @@
+<%= render 'layouts/head_portal' %>
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <div class="mx-3">
+                    &lt;h&gtタイトル&lt;/h&gt&nbsp;&nbsp;&nbsp;&nbsp;＝＞&nbsp;&nbsp;&nbsp;&nbsp;<h>タイトル</h>
+                    <br>&lt;red&gt赤文字&lt;/red&gt&nbsp;&nbsp;&nbsp;&nbsp;＝＞&nbsp;&nbsp;&nbsp;&nbsp;<red>赤文字</red>
+                    <br><a href="http://www.fureai.or.jp/~irie/html-tag/" target=”_blank”>詳しくはこちら</a>
+                    <%= form_with(model: @content,:url => {:action => :club_addnavchild}, local: true) do |form| %>
+                        <%= form.hidden_field :group, :value => "club" %>
+                        <%= form.hidden_field :parent, :value => "clubmessage" %>
+                        <%= form.hidden_field :title, :value => "false" %>
+                        <br>
+                        分類
+                        <br><%= form.radio_button :check, :imp %>【重要】
+                        <br><%= form.radio_button :check, :ask %>【要回答】
+                        <br><%= form.radio_button :check, :tt %>【体育会】
+                        <%= form.radio_button :check, :gg %>【文芸局】
+                        <%= form.radio_button :check, :bb %>【学術局】
+                        <p></p>
+                        <p>
+                            <%= form.label :child, "タイトル" %><br>
+                            <%= form.text_field :child %>
+                        </p>
+                        <br><br>
+                        <div class="row mx-1 textarea">
+                          <p>
+                              <%= form.label :content, "テキスト" %><br>
+                              <%= form.text_area :content %>
+                          </p>
+                        </div>
+                        <div class="row mx-1">
+                          <p><%= form.submit "登録する"%></p>
+                        </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

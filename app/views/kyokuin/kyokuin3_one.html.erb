@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">貸出詳細</h3>
+     	<article>
+     		<div class="btn">
+     			<a href="/kyokuin3" class="btn-flat-border">--------前の画面へ戻る--------</a>
+     		</div>
+     		<div class="kategori">
+     		<p>申請者情報</p>
+     			<p5>団体名：<%= @facility.g_name %></p5><br>
+		        <p5>名前：<%= @facility.r_name %></p5><br>
+		        <p5>電話番号：<%= @facility.tell %></p5><br>
+		        <p5>email：<%= @facility.email %></p5><br>
+     		<br><p>施設情報</p>
+     			<p5>施設：<%= @facility.room %></p5><br>
+     			<p5>貸出時間：<%= @facility.rental_at.try(:strftime,'%m/%d-%H:%M') %></p5><br>
+		        <p5>返却時間：<%= @facility.return_at.try(:strftime,'%m/%d-%H:%M') %></p5><br>
+				<p5>活動人数：<%= @facility.katudo_num %></p5><br>
+				<p5>活動内容：<%= @facility.katudo_naiyo %></p5><br>
+			<br><p>他</p>
+		        <br><p5>貸出許可：<%= @facility.kyoka %></p5><br>
+		        <p5>貸出者：<%= @facility.kasidasi %></p5><br>
+
+                <br><br><a><%= link_to '変更', kyokuin3_edit_path(@facility.id) %><span>__</span>
+                <%= link_to '消去', deletedata2_path(@facility.id), :method => :delete, data: { confirm: 'Are you sure?' } %></a>
+     	</div>
+    	</article>
+    </section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

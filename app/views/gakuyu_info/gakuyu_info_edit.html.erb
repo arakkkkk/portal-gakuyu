@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+<title>学友会　備品貸出システム</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+</head>
+
+
+
+<body>
+
+<%= render 'layouts/head_gakuyu_info' %>
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper">
+	<section id="main" class="content">
+    	<h3 class="heading">局員全体連絡</h3>
+     	<article>
+		 
+	     	<%= form_with(model: @info,:url => {:action => :gakuyu_info_s}, local: true) do |form| %>
+                <p>
+                    <%= form.hidden_field :id, :value => @info.id, id: "id" %>
+                </p>
+				<p>
+					<p2>日程：</p2><br>
+					<input type="date" id="date" >
+				</p>
+				<p>
+		            <%= form.label :title, "タイトル：" %><br>
+		            <%= form.text_field :title, id: "title" %>
+		        </p>
+
+				<p>
+		            <%= form.label :content, "テキスト" %><br>
+		            <%= form.text_area :content, id: "content" %>
+		        </p>
+
+				<p>
+		            <%= form.label :text, "URL：" %><br>
+		            <%= form.text_field :text, id: "text" %>
+		        </p>
+
+				<p>
+					<input type="checkbox" id="badgelist1" value="1">重要
+                    <input type="checkbox" id="badgelist2" value="2">回答
+					<input type="checkbox" id="badgelist3" value="3">宣伝
+					<input type="checkbox" id="badgelist4" value="4">クラブ
+				</p>
+
+
+
+
+                <br><button type="button" onclick="editinfomation()">送信</button>
+		    <% end %>	
+			
+		
+
+		</article>
+	</section>
+</div>
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+<!-- / フッター -->
+</body>
+</html>
+
+<script>
+    if(gon.info["badgelist"].includes('1')){
+        document.getElementById("badgelist1").checked = true;
+    }
+    if(gon.info["badgelist"].includes('2')){
+        document.getElementById("badgelist2").checked = true;
+    }
+    if(gon.info["badgelist"].includes('3')){
+        document.getElementById("badgelist3").checked = true;
+    }
+    if(gon.info["badgelist"].includes('4')){
+        document.getElementById("badgelist4").checked = true;
+    }
+
+    document.getElementById("date").value = gon.info["date"]
+</script>

@@ -1,0 +1,122 @@
+<%= render 'layouts/head_portal' %>
+
+  <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+        <div class="container" id="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <div class="card-body" id="editpage">
+                  <div class="row mx-3 my-3">
+                    <div class="col-xl-4 col-lg-4">
+                      <div id="groupone"></div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                      <div id="grouptwo"></div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                      <div id="groupthree"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑main content↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+</div>
+</div>
+</body>
+
+
+<script>
+  function add_c(gone,gtwo){
+    for(e in buttonblist){
+      var element = document.getElementById('gtwo_'+buttonblist[e])
+      element.classList.remove('btn-primary');
+      element.classList.add('btn-secondary');
+    }
+    var element = document.getElementById('gtwo_'+gtwo)
+    element.classList.remove('btn-secondary');
+    element.classList.add('btn-primary');
+    document.getElementById('groupthree').innerHTML = "";
+    buttonb = '<div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">'
+    for(i in gon.notegroup){
+      if(gon.notegroup[i]["groupone"] == gone && gon.notegroup[i]["grouptwo"] == gtwo && gon.notegroup[i]["groupthree"] != null){
+        gthree = gon.notegroup[i]["groupthree"]
+        buttonb = buttonb + '<button type="button" class="btn btn-secondary" id="gthree_'+i+'"><a href="notetodo.'+gon.notegroup[i]["id"]+'">'+gthree+'</a></button>'
+      }
+    }
+    buttonb = buttonb + '<button type="button" class="btn btn-warning"><a href="kportal_addnotethree?one='+gone+'&two='+gtwo+'">新規追加</a></button>'
+                      + '</div><hr>'
+    document.getElementById('groupthree').insertAdjacentHTML('beforeend',buttonb) 
+  }
+
+  function add_b(gone){
+    for(e in buttonalist){
+      var element = document.getElementById('gone_'+buttonalist[e])
+      element.classList.remove('btn-primary');
+      element.classList.add('btn-secondary');
+    }
+    var element = document.getElementById('gone_'+gone)
+    element.classList.remove('btn-secondary');
+    element.classList.add('btn-primary');
+
+
+    document.getElementById('grouptwo').innerHTML = "";
+    document.getElementById('groupthree').innerHTML = "";
+    buttonb = '<div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">'
+    buttonblist = []
+    for(i in gon.notegroup){
+      if(gon.notegroup[i]["groupone"] == gone){
+        gtwo = gon.notegroup[i]["grouptwo"]
+        if(buttonblist.indexOf(gtwo) === -1){
+          buttonb = buttonb + '<button type="button" class="btn btn-secondary" id="gtwo_'+gtwo+'" onclick="add_c('+"'"+gone+"'"+','+"'"+gtwo+"'"+');">'+gtwo+'</button>'
+          buttonblist.push(gtwo)
+        }
+      }
+    }
+    buttonb = buttonb + '<button type="button" class="btn btn-warning"><a href="kportal_addnotetwo.'+gone+'">新規追加</a></button>'
+                      + '</div><hr>'
+    document.getElementById('grouptwo').insertAdjacentHTML('beforeend',buttonb) 
+  }
+
+
+  buttona = '<div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">'
+  buttonalist = []
+  for(i in gon.notegroup){
+    gone = gon.notegroup[i]["groupone"]
+    if(buttonalist.indexOf(gone) === -1){
+      buttona = buttona + '<button type="button" class="btn btn-secondary" id="gone_'+gone+'" onclick="add_b('+"'"+gone+"'"+');">'+gone+'</button>'
+      buttonalist.push(gone)
+    }
+  }
+  buttona = buttona + '</div><hr>'
+  document.getElementById('groupone').insertAdjacentHTML('beforeend',buttona) 
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

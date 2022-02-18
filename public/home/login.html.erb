@@ -1,0 +1,7 @@
+<%= form_with(model: @session,:url => {:action => :create, :controller=>"sessions" }, local: true) do |form| %>
+	<p>
+		<%= form.text_field :name %><br>
+		<%= form.password_field :password %>
+	</p>
+	<%= form.submit "login" %>
+<% end %>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<!-- ============================ヘッダー================================ -->
+<%= render 'layouts/head_kyokuin' %>
+
+<!-- =============================コンテンツ=====================================- -->
+<div id="wrapper" class="create">
+	<section id="main">
+    <section class="content">
+    	<h3 class="heading">引き継ぎ　解決！</h3>
+     	<article>
+
+     		<div class="btn">
+		    <a href="/kyokuin1" class="btn-flat-border">--引き継ぎ　一覧に戻る--</a>
+			</div>
+
+    		<%= form_with(model: @hikitugi,:url => {:action => :hikitugi}, local: true) do |form| %>
+            <%= form.hidden_field :state, value:"zumi" %>
+        	<%= form.submit "解決した！" %>
+   			<% end %>
+
+    	</article>
+    </section>
+</div>
+
+<!-- / ============================コンテンツ============================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- フッター -->
+<footer id="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+	<!-- / フッター -->
+	<address>Copyright(c) 2019 Sample Inc. All Rights Reserved. Design by <a href="http://f-tpl.com" target="_blank" rel="nofollow">http://f-tpl.com</a></address>
+
+</body>
+</html>

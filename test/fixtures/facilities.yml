@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room: MyString
+  rental_at: 2019-09-01 23:49:21
+  return_at: 2019-09-01 23:49:21
+  g_name: MyString
+  r_name: MyString
+  tell: MyString
+  kyoka: MyString
+  kasidasi: MyString
+  henkyaku: MyString
+  youbousyo: MyString
+
+two:
+  room: MyString
+  rental_at: 2019-09-01 23:49:21
+  return_at: 2019-09-01 23:49:21
+  g_name: MyString
+  r_name: MyString
+  tell: MyString
+  kyoka: MyString
+  kasidasi: MyString
+  henkyaku: MyString
+  youbousyo: MyString
